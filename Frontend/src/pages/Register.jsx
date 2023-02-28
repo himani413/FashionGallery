@@ -1,13 +1,14 @@
 import React from "react";
-import styled from "styled-components"
-
+import styled from "styled-components";
+import backgroundImage from "../images/bi-register.jpg";
+import companyLogo from "../images/logo.png"
 
 const Container = styled.div`
     width: 100w;
     height: 100vh;
     background-image: 
-        linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
-        url("https://img.freepik.com/free-photo/stunning-barefooted-woman-trendy-fur-coat-dancing-laughing-photoshoot_197531-7073.jpg?w=1480&t=st=1677478655~exp=1677479255~hmac=2ad752c3704ebd64a13c14aaf88bbab5d6f19d47fb119f1c4ef443ae828a7016") ;
+        linear-gradient(rgba(255,255,255,0.2), rgba(255,255,255,0.2)),
+        url(${backgroundImage});
     background-repeat: round;
 
     display: flex;
@@ -25,7 +26,8 @@ const Container = styled.div`
 
 const Title = styled.h1`
     font-size: 24px;
-    font-weight: 300;
+    font-weight: 450;
+    margin-top: 10px;
 `;
 
 const FORM = styled.form`
@@ -51,7 +53,7 @@ const Button = styled.button`
     width: 30%;
     border: none;
     font-size: 14px;
-    padding 15px 20px;
+    padding 15px 10px;
     color: white;
     background-color: teal;
     border-radius: 20px;
@@ -64,10 +66,22 @@ const Button = styled.button`
       }
 `;
 
+const Image = styled.img`
+
+    width: 250px;
+    height: 85px;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+`;
+
 const Register = () => {
   return (
     <Container>
         <Wrapper>
+            <Image src={companyLogo}/>
             <Title>CREATE AN ACCOUNT</Title>
             <FORM>
                 <Input placeholder='name'/>
@@ -80,6 +94,7 @@ const Register = () => {
                     By creating an account, I consent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b>.
                 </Agreement>
                 <Button>CREATE</Button>
+                
             </FORM>
         </Wrapper>
     </Container>

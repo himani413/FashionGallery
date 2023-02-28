@@ -1,12 +1,14 @@
 import React from "react";
 import styled from "styled-components"
+import backgroundImageLogin from "../images/bi-login.jpg"
+import companyLogo from "../images/logo.png"
 
 const Container = styled.div`
     width: 100w;
     height: 100vh;
     background-image: 
         linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,0.3)),
-        url("https://img.freepik.com/free-photo/enthusiastic-white-girl-fashionable-purple-jacket-dancing-studio_197531-7104.jpg?w=1380&t=st=1677485637~exp=1677486237~hmac=8cd8e6f8e94055593e612def28373af0c16b59567929051ccc2ef97db1a9336c") ;
+        url(${backgroundImageLogin}) ;
     background-repeat: round;
     
     display: flex;
@@ -44,12 +46,12 @@ const Button = styled.button`
     width: 30%;
     border: none;
     font-size: 14px;
-    padding 15px 20px;
+    padding 10px 20px;
     color: white;
     background-color: teal;
     border-radius: 20px;
     cursor: pointer;
-    margin-bottom: 10px;
+    margin: 12px 0px;
     &:hover {
         color: white;
         opasity: 0.2;
@@ -59,9 +61,8 @@ const Button = styled.button`
 `;
 
 const Link = styled.a`
-      margin: 10px 0px;
+      margin: 5px 0px 2px 0px;
       font-size: 12px;
-      text-decoration: underline;
       cursor: pointer;
       &:hover,
         &:focus {
@@ -72,11 +73,25 @@ const Link = styled.a`
   }
 `;
 
+const Image = styled.img`
+
+    width: 250px;
+    height: 85px;
+    text-align: center;
+    display: block;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+`;
+
+
+
 const Login = () => {
   return (
     <Container>
         <Wrapper>
-            <Title>SIGN IN</Title>
+            <Image src={companyLogo}/><Title>SIGN IN</Title>
+            
             <FORM>
                 <Input placeholder='username'/>
                 <Input placeholder='password'/>
@@ -85,6 +100,7 @@ const Login = () => {
                 <Link>DO NOT REMEMBER THE PASSWORD?</Link>
                 <Link>CREATE A NEW ACCOUNT</Link>
             </FORM>
+            
         </Wrapper>
     </Container>
   )
