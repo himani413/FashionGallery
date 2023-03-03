@@ -37,14 +37,14 @@ export const Input = styled.input`
     flex: 1;
     min-width: 25%;
     margin: 10px 0px;
-    padding 10px;
+    padding: 10px;
 `;
 
 export const Button = styled.button`
     width: 30%;
     border: none;
     font-size: 14px;
-    padding 10px 20px;
+    padding: 10px 20px;
     color: white;
     background-color: teal;
     border-radius: 20px;
@@ -52,8 +52,7 @@ export const Button = styled.button`
     margin: 12px 0px;
     &:hover {
         color: white;
-        opasity: 0.2;
-        background-color: rgb(0, 77, 77);
+        background-color: rgb(4, 81, 81);
         
       }
 `;
