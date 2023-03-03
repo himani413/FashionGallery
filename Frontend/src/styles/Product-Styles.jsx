@@ -98,7 +98,6 @@ export const Button = styled.button`
 
     &:hover {
         color: white;
-        opasity: 0.2;
         background-color: teal;   
       }
 `;

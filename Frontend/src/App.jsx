@@ -4,7 +4,7 @@ import Login from "./pages/Login"
 import { Product } from "./pages/Product";
 
 const App = () => {
-  return <Product />;
+  return <Login />;
 };
 
 export default App;
