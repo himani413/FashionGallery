@@ -1,29 +1,29 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+  C:\Program Files\nodejs\node.exe C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
 
 PATH: 
-  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python310\Scripts\;C:\Python310\;C:\MinGW\bin;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-11.0.13\bin;;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\Himani Perera\AppData\Local\Microsoft\WindowsApps;C:\Windows\System32;C:\Users\Himani Perera\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2021.3.2\bin;;C:\Users\Himani Perera\AppData\Roaming\npm;C:\Users\Himani Perera\AppData\Local\GitHubDesktop\bin
+  C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\TDM-GCC-64\bin;D:\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Program Files\Java\jdk-17.0.2\bin;C:\Program Files\dotnet\;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\Program Files (x86)\dotnet\;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%SYSTEMROOT%\System32\OpenSSH\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\DELL\AppData\Local\Microsoft\WindowsApps;C:\Users\DELL\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\DELL\AppData\Roaming\npm;F:\New folder\IntelliJ IDEA Community Edition 2022.2.3\bin;;C:\php;
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  19.6.0
+  14.17.5
 
 Platform: 
   win32 x64
 
 Trace: 
-  SyntaxError: Invalid value type 3150:0 in C:\Users\Himani Perera\Software Engineering\Year 2 - 2nd Semester\SENG 22212-Software Architecture and Design\FasionGalleryProject\FashionGallery\Frontend\yarn.lock
-      at Parser.unexpected (C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63491:11)
-      at Parser.parse (C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63619:16)
-      at Parser.parse (C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63596:26)
-      at parse (C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63696:21)
-      at module.exports.exports.default (C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63258:96)
-      at Function.<anonymous> (C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:3068:63)
+  SyntaxError: Invalid value type 3165:0 in D:\Programming Stuff\Project_FashionGallery\FashionGallery\Frontend\yarn.lock
+      at Parser.unexpected (C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63491:11)
+      at Parser.parse (C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63619:16)
+      at Parser.parse (C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63596:26)
+      at parse (C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63696:21)
+      at module.exports.exports.default (C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:63258:96)
+      at Function.<anonymous> (C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:3068:63)
       at Generator.next (<anonymous>)
-      at step (C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
-      at C:\Users\Himani Perera\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
+      at step (C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\DELL\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
 
 npm manifest: 
   {
@@ -65,6 +65,9 @@ npm manifest:
         "last 1 firefox version",
         "last 1 safari version"
       ]
+    },
+    "devDependencies": {
+      "@types/styled-components": "^5.1.26"
     }
   }
 
@@ -2115,6 +2118,14 @@ Lockfile:
     dependencies:
       "@types/node" "*"
   
+  "@types/hoist-non-react-statics@*":
+    version "3.3.1"
+    resolved "https://registry.npmjs.org/@types/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz"
+    integrity sha512-iMIqiko6ooLrTh1joXodJK5X9xeEALT1kM5G3ZLhD3hszxBdIEd5C75U834D9mLcINgD4OyZf5uQXjkuYydWvA==
+    dependencies:
+      "@types/react" "*"
+      hoist-non-react-statics "^3.3.0"
+  
   "@types/html-minifier-terser@^6.0.0":
     version "6.1.0"
     resolved "https://registry.npmjs.org/@types/html-minifier-terser/-/html-minifier-terser-6.1.0.tgz"
@@ -2268,6 +2279,15 @@ Lockfile:
     version "2.0.1"
     resolved "https://registry.npmjs.org/@types/stack-utils/-/stack-utils-2.0.1.tgz"
     integrity sha512-Hl219/BT5fLAaz6NDkSuhzasy49dwQS/DSdu4MdggFB8zcXv7vflBI3xp7FEmkmdDkBUI2bPUNeMttp2knYdxw==
+  
+  "@types/styled-components@^5.1.26":
+    version "5.1.26"
+    resolved "https://registry.npmjs.org/@types/styled-components/-/styled-components-5.1.26.tgz"
+    integrity sha512-KuKJ9Z6xb93uJiIyxo/+ksS7yLjS1KzG6iv5i78dhVg/X3u5t1H7juRWqVmodIdz6wGVaIApo1u01kmFRdJHVw==
+    dependencies:
+      "@types/hoist-non-react-statics" "*"
+      "@types/react" "*"
+      csstype "^3.0.2"
   
   "@types/testing-library__jest-dom@^5.9.1":
     version "5.14.0"
@@ -5127,7 +5147,7 @@ Lockfile:
     resolved "https://registry.npmjs.org/he/-/he-1.2.0.tgz"
     integrity sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
   
-  hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.2:
+  hoist-non-react-statics@^3.0.0, hoist-non-react-statics@^3.3.0, hoist-non-react-statics@^3.3.2:
     version "3.3.2"
     resolved "https://registry.npmjs.org/hoist-non-react-statics/-/hoist-non-react-statics-3.3.2.tgz"
     integrity sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==
