@@ -3,6 +3,7 @@ import { Add, Remove } from "@material-ui/icons";
 import {Container,Wrapper,ImgContainer,Image,InfoContainer,Title,Desc,Price,FilterContainer,Filter,
         FilterTitle,FilterSize,FilterSizeOption,AddContainer,AmountContainer,Amount,Button} 
         from "../styles/Product-Styles.jsx";
+import Newsletter from "../components/Newsletter";
 
 
 export const Product = () => {
@@ -44,6 +45,7 @@ export const Product = () => {
                 </AddContainer>
             </InfoContainer>
         </Wrapper>
+        <Newsletter/>
     </Container>
   )
 }

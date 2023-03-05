@@ -25,7 +25,7 @@ export const InfoContainer = styled.div`
 `;
 
 export const Title = styled.h1`
-    font-weight: 200;
+    font-weight: 500;
 `;
 
 export const Desc = styled.p`
@@ -35,7 +35,7 @@ export const Desc = styled.p`
 
 export const Price = styled.span`
     font-size: 30px;
-    font-weight: 100;
+    font-weight: 500;
 `;
 
 export const FilterContainer = styled.div`
@@ -74,7 +74,7 @@ export const AddContainer = styled.div`
 export const AmountContainer = styled.div`
     display: flex;
     align-items: center;
-    font-weight: 700;
+    font-weight: 500;
 `;
 export const Amount = styled.span`
     width: 30px;
