@@ -4,6 +4,8 @@ import {Container,Wrapper,ImgContainer,Image,InfoContainer,Title,Desc,Price,Filt
         FilterTitle,FilterSize,FilterSizeOption,AddContainer,AmountContainer,Amount,Button} 
         from "../styles/Product-Styles.jsx";
 import Newsletter from "../components/Newsletter";
+import Footer from "../components/Footer";
+import Copyright from "../components/Copyright";
 
 
 export const Product = () => {
@@ -46,6 +48,8 @@ export const Product = () => {
             </InfoContainer>
         </Wrapper>
         <Newsletter/>
+        <Footer/>
+        <Copyright/>
     </Container>
   )
 }

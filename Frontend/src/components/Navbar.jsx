@@ -2,9 +2,9 @@ import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
-
+import companyLogo from "../images/logo.png";
 const Container = styled.div`
-  height: 60px;
+  height: 95px;
 `;
 
 const Wrapper = styled.div`
@@ -21,8 +21,12 @@ const Left = styled.div`
 `;
 
 const Language = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
+  &:hover {
+        color: teal;
+        
+      }
 `;
 
 const SearchContainer = styled.div`
@@ -42,8 +46,10 @@ const Center = styled.div`
   text-align: center;
 `;
 
-const Logo = styled.h1`
-  font-weight: bold;
+const Image = styled.img`
+  object-fit: cover;
+  width: 250px;
+  height: 85px;
 `;
 
 const Right = styled.div`
@@ -54,9 +60,13 @@ const Right = styled.div`
 `;
 
 const Menu = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   margin-left: 25px;
+  &:hover {
+        color: teal;
+        
+      }
 `;
 
 const Navbar = () => {
@@ -71,7 +81,7 @@ const Navbar = () => {
               </SearchContainer>
             </Left>
             <Center>
-              <Logo>Fasion Gallery</Logo>
+            <Image src={companyLogo}/>
             </Center>
             <Right>
               <Menu>REGISTER</Menu>
