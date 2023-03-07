@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
 
 const Container = styled.div`
-  height: 60px;
+  height: 95px;
 `;
 
 const Wrapper = styled.div`
@@ -22,8 +22,12 @@ const Left = styled.div`
 `;
 
 const Language = styled.span`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
+  &:hover {
+        color: teal;
+        
+      }
 `;
 
 const SearchContainer = styled.div`
@@ -55,9 +59,13 @@ const Right = styled.div`
 `;
 
 const Menu = styled.div`
-  font-size: 14px;
+  font-size: 16px;
   cursor: pointer;
   margin-left: 25px;
+  &:hover {
+        color: teal;
+        
+      }
 `;
 
 const Navbar = () => {
