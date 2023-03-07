@@ -2,7 +2,8 @@ import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
-import companyLogo from "../images/logo.png";
+import Navlogo from "../images/Navlogo.png";
+
 const Container = styled.div`
   height: 95px;
 `;
@@ -47,9 +48,7 @@ const Center = styled.div`
 `;
 
 const Image = styled.img`
-  object-fit: cover;
-  width: 250px;
-  height: 85px;
+  height: 50px;
 `;
 
 const Right = styled.div`
@@ -77,11 +76,11 @@ const Navbar = () => {
               <Language>EN</Language>
               <SearchContainer>
                 <Input />
-                <Search />
+                <Search style={{color:"gray", fontSize: 16}}/>
               </SearchContainer>
             </Left>
             <Center>
-            <Image src={companyLogo}/>
+              <Image src={Navlogo} />
             </Center>
             <Right>
               <Menu>REGISTER</Menu>
