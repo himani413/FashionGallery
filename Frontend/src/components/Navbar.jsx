@@ -48,7 +48,8 @@ const Center = styled.div`
 `;
 
 const Image = styled.img`
-  height: 50px;
+  width: 40%;
+  height: auto;
 `;
 
 const Right = styled.div`
