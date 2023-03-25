@@ -5,6 +5,8 @@ import Announcement from '../components/Announcement'
 import Navbar from '../components/Navbar'
 import Slider from '../components/Slider'
 import Newsletter from '../components/Newsletter'
+import Categories from '../components/Categories'
+import Products from '../components/Products'
 
 const Home = () => {
   return (
@@ -12,6 +14,8 @@ const Home = () => {
         <Announcement />
         <Navbar />
         <Slider />
+        <Categories/>
+        <Products/>
         <Newsletter/>
         <Footer/>
         <Copyright/>
