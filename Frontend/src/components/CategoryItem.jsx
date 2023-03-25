@@ -11,8 +11,6 @@ const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-  
-
 `;
 
 const Info = styled.div`
@@ -39,6 +37,12 @@ const Button = styled.button`
     color:gray;
     cursor: pointer;
     font-weight: 600;
+    border-radius: 10px;
+    transition: all 0.5s ease;
+    &:hover {
+        color: teal;
+        transform: scale(1.2);   
+      }
 `;
 
 const CategoryItem = ({ item }) => {
