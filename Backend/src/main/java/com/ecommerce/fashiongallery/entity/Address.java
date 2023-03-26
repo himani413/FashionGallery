@@ -29,4 +29,8 @@ public class Address {
     @Column(name = "zipcode", nullable = false)
     private Integer zipcode;
 
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private Customer customer;
+
 }
