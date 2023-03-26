@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface CustomerRepository extends JpaRepository<Customer,Integer> {
 
     public Customer getCustomerByEmailAndName(String email, String name);
+    //new
+    public Customer getCustomerById(Integer id);
 }

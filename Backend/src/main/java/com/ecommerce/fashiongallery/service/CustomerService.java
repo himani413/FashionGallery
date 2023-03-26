@@ -23,4 +23,8 @@ public class CustomerService {
         Customer customer1 = customerRepository.getCustomerByEmailAndName(customer.getEmail(),customer.getName());
         return customer1 != null? customer1.getId(): null;
     }
+    //new
+    public  Customer getCustomer(Integer id){
+        return customerRepository.getCustomerById(id);
+    }
 }
