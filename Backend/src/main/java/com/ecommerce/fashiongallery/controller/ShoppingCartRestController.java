@@ -52,6 +52,13 @@ public class ShoppingCartRestController {
         return ResponseEntity.ok(order);
     }
 
+    //new
+    @GetMapping(value = "/getOrderByCustomer/{customerId}")
+    public ResponseEntity<List<Order>> getOrderDetailsByCustomer(@PathVariable int customerId){
+        List<Order> orderList = orderService.getOrderDetailsByCustomerId(customerId);
+        return ResponseEntity.ok(orderList);
+    }
+
 
 
 
