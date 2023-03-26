@@ -1,0 +1,1 @@
+ FashionGallery is an E-commerce system using REST APIs. The system consists of a database, REST API, and a single page application (front-end). Mainly, the React Framework has been used to develop the front-end, and Java/Springboot has been used to develop the backend REST API.

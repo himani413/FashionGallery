@@ -1,0 +1,39 @@
+server:
+  error:
+    include-message: always
+    include-binding-errors: always
+  port: 8090
+spring:
+  datasource:
+    password: Dinuka1999
+    url: jdbc:mysql://localhost:3306/fashiongallery?createDatabaseIfNotExist=true
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: true
+    show-sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: dinukaekanayaka18@gmail.com
+    password: zrvfiznobaxltkjm
+
+    properties:
+      mail:
+        smtp:
+          ssl:
+            trust: "*"
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
+jwt:
+  validityInMs: 1800000
+
+
