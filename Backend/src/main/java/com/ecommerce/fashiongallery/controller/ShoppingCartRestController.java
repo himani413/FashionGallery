@@ -5,6 +5,7 @@ import com.ecommerce.fashiongallery.dto.ResponseOrderDTO;
 import com.ecommerce.fashiongallery.entity.Customer;
 import com.ecommerce.fashiongallery.entity.Order;
 import com.ecommerce.fashiongallery.entity.Product;
+import com.ecommerce.fashiongallery.entity.ShoppingCart;
 import com.ecommerce.fashiongallery.service.CustomerService;
 import com.ecommerce.fashiongallery.service.OrderService;
 import com.ecommerce.fashiongallery.service.ProductService;
@@ -51,6 +52,9 @@ public class ShoppingCartRestController {
         return ResponseEntity.ok(order);
     }
 
+
+
+
     @PostMapping("/placeOrder")
     public ResponseEntity<ResponseOrderDTO> placeOrder(@RequestBody OrderDTO orderDTO){
 
@@ -84,6 +88,7 @@ public class ShoppingCartRestController {
         return ResponseEntity.ok(responseOrderDTO);
 
     }
+
 
 
 }
