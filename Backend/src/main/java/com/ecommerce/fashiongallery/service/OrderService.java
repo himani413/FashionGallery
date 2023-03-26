@@ -31,6 +31,12 @@ public class OrderService {
 
     }
 
+    //new
+    public List<Order> getOrderDetailsByCustomerId(int customerId){
+        List<Order> orderList = this.orderRepository.findAllByCustomerId(customerId);
+        return orderList.isEmpty()?null:orderList;
+    }
+
     public float getCartAmount(List<ShoppingCart> shoppingCartList){
 
         float totalCartAmount = 0f;
