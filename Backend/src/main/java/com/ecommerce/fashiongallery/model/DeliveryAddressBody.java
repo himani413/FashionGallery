@@ -5,8 +5,7 @@ public class DeliveryAddressBody {
     private String addressLine1;
     private String addressLine2;
     private String city;
-    private String state;
-    private String country;
+    private String Province;
     private String zipCode;
 
     public String getAddressLine1() {
@@ -33,20 +32,12 @@ public class DeliveryAddressBody {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getProvince() {
+        return Province;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
+    public void setProvince(String province) {
+        this.Province = province;
     }
 
     public String getZipCode() {

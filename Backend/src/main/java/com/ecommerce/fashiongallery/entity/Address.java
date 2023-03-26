@@ -33,4 +33,27 @@ public class Address {
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
 
+    public void setAddressLine1(String addressLine1) {
+        this.addressLine1 = addressLine1;
+    }
+
+    public void setAddressLine2(String addressLine2) {
+        this.addressLine2 = addressLine2;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setProvince(String province) {
+        this.province = province;
+    }
+
+    public void setZipcode(Integer zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }
