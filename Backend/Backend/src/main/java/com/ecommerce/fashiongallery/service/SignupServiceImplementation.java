@@ -55,10 +55,6 @@ public class SignupServiceImplementation implements SignupService{
 
             confirmationService.saveConfirmationToken(token);
 
-
-          //  mailService.send(signupDTO.getEmail());
-            // saveUserToken(savedUser, jwtToken);
-            //   sendVerificationEmail(user);
             return ResponseDTO.builder()
                     .token(jwtToken)
                     .code(StringList.RSP_SUCCESS)
@@ -67,50 +63,5 @@ public class SignupServiceImplementation implements SignupService{
                     .build();
     }
 
-
-//    @Override
-//    public String confirmToken(String token) {
-//        Confirmation confirmationToken = confirmationService
-//                .getToken(token)
-//                .orElseThrow(() ->
-//                        new IllegalStateException("token not found"));
-//
-//        if (confirmationToken.getVerified_date() != null) {
-//            throw new IllegalStateException("email already confirmed");
-//        }
-//
-//        LocalDateTime expiredAt = confirmationToken.getExpiration();
-//
-//        if (expiredAt.isBefore(LocalDateTime.now())) {
-//            throw new IllegalStateException("token expired");
-//        }
-//        confirmationService.setConfirmedDate(token);
-//        userRepository.enableUser(confirmationToken.getUser().getEmail());
-//        return "confirmed";
-//    }
-
-
-//    public User updateUser(User user){
-//        if (user.getEmail().equals("ekanaya-se19051@stu.kln.ac.lk")){
-//            return userRepository.save(user);
-//        }
-//        else {
-//            return null;
-//        }
-//    }
-//
-//    public User deleteUser(User user){
-//        if (user.getEmail().equals("ekanaya-se19051@stu.kln.ac.lk")){
-//            userRepository.delete(user);
-//            return user;
-//        }
-//        else {
-//            return null;
-//        }
-//    }
-//
-//    public Object getUserByEmail(@RequestBody User user){
-//        return userRepository.findById(user.getEmail());
-//    }
 
 }

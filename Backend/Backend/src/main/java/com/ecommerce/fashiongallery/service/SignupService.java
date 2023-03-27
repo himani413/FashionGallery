@@ -12,5 +12,4 @@ public interface SignupService {
 
     ResponseDTO signup(SignupDTO signupDTO) throws MessagingException, UnsupportedEncodingException;
 
-   // String confirmToken(String token);
 }
