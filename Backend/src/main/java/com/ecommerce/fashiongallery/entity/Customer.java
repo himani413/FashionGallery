@@ -23,7 +23,33 @@ public class Customer {
     @Column(name = "user_name", nullable = false, unique = true)
     private String userName;
 
-    @OneToMany(mappedBy = "customer", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<Address> addresses = new ArrayList<>();
+
+
+    public Customer(String email, String userName) {
+        this.email = email;
+        this.userName = userName;
+
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
 
 }

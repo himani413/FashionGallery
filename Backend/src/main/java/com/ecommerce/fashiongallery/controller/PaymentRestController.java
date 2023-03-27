@@ -24,8 +24,8 @@ public class PaymentRestController {
     @PutMapping("/address")
     public String addNewAddress(@RequestBody DeliveryAddressDTO deliveryAddressDTO){
 
-        String msg = AddressService.addAddress(deliveryAddressDTO);
-        return "Address added";
+        String msg = addressService.addAddress(deliveryAddressDTO);
+        return msg;
     }
 
 
