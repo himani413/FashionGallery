@@ -1,23 +1,31 @@
 package com.ecommerce.fashiongallery.controller;
 
-import com.ecommerce.fashiongallery.model.DeliveryAddressBody;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.ecommerce.fashiongallery.dto.DeliveryAddressDTO;
+import com.ecommerce.fashiongallery.service.AddressService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/customer")
 public class PaymentRestController {
 
+    @GetMapping("/test")
+    public String test(){
+        return "Hello World";
+    }
 
-    @PostMapping("/payment")
-    public ResponseEntity addNewAddress(@RequestBody DeliveryAddressBody deliveryAddressBody){
+    @Autowired
+    private AddressService addressService;
 
+    public PaymentRestController(AddressService addressService) {
+        this.addressService = addressService;
+    }
 
+    @PutMapping("/address")
+    public String addNewAddress(@RequestBody DeliveryAddressDTO deliveryAddressDTO){
 
-
+        String msg = AddressService.addAddress(deliveryAddressDTO);
+        return "Address added";
     }
 
 
