@@ -6,13 +6,21 @@ import lombok.*;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "address")
-public class Address {
+@Table(name = "delivery")
+public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 
+    @Column(name = "first_name", nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", nullable = false)
+    private String lastName;
+
+    @Column(name = "mobile_number", nullable = false)
+    private String mobileNumber;
     @Column(name = "address_line_1", nullable = false, length = 512)
     private String addressLine1;
 
@@ -28,13 +36,23 @@ public class Address {
     @Column(name = "zipcode", nullable = false)
     private Integer zipcode;
 
-    public Address(String addressLine1, String addressLine2, String city, String province, Integer zipcode) {
+
+    public Delivery(String firstName,
+                    String lastName,
+                    String mobileNumber,
+                    String addressLine1,
+                    String addressLine2,
+                    String city,
+                    String province,
+                    Integer zipcode)
+    {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.mobileNumber = mobileNumber;
         this.addressLine1 = addressLine1;
         this.addressLine2 = addressLine2;
         this.city = city;
         this.province = province;
         this.zipcode = zipcode;
-
     }
-
 }

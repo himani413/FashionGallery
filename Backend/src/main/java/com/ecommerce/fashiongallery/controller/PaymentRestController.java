@@ -1,7 +1,7 @@
 package com.ecommerce.fashiongallery.controller;
 
-import com.ecommerce.fashiongallery.dto.DeliveryAddressDTO;
-import com.ecommerce.fashiongallery.service.AddressService;
+import com.ecommerce.fashiongallery.dto.DeliveryDetailsDTO;
+import com.ecommerce.fashiongallery.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,18 +15,20 @@ public class PaymentRestController {
     }
 
     @Autowired
-    private AddressService addressService;
+    private DeliveryService deliveryService;
 
-    public PaymentRestController(AddressService addressService) {
-        this.addressService = addressService;
+    public PaymentRestController(DeliveryService deliveryService) {
+        this.deliveryService = deliveryService;
     }
 
-    @PutMapping("/address")
-    public String addNewAddress(@RequestBody DeliveryAddressDTO deliveryAddressDTO){
+    @PutMapping("/delivery")
+    public String addNewDelivery(@RequestBody DeliveryDetailsDTO deliveryDetailsDTO){
 
-        String msg = addressService.addAddress(deliveryAddressDTO);
+        String msg = deliveryService.addDelivery(deliveryDetailsDTO);
         return msg;
     }
+
+
 
 
 }

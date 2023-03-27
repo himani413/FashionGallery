@@ -6,8 +6,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class DeliveryAddressDTO {
+public class DeliveryDetailsDTO {
 
+    private String firstName;
+    private String lastName;
+    private String mobileNumber;
     private String addressLine1;
     private String addressLine2;
     private String city;
