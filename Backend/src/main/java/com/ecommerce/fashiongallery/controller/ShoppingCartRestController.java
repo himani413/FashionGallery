@@ -14,12 +14,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class ShoppingCartRestController {
 
@@ -46,6 +47,13 @@ public class ShoppingCartRestController {
         List<Product> productList = productService.getAllProduct();
         return ResponseEntity.ok(productList);
 
+    }
+
+    //new
+    @GetMapping("/getProductById")
+    public  ResponseEntity<Product> getProduct(@RequestParam int productId){
+        Product product = productService.getProductById(productId);
+        return ResponseEntity.ok(product);
     }
 
     @GetMapping(value = "/getOrder/{orderId}")

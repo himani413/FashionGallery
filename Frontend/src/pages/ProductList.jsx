@@ -6,6 +6,7 @@ import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import {Container,Title,FilterContainer,FilterText,
         Filter,Select,Option} from "../styles/ProductList-Styles"
+import React from "react"
 
 export const ProductList = () => {
   return (
