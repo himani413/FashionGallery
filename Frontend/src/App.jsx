@@ -6,11 +6,12 @@ import Home from "./pages/Home"
 import ProductList from "./pages/ProductList"
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
+import EmailVerification from "./pages/EmailVerification.jsx";
 
 
 
 const App = () => {
-  return <OrderConfirmation/>;
+  return <EmailVerification/>;
 };
 
 export default App;
