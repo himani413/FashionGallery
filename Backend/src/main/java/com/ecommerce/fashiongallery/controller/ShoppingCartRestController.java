@@ -1,5 +1,6 @@
 package com.ecommerce.fashiongallery.controller;
 
+import com.ecommerce.fashiongallery.dto.AddToCartDTO;
 import com.ecommerce.fashiongallery.dto.OrderDTO;
 import com.ecommerce.fashiongallery.dto.ResponseOrderDTO;
 import com.ecommerce.fashiongallery.entity.Customer;
@@ -14,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -59,6 +61,29 @@ public class ShoppingCartRestController {
         return ResponseEntity.ok(orderList);
     }
 
+    //new
+    @PostMapping("/addToCart/{customerId}")
+    public String placeOrder(@PathVariable int customerId, @RequestBody AddToCartDTO addToCartDTO){
+        logger.info("Request Payload"+ addToCartDTO.toString());
+        Customer customer = customerService.getCustomer(customerId);
+        Product product = productService.getProductById(addToCartDTO.getProductId());
+        float amount = product.getPrice() * addToCartDTO.getQuantity();
+        ShoppingCart cartItem = new ShoppingCart(addToCartDTO.getProductId(),product.getName(),addToCartDTO.getQuantity(),amount);
+        if(product.getAvailableQuantity()>= addToCartDTO.getQuantity()) {
+            List<ShoppingCart> cartItemList = new ArrayList<>();
+            cartItemList.add(cartItem);
+            Order order = new Order("Add  to Cart", customer, cartItemList);
+            order = orderService.saveOrder(order);
+            int newQuantity = product.getAvailableQuantity()- addToCartDTO.getQuantity();
+            product.setAvailableQuantity(newQuantity);
+            product = productService.saveProduct(product);
+            logger.info("Order processed successfully");
+            return "Successfully Added to Cart";
+        }
+        else{
+            return "Not enough available Quantity";
+        }
+    }
 
 
 
