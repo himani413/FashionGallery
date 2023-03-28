@@ -3,7 +3,7 @@ import { Facebook, Instagram, Mail, MailOutline, Phone, Pinterest, Room, Twitter
 import styled from "styled-components"
 import companyLogo from "../images/logo.png";
 import paymentlogos from "../images/payments.png"
-
+import React from 'react'
 const Container = styled.div`
     display: flex;
 `
