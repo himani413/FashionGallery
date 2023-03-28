@@ -1,1 +1,0 @@
-The front-end of the FashionGallery e-commerce system is mainly developed using the REACT framework. 
