@@ -14,6 +14,12 @@ public class Product {
     private String name;
     private int availableQuantity;
     private float price;
+    private String picture;
+    private String size;
+    private String description;
+
+    public Product() {
+    }
 
     //setters
     public void setId(int id) {
@@ -32,6 +38,17 @@ public class Product {
         this.price = price;
     }
 
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public void setSize(String size) {
+        this.size = size;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
     //getters
 
 
@@ -51,6 +68,18 @@ public class Product {
         return price;
     }
 
+    public String getPicture() {
+        return picture;
+    }
+
+    public String getSize() {
+        return size;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -58,6 +87,9 @@ public class Product {
                 ", name='" + name + '\'' +
                 ", availableQuantity=" + availableQuantity +
                 ", price=" + price +
+                ", picture='" + picture + '\'' +
+                ", size='" + size + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }
