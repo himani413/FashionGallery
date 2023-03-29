@@ -6,7 +6,6 @@ import Navlogo from "../images/Navlogo.png";
 
 const Container = styled.div`
   height: 95px;
-  @media only
 `;
 
 const Wrapper = styled.div`
