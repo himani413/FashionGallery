@@ -3,9 +3,11 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
+import {mobile} from "../responsive"
 
 const Container = styled.div`
   height: 95px;
+  ${mobile({backgroundColor:"red"})}
 `;
 
 const Wrapper = styled.div`
