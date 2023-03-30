@@ -4,20 +4,13 @@ import Login from "./pages/Login"
 import Cart from "./pages/Cart"
 import Home from "./pages/Home"
 import ProductList from "./pages/ProductList"
-
 import React from 'react';
 import {BrowserRouter as Router,Route,Routes } from "react-router-dom";
-
-
-import Checkout from "./pages/Checkout";
-import OrderConfirmation from "./pages/OrderConfirmation";
-import EmailVerification from "./pages/EmailVerification.jsx";
 
 
 
 
 const App = () => {
-
   return (
     
       <Router>
@@ -29,7 +22,6 @@ const App = () => {
       </Router>
     
   );
-
 };
 
 export default App;
