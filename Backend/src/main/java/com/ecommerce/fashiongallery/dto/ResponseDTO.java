@@ -13,5 +13,4 @@ public class ResponseDTO {
     private String message;
     private Object content;
 
-
 }

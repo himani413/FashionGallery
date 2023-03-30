@@ -1,6 +1,5 @@
 package com.ecommerce.fashiongallery.entity;
 
-import com.ecommerce.fashiongallery.dto.SignupDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -43,19 +42,6 @@ public class User implements UserDetails {
 
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    public User(SignupDTO signupDTO) {
-        this.email = signupDTO.getEmail();
-        this.Fname = signupDTO.getFname();
-        this.Lname = signupDTO.getLname();
-        this.AddressLine1 = signupDTO.getAddressLine1();
-        this.AddressLine2 = signupDTO.getAddressLine2();
-        this.City = signupDTO.getCity();
-        this.PostalCode= signupDTO.getPostalCode();
-        this.Password= signupDTO.getPassword();
-        this.role=getRole();
-    }
-
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

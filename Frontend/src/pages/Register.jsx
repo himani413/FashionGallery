@@ -3,6 +3,7 @@ import axios from 'axios';
 import companyLogo from "../images/logo.png";
 import { Container, Wrapper, Title, FORM, Input, Agreement, Button, Image } from "../styles/Register-Styles.jsx";
 import { colors } from '@material-ui/core';
+import {BrowserRouter as Router,Route,Link } from "react-router-dom";
 
 function Register() {
   const [fname, setFirstname] = useState('');
@@ -102,6 +103,7 @@ function Register() {
           </Agreement>
           <Button type="submit">CREATE</Button>
         </FORM>
+        <Link to="VerifyEmail"><Button>Activate Account</Button></Link>
       </Wrapper>
     </Container>
   );
