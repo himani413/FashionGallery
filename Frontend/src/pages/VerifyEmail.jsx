@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Container,Wrapper,Title,FORM,Input,Button,Link,Image} from "../styles/Login-Styles.jsx";
+import {Container,Wrapper,Title,FORM,Input,Button,Link,Image} from "../styles/VerifyEmail-Styles";
 import { BrowserRouter as Router,Route } from 'react-router-dom';
 import Login from './Login.jsx';
 

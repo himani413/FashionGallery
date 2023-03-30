@@ -84,7 +84,7 @@ const Cart = () => {
                 <SummaryItemText >Total</SummaryItemText>
                 <SummaryItemPrice>Rs. 8419</SummaryItemPrice>
               </SummaryItem>
-              <Link to="../pages/Checkout" ><Button>CHECKOUT NOW</Button></Link>
+              <Link to="../pages/Checkout" style={{ textDecoration: 'none' }}><Button>CHECKOUT NOW</Button></Link>
             </Summary>
           </Bottom>
         </Wrapper>

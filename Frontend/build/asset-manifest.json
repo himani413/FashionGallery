@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.js": "/static/js/main.8bd716f2.js",
+    "static/media/bi-orderconfirmation.png": "/static/media/bi-orderconfirmation.d1340ae5fa7fc3c98ba4.png",
+    "static/media/bi-EmailVerification.jpg": "/static/media/bi-EmailVerification.dadb69a43b95395b54af.jpg",
+    "static/media/bi-login.jpg": "/static/media/bi-login.a90f47a662abaa44ca69.jpg",
+    "static/media/bi-register.jpg": "/static/media/bi-register.5a7f0febb62d4a409edd.jpg",
+    "static/media/payments.png": "/static/media/payments.2f2ad5fb59b6ee3724f7.png",
+    "static/media/white-maxi.jpg": "/static/media/white-maxi.06ab1c390fc2acb7e24f.jpg",
+    "static/media/black-jumpsuit.jpg": "/static/media/black-jumpsuit.e12b0151658d83da6a5b.jpg",
+    "static/media/white-jumpsuit.jpeg": "/static/media/white-jumpsuit.55b0538a485e379d50da.jpeg",
+    "static/media/orderconfirmation.png": "/static/media/orderconfirmation.d0576d66350ae5afe233.png",
+    "static/media/logo.png": "/static/media/logo.270751c53f4614ad9395.png",
+    "static/media/Navlogo.png": "/static/media/Navlogo.a61fcaeb4477f95a066e.png",
+    "index.html": "/index.html",
+    "main.8bd716f2.js.map": "/static/js/main.8bd716f2.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.8bd716f2.js"
+  ]
+}

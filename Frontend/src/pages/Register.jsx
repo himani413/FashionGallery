@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import companyLogo from "../images/logo.png";
-import { Container, Wrapper, Title, FORM, Input, Agreement, Button, Image } from "../styles/Register-Styles.jsx";
+import { Container, Wrapper, Title, FORM, Input, Agreement,Buttons, Button1,Button2, Image } from "../styles/Register-Styles.jsx";
 import { colors } from '@material-ui/core';
 import {BrowserRouter as Router,Route,Link } from "react-router-dom";
 
@@ -101,9 +101,12 @@ function Register() {
           <Agreement>
             By creating an account, I consent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b>.
           </Agreement>
-          <Button type="submit">CREATE</Button>
+          
         </FORM>
-        <Link to="VerifyEmail"><Button>Activate Account</Button></Link>
+        <Buttons>
+        <Button1 type="submit">CREATE</Button1>
+        <Link to="VerifyEmail"><Button2>ACTIVATE ACCOUNT</Button2></Link>
+        </Buttons>
       </Wrapper>
     </Container>
   );

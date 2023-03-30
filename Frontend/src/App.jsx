@@ -12,6 +12,7 @@ import {BrowserRouter as Router,Route,Routes } from "react-router-dom";
 import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import EmailVerification from "./pages/EmailVerification.jsx";
+import SizeGuide from "./pages/SizeGuide";
 
 
 
@@ -33,6 +34,7 @@ const App = () => {
         <Route path="/pages/checkout" element={<Checkout />} />
         <Route path="/pages/orderconfirmation" element={<OrderConfirmation />} />
         <Route path="/pages/emailverification" element={<EmailVerification />} />
+        <Route path="/pages/sizeguide" element={<SizeGuide />} />
         
 
       </Routes>

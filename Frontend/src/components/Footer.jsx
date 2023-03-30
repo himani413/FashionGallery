@@ -120,7 +120,7 @@ export const Footer = () => {
                 <ListItem><NavLink to="/">Home</NavLink></ListItem>
                 <ListItem><NavLink to="../pages/Cart">Cart</NavLink></ListItem>
                 <ListItem><NavLink>My Account</NavLink></ListItem>
-                <ListItem><NavLink>Size Guide</NavLink></ListItem>
+                <ListItem><NavLink to="../pages/SizeGuide">Size Guide</NavLink></ListItem>
                 <ListItem><NavLink>Terms and Conditions</NavLink></ListItem>
             </List>
         </Center>
