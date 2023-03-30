@@ -34,7 +34,7 @@ const Language = styled.span`
         color: teal;
         
       }
-      ${mobile({display:none})}
+      ${mobile({display:"none"})}
 `;
 
 const SearchContainer = styled.div`
