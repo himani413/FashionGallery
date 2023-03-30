@@ -19,6 +19,7 @@ public class CustomerOrders {
     @Column(name = "order_id", nullable = false)
     private Long orderID;
 
+
     public CustomerOrders(Long customerID, Long orderID) {
         this.customerID = customerID;
         this.orderID = orderID;
