@@ -1,5 +1,6 @@
 package com.ecommerce.fashiongallery.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -16,6 +17,7 @@ public class Product {
     private float price;
     private String picture;
     private String size;
+    @Column(columnDefinition="TEXT")
     private String description;
 
     public Product() {
