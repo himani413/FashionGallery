@@ -45,7 +45,6 @@ public class EmailConfirmationServiceImpl implements EmailConfirmationService{
                 .code(StringList.RSP_SUCCESS)
                 .content(confirmationToken)
                 .message("Verification success!!Account Activated")
-                .url("http://localhost:3000/pages/Login")
                 .build();
     }
 
