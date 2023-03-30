@@ -7,6 +7,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Copyright from '../components/Copyright'
 import { Checkbox } from '@material-ui/core'
+import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 
 const Checkout = () => {
     return (
@@ -51,7 +52,7 @@ const Checkout = () => {
                   <SummaryItemText >Total</SummaryItemText>
                   <SummaryItemPrice>Rs. 8419</SummaryItemPrice>
                 </SummaryItem>
-                <Button>Place Order</Button>
+                <Link to="../pages/OrderConfirmation" style={{ textDecoration: 'none' }}><Button>Place Order</Button></Link>
               </Summary>
             </Bottom>
             <Agreement>

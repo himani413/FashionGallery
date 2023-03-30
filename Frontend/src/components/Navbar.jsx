@@ -3,7 +3,7 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
-import { BrowserRouter as Router,Routes,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import {mobile} from "../responsive"
 
 
@@ -73,6 +73,15 @@ const Menu = styled.div`
       }
 `;
 
+const NavLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+  &:hover {
+    color: teal;
+    
+  }
+`;
+
 const Navbar = () => {
   return (
     <Container>
@@ -89,12 +98,12 @@ const Navbar = () => {
             </Center>
             <Right>
               
-              <Menu><Link to="../pages/Register">REGISTER</Link></Menu>
-              <Menu><Link to="../pages/Login">SIGN IN</Link></Menu>
+              <Menu><NavLink to="../pages/Register" >REGISTER</NavLink></Menu>
+              <Menu><NavLink to="../pages/Login">SIGN IN</NavLink></Menu>
               
               <Menu>
               <Badge badgeContent={4} color="primary">
-                <ShoppingCartOutlined />
+              <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
               </Badge>
               </Menu>
             </Right>

@@ -1,6 +1,6 @@
 import React from "react";
 import companyLogo from "../images/logo.png";
-import {Container,Wrapper,Title,FORM,Input,Button,Link,Image} from "../styles/Login-Styles.jsx";
+import {Container,Wrapper,Title,FORM,Input,Button,NavLink,Image} from "../styles/Login-Styles.jsx";
 
 const Login = () => {
   return (
@@ -13,8 +13,8 @@ const Login = () => {
                 <Input placeholder='password'/>
               
                 <Button>LOGIN</Button>
-                <Link>DO NOT REMEMBER THE PASSWORD?</Link>
-                <Link>CREATE A NEW ACCOUNT</Link>
+                <NavLink>DO NOT REMEMBER THE PASSWORD?</NavLink>
+                <NavLink to="../pages/Register">CREATE A NEW ACCOUNT</NavLink>
             </FORM>
             
         </Wrapper>

@@ -1,5 +1,6 @@
 import styled from "styled-components"
 import backgroundImageLogin from "../images/bi-login.jpg"
+import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 
 export const Container = styled.div`
     width: 100w;
@@ -57,18 +58,6 @@ export const Button = styled.button`
       }
 `;
 
-export const Link = styled.a`
-      margin: 5px 0px 2px 0px;
-      font-size: 12px;
-      cursor: pointer;
-      &:hover,
-        &:focus {
-        color: palevioletred;
-        }
-        &:active {
-        color: red;
-  }
-`;
 
 export const Image = styled.img`
 
@@ -79,4 +68,19 @@ export const Image = styled.img`
     justify-content: center;
     align-items: center;
     margin: auto;
+`;
+
+export const NavLink = styled(Link)`
+  margin: 5px 0px 2px 0px;
+      font-size: 12px;
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+      &:hover,
+        &:focus {
+        color: palevioletred;
+        }
+        &:active {
+        color: red;
+        }
 `;
