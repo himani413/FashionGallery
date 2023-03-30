@@ -36,6 +36,11 @@ public class Delivery {
     @Column(name = "zipcode", nullable = false)
     private Integer zipcode;
 
+    @Column(name = "order_amount", nullable = false)
+    private String orderAmount;
+
+    @Column(name = "customer_id", nullable = false)
+    private Long customerID;
 
     public Delivery(String firstName,
                     String lastName,
@@ -44,7 +49,9 @@ public class Delivery {
                     String addressLine2,
                     String city,
                     String province,
-                    Integer zipcode)
+                    Integer zipcode,
+                    String orderAmount,
+                    Long customerID)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -54,5 +61,7 @@ public class Delivery {
         this.city = city;
         this.province = province;
         this.zipcode = zipcode;
+        this.orderAmount = orderAmount;
+        this.customerID = customerID;
     }
 }

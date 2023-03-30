@@ -23,8 +23,9 @@ public class DeliveryServiceIMPL implements DeliveryService {
                 deliveryDetailsDTO.getAddressLine2(),
                 deliveryDetailsDTO.getCity(),
                 deliveryDetailsDTO.getProvince(),
-                deliveryDetailsDTO.getZipcode()
-
+                deliveryDetailsDTO.getZipcode(),
+                deliveryDetailsDTO.getAmount(),
+                deliveryDetailsDTO.getCustomerID()
         );
         deliveryRepository.save(delivery);
         return "Delivery details saved successfully. You need to pay cash on delivery";

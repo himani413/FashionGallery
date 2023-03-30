@@ -16,6 +16,8 @@ public class DeliveryDetailsDTO {
     private String city;
     private String province;
     private Integer zipcode;
+    private String amount;
+    private Long customerID;
 
 
 }
