@@ -3,6 +3,7 @@ import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 import React from 'react'
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
+import { BrowserRouter as Router,Routes,Link } from 'react-router-dom';
 
 const Container = styled.div`
   height: 95px;
@@ -84,8 +85,10 @@ const Navbar = () => {
               <Image src={Navlogo} />
             </Center>
             <Right>
-              <Menu>REGISTER</Menu>
-              <Menu>SIGN IN</Menu>
+              
+              <Menu><Link to="../pages/Register">REGISTER</Link></Menu>
+              <Menu><Link to="../pages/Login">SIGN IN</Link></Menu>
+              
               <Menu>
               <Badge badgeContent={4} color="primary">
                 <ShoppingCartOutlined />
