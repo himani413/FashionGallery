@@ -7,7 +7,6 @@ import {Container,ImgContainer,Wrapper,Image,
         InfoContainer, Title, Desc, Price, FilterContainer, 
         Filter, FilterTitle, FilterSize, FilterSizeOption, 
         AddContainer, AmountContainer, Amount, Button} from '../styles/SingleProduct-Styles'
-import productimg from '../images/black-jumpsuit.jpg'
 import { Add, Remove } from '@material-ui/icons'
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -34,7 +33,7 @@ const SingleProduct = () => {
     try {
       const response = await axios.post(`/addToCart/${customerId}`, data);
       console.log(response.data);
-      navigate('/Cart.jsx', {replace: true});
+      navigate('Cart');
     } catch (error) {
       console.log(error);
     }
@@ -63,15 +62,10 @@ const SingleProduct = () => {
       <Wrapper>
         <ImgContainer>
           <Image src={product.picture} />
-        </ImgContainer>
+        </ImgContainer> 
         <InfoContainer>
           <Title>{product.name}</Title>
-            <Desc>This jumpsuit is composed of stretchy crepe knit 
-                  that shapes an off-the-shoulder neckline (with hidden no-slip strips) 
-                  and short sleeves. An overlapping panel at the princess-seamed bodice 
-                  gives a little bit of flair and features supportive boning throughout. 
-                  High, fitted waist continues to breezy wide pant legs that end at the ankle. 
-                  Hidden back zipper/clasp.
+            <Desc>{product.description }
             </Desc>
             <Price>Rs.{product.price}/=</Price>
             <FilterContainer>
