@@ -1,6 +1,7 @@
 import React from "react";
 import companyLogo from "../images/orderconfirmation.png";
 import {Container,Wrapper,Title,Info,Button,Image} from "../styles/OrderConfirmation-Styles.jsx";
+import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 
 const OrderConfirmation = () => {
   return (
@@ -11,7 +12,7 @@ const OrderConfirmation = () => {
                 working days to process and get your order delivered to your doorstep. 
                 Our Courier Partners will contact you prior to the delivery.
             </Info> 
-            <Button>Back To Home</Button>
+            <Link to="/" style={{ textDecoration: 'none' }}><Button>Back To Home</Button></Link>
             
         </Wrapper>
     </Container>

@@ -1,5 +1,5 @@
 import companyLogo from "../images/logo.png";
-import {Container,Wrapper,Title,FORM,Input,Button,Link,Image} from "../styles/Login-Styles.jsx";
+import {Container,Wrapper,Title,FORM,Input,Button,NavLink,Image} from "../styles/Login-Styles.jsx";
 
 function Login(){
   
@@ -9,17 +9,18 @@ function Login(){
 
   return (
     <Container>
-      <Wrapper>
-        <Image src={companyLogo}/><Title>SIGN IN</Title>
-        
-        <FORM>
-          <Input placeholder='username'/>
-          <Input placeholder='password'/>
+
+        <Wrapper>
+            <Image src={companyLogo}/><Title>SIGN IN</Title>
             
-          <Button onClick={handleLogin}>LOGIN</Button>
-          <Link>DO NOT REMEMBER THE PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
-        </FORM>
+            <FORM>
+                <Input placeholder='username'/>
+                <Input placeholder='password'/>
+              
+                <Button onClick={handleLogin}>LOGIN</Button>
+                <NavLink>DO NOT REMEMBER THE PASSWORD?</NavLink>
+                <NavLink to="../pages/Register">CREATE A NEW ACCOUNT</NavLink>
+            </FORM>
           
       </Wrapper>
     </Container>

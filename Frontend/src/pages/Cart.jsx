@@ -9,6 +9,7 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Copyright from '../components/Copyright'
 import { Add, Remove } from '@material-ui/icons'
+import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 
 const Cart = () => {
   return (
@@ -18,12 +19,12 @@ const Cart = () => {
         <Wrapper>
           <Title>Your Cart</Title>
           <Top>
-            <TopButton>CONTINUE SHOPPING</TopButton>
+          <Link to="/" ><TopButton>CONTINUE SHOPPING</TopButton></Link>
             <TopTexts>
                 <TopText>Shopping cart(2)</TopText>
                 <TopText>Your Wishlist(0)</TopText>
             </TopTexts>
-            <TopButton type="filled">CHECKOUT NOW</TopButton>
+            <Link to="../pages/Checkout" ><TopButton type="filled">CHECKOUT NOW</TopButton></Link>
           </Top>
           <Bottom>
             <Info>
@@ -83,7 +84,7 @@ const Cart = () => {
                 <SummaryItemText >Total</SummaryItemText>
                 <SummaryItemPrice>Rs. 8419</SummaryItemPrice>
               </SummaryItem>
-              <Button>CHECKOUT NOW</Button>
+              <Link to="../pages/Checkout" ><Button>CHECKOUT NOW</Button></Link>
             </Summary>
           </Bottom>
         </Wrapper>
