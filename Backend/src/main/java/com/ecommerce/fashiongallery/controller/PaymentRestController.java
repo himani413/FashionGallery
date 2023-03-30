@@ -24,7 +24,7 @@ public class PaymentRestController {
     @PutMapping("/delivery")
     public String addNewDelivery(@RequestBody DeliveryDetailsDTO deliveryDetailsDTO){
 
-        String msg = deliveryService.addDelivery(deliveryDetailsDTO);
+        String msg = deliveryService.addDelivery(deliveryDetailsDTO); //message return to the frontend
         return msg;
     }
 
