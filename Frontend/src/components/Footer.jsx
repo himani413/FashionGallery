@@ -1,8 +1,9 @@
-
-import { Facebook, Instagram, Mail, MailOutline, Phone, Pinterest, Room, Twitter } from "@material-ui/icons"
+import React from 'react'
+import { Facebook, Instagram, MailOutline, Phone, Pinterest, Room, Twitter } from "@material-ui/icons"
 import styled from "styled-components"
 import companyLogo from "../images/logo.png";
 import paymentlogos from "../images/payments.png"
+import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 
 const Container = styled.div`
     display: flex;
@@ -63,12 +64,6 @@ const ListItem = styled.li`
     width: 50%;
     margin-bottom: 20px;
 `;
-const Link = styled.a`
-    cursor: pointer;
-    &:hover{
-        color: teal;
-  }
-`;
 
 const Right = styled.div`
     flex: 1;
@@ -84,6 +79,17 @@ const ContactItem = styled.div`
 
 const Payment = styled.img`
     width: 50%;
+`;
+
+const NavLink = styled(Link)`
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover {
+    color: teal;
+    
+  }
+
 `;
 
 
@@ -111,12 +117,11 @@ export const Footer = () => {
         <Center>
             <Title>Useful Links</Title>
             <List>
-                <ListItem><Link>Home</Link></ListItem>
-                <ListItem><Link>Cart</Link></ListItem>
-                <ListItem><Link>My Account</Link></ListItem>
-                <ListItem><Link>Size Guide</Link></ListItem>
-                <ListItem><Link>Order Tacking</Link></ListItem>
-                <ListItem><Link>Terms and Conditions</Link></ListItem>
+                <ListItem><NavLink to="/">Home</NavLink></ListItem>
+                <ListItem><NavLink to="../pages/Cart">Cart</NavLink></ListItem>
+                <ListItem><NavLink>My Account</NavLink></ListItem>
+                <ListItem><NavLink>Size Guide</NavLink></ListItem>
+                <ListItem><NavLink>Terms and Conditions</NavLink></ListItem>
             </List>
         </Center>
         <Right>
