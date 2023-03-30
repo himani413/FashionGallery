@@ -4,9 +4,12 @@ import React from 'react'
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
 import { BrowserRouter as Router,Routes,Link } from 'react-router-dom';
+import {mobile} from "../responsive"
+
 
 const Container = styled.div`
   height: 95px;
+  ${mobile({backgroundColor:"red"})}
 `;
 
 const Wrapper = styled.div`
