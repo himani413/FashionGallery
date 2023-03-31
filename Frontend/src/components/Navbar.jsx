@@ -1,12 +1,14 @@
 import { Badge, Button } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
-import React from 'react'
+
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
 import { useNavigate } from 'react-router-dom';
 
 import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import {mobile} from "../responsive"
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 
 const Container = styled.div`
@@ -99,6 +101,25 @@ function Navbar(props){
   };
 
   const token = localStorage.getItem('jwtToken');
+
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/cart/1`
+        );
+        setCartItems(response.data);
+        console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCartItems();
+  }, []);
+
+  const totaQuantity = cartItems.length
+
   return (
     <Container>
         <Wrapper>
@@ -129,7 +150,7 @@ function Navbar(props){
               
               
               <Menu>
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={totaQuantity} color="primary">
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
               </Badge>
               </Menu>
