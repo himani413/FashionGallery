@@ -39,12 +39,12 @@ public class LoginServiceImplementation implements LoginService {
         tokenService.saveUserToken(user, jwtToken);
 
         return ResponseDTO.builder()
-                .token(jwtToken)
                 .code(StringList.RSP_SUCCESS)
                 .content(user)
                 .message("Successfully logged In")
                 .fname(user.getFname())
                 .lname(user.getLname())
+                .token(jwtToken)
                 .build();
 
     }
