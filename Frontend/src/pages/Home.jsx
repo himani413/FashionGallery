@@ -7,12 +7,17 @@ import Slider from '../components/Slider'
 import Newsletter from '../components/Newsletter'
 import Categories from '../components/Categories'
 import Products from '../components/Products'
+import { useLocation } from 'react-router-dom';
 
-const Home = () => {
+function Home(){
+//can access the user's name from the location state and pass it to the navigation bar component
+  const location = useLocation();
+  const name = location.state ? location.state.name : '';
+
   return (
     <div> 
         <Announcement />
-        <Navbar />
+        <Navbar name={name} />
         <Slider />
         <Categories/>
         <Products/>
@@ -20,7 +25,7 @@ const Home = () => {
         <Footer/>
         <Copyright/>
     </div>
-  )
+  );
 }
 
 export default Home
