@@ -8,37 +8,51 @@ function Login(){
 
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [fieldError,setFieldError] = useState("")
   const navigate = useNavigate();
   
   const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    try{
-      const response= await axios.post('http://localhost:8080/api/v1/auth/login',JSON.stringify ( {
-        email,
-        password
-      }),{
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-      );
-      
-      localStorage.setItem('jwtToken', response.data.jwtToken);
-      // Redirect the user to the homepage or another protected page
-      console.log(response.data.fname);
-      navigate('/', { state: { name:response.data.fname }});
 
-    }catch(error){
-      console.error(error);
+    if(email===null){
+      setFieldError("Enter the Email");
     }
+    else if(password===null){
+      setFieldError("Enter the Password");
+    }
+    else{
+      try{
+        const response= await axios.post('http://localhost:8080/api/v1/auth/login',JSON.stringify ( {
+          email,
+          password
+        }),{
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }
+        );
+        if(response.data.code==="01"){
+          setFieldError(response.data.message);
+        }
+        else if(response.data.code==="06"){
+          setFieldError(response.data.message);
+        }
+        else{
+          localStorage.setItem('token', response.data.token);
+          navigate('/', { state: { name:response.data.fname+response.data.lname }});
+        }
+      }catch(error){
+        console.error(error);
+      }
+    }
+    
   }
 
   axios.interceptors.request.use(
     config => {
-      const jwtToken = localStorage.getItem('jwtToken');
+      const jwtToken = localStorage.getItem('token');
       if (jwtToken) {
-        config.headers.Authorization = `Bearer ${jwtToken}`;
+        config.headers.Authorization = "Bearer" + jwtToken;
       }
       return config;
     },
@@ -51,15 +65,17 @@ function Login(){
     <Container>
       <Wrapper>
         <Image src={companyLogo}/><Title>SIGN IN</Title>
-        
+        {fieldError && <div className="error">{fieldError}</div>}
         <FORM onSubmit={handleSubmit}>
           <Input type="text" 
           value={email} 
-          onChange={e => setUsername(e.target.value)} 
+          onChange={e =>{ setUsername(e.target.value);
+            setFieldError("");}} 
           placeholder='username'/>
           <Input type="password" 
           value={password} 
-          onChange={e => setPassword(e.target.value)} 
+          onChange={e => {setPassword(e.target.value);
+            setFieldError("");}} 
           placeholder='password'/>
             
           <Button type='submit'>LOGIN</Button>
