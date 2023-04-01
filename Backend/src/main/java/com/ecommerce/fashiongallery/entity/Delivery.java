@@ -37,10 +37,13 @@ public class Delivery {
     private Integer zipcode;
 
     @Column(name = "order_amount", nullable = false)
-    private String orderAmount;
+    private String orderAmount; //passing through a session to store
 
     @Column(name = "customer_id", nullable = false)
-    private Long customerID;
+    private Long customerID; //passing through a session to store(ID of the current customer)
+
+    @Column(name = "order_date", nullable = false)
+    private String orderDate; //current date
 
     public Delivery(String firstName,
                     String lastName,
@@ -51,7 +54,8 @@ public class Delivery {
                     String province,
                     Integer zipcode,
                     String orderAmount,
-                    Long customerID)
+                    Long customerID,
+                    String orderDate)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -63,5 +67,6 @@ public class Delivery {
         this.zipcode = zipcode;
         this.orderAmount = orderAmount;
         this.customerID = customerID;
+        this.orderDate = orderDate;
     }
 }

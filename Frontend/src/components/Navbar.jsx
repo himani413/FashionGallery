@@ -11,7 +11,7 @@ import {mobile} from "../responsive"
 
 const Container = styled.div`
   height: 95px;
-  ${mobile({backgroundColor:"red"})}
+  ${mobile({height:"50px"})}
 `;
 
 const Wrapper = styled.div`
@@ -19,6 +19,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({padding:"10px 0px"})}
 `;
 
 const Left = styled.div`
@@ -34,6 +35,7 @@ const Language = styled.span`
         color: teal;
         
       }
+      ${mobile({display:"none"})}
 `;
 
 const SearchContainer = styled.div`
@@ -46,6 +48,7 @@ const SearchContainer = styled.div`
 
 const Input = styled.input`
   border: none;
+  ${mobile({width:"50px"})}
 `;
 
 const Center = styled.div`
@@ -63,6 +66,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  ${mobile({flex:2,justifyContent:"center"})}
 `;
 
 const Menu = styled.div`
@@ -73,6 +77,7 @@ const Menu = styled.div`
         color: teal;
         
       }
+  ${mobile({fontSize:"12px",marginLeft:"10px"})}
 `;
 
 const NavLink = styled(Link)`
@@ -103,7 +108,7 @@ function Navbar(props){
             <Left>
               <Language>EN</Language>
               <SearchContainer>
-                <Input />
+                <Input placeholder='Search' />
                 <Search style={{color:"gray", fontSize: 16}}/>
               </SearchContainer>
             </Left>

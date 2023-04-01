@@ -7,6 +7,9 @@ import com.ecommerce.fashiongallery.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+
 @Service
 public class DeliveryServiceIMPL implements DeliveryService {
 
@@ -25,7 +28,8 @@ public class DeliveryServiceIMPL implements DeliveryService {
                 deliveryDetailsDTO.getProvince(),
                 deliveryDetailsDTO.getZipcode(),
                 deliveryDetailsDTO.getAmount(),
-                deliveryDetailsDTO.getCustomerID()
+                deliveryDetailsDTO.getCustomerID(),
+                LocalDate.now().toString() //for get the current date and store in the delivery table
         );
         deliveryRepository.save(delivery);
         return "Delivery details saved successfully. You need to pay cash on delivery";
