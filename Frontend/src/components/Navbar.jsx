@@ -118,7 +118,7 @@ function Navbar(props){
     fetchCartItems();
   }, []);
 
-  const totaQuantity = cartItems.length
+  const totaQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
     <Container>

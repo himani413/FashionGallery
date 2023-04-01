@@ -80,7 +80,7 @@ const Cart = () => {
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
-            <TopText>Shopping cart({cartItems.length})</TopText>
+            <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
             <TopText>Your Wishlist(0)</TopText>
           </TopTexts>
           <Link to="../pages/Checkout">
