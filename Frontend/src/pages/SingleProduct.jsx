@@ -9,26 +9,66 @@ import {Container,ImgContainer,Wrapper,Image,
         AddContainer, AmountContainer, Amount, Button} from '../styles/SingleProduct-Styles'
 import productimg from '../images/black-jumpsuit.jpg'
 import { Add, Remove } from '@material-ui/icons'
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 
 const SingleProduct = () => {
+  const [product, setProduct] = useState(null);
+  
+  const [quantity, setQuantity] = useState(1);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await axios.get('http://localhost:8080/api/v1/cart/getProductById?productId=1');
+      setProduct(response.data);
+    };
+    fetchData();
+  }, []);
+  const navigate = useNavigate();
+  const handleAddToCart = async () => {
+    const customerId = 1;
+    const data = { productId: product.id, quantity };
+    try {
+      const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
+      console.log(response.data);
+      navigate('../pages/Cart');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  if (!product) {
+    return <Container>
+    <Navbar />
+   <Announcement />
+   <Wrapper>
+     <InfoContainer>
+       <Title>No Details to display</Title>
+       </InfoContainer>
+   </Wrapper>
+   <Newsletter/>
+   <Footer/>
+   <Copyright/>
+
+ </Container>;
+  }
   return (
     <Container>
-      <Navbar/>
-      <Announcement/>
+       <Navbar />
+      <Announcement />
       <Wrapper>
-          <ImgContainer>
-              <Image src={productimg}/>
-          </ImgContainer>
-          <InfoContainer>
-            <Title>Black Off-Shoulder Wide-Leg Jumpsuit</Title>
-            <Desc>This jumpsuit is composed of stretchy crepe knit 
-                  that shapes an off-the-shoulder neckline (with hidden no-slip strips) 
-                  and short sleeves. An overlapping panel at the princess-seamed bodice 
-                  gives a little bit of flair and features supportive boning throughout. 
-                  High, fitted waist continues to breezy wide pant legs that end at the ankle. 
-                  Hidden back zipper/clasp.
+        <ImgContainer>
+          <Image src={product.picture} />
+        </ImgContainer> 
+        <InfoContainer>
+          <Title>{product.name}</Title>
+            <Desc>{product.description }
             </Desc>
-            <Price>Rs.4590/=</Price>
+            <Price>Rs.{product.price}/=</Price>
             <FilterContainer>
               <Filter>
                 <FilterTitle>Size</FilterTitle>
@@ -42,12 +82,12 @@ const SingleProduct = () => {
               </Filter>
             </FilterContainer>
             <AddContainer>
-              <AmountContainer>
-                <Remove/>
-                <Amount>1</Amount>
-                <Add/>
-              </AmountContainer>
-              <Button>Add To Cart</Button>
+            <AmountContainer>
+              <Remove onClick={() => setQuantity(quantity - 1)} />
+              <Amount>{quantity}</Amount>
+              <Add onClick={() => setQuantity(quantity + 1)} />
+            </AmountContainer>
+            <Button onClick={handleAddToCart}>Add To Cart</Button>
             </AddContainer>
           </InfoContainer>
       </Wrapper>

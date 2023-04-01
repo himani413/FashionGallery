@@ -1,5 +1,6 @@
 package com.ecommerce.fashiongallery.repository;
 
+import com.ecommerce.fashiongallery.entity.Customer;
 import com.ecommerce.fashiongallery.entity.User;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,5 +28,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Modifying
     @Query(value = "UPDATE User SET enabled = TRUE WHERE email = ?1")
     void enableUser(String email);
+
+
+    //new
+    public User getUserById(Long id);
 
 }

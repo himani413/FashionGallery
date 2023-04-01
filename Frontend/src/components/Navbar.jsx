@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import { Badge, Button } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
-import React from 'react'
+
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
 
 import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import {mobile} from "../responsive"
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 
 const Container = styled.div`
@@ -99,7 +101,6 @@ function Navbar(props){
     console.log(localStorage.getItem('token'));
     
   };
-
   const token = localStorage.getItem('token');
   
   return (
@@ -130,7 +131,7 @@ function Navbar(props){
                 )}
               
               <Menu>
-              <Badge badgeContent={4} color="primary">
+              <Badge badgeContent={totaQuantity} color="primary">
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
               </Badge>
               </Menu>
