@@ -1,9 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import { Badge, Button } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
-import { useNavigate } from 'react-router-dom';
 
 import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import {mobile} from "../responsive"
@@ -96,30 +96,13 @@ function Navbar(props){
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
-    navigate('/pages/login');
+    console.log(localStorage.getItem('token'));
+    localStorage.removeItem('token');
+    console.log(localStorage.getItem('token'));
+    
   };
-
-  const token = localStorage.getItem('jwtToken');
-
-  const [cartItems, setCartItems] = useState([]);
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/api/v1/cart/1`
-        );
-        setCartItems(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchCartItems();
-  }, []);
-
-  const totaQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
-
+  const token = localStorage.getItem('token');
+  
   return (
     <Container>
         <Wrapper>
@@ -138,7 +121,7 @@ function Navbar(props){
               {token ? (
               <>
                   <Menu><NavLink className="name">Welcome, {props.name}</NavLink></Menu>
-                  <Menu><NavLink><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
+                  <Menu><NavLink to="../pages/Login"><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
               </>
               ) : (
               <>
@@ -146,8 +129,6 @@ function Navbar(props){
                   <Menu><NavLink to="../pages/Login">SIGN IN</NavLink></Menu>
               </>
                 )}
-              
-              
               
               <Menu>
               <Badge badgeContent={totaQuantity} color="primary">
