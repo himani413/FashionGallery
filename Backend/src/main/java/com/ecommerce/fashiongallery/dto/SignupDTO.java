@@ -13,10 +13,6 @@ public class SignupDTO {
     private String Email;
     private String Fname;
     private String Lname;
-    private String AddressLine1;
-    private String AddressLine2;
-    private String City;
-    private String PostalCode;
     private String Password;
     private String confPass;
 

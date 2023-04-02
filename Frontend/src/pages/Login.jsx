@@ -14,10 +14,10 @@ function Login(){
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if(email===null){
+    if(email===""){
       setFieldError("Enter the Email");
     }
-    else if(password===null){
+    else if(password===""){
       setFieldError("Enter the Password");
     }
     else{
@@ -39,7 +39,8 @@ function Login(){
         }
         else{
           localStorage.setItem('token', response.data.token);
-          navigate('/', { state: { name:response.data.fname+response.data.lname }});
+          localStorage.setItem('fname',response.data.fname);
+          navigate('/');
         }
       }catch(error){
         console.error(error);
@@ -80,7 +81,7 @@ function Login(){
             
           <Button type='submit'>LOGIN</Button>
           <NavLink>DO NOT REMEMBER THE PASSWORD?</NavLink>
-          <NavLink>CREATE A NEW ACCOUNT</NavLink>
+          <NavLink to="Register">CREATE A NEW ACCOUNT</NavLink>
         </FORM>
           
       </Wrapper>

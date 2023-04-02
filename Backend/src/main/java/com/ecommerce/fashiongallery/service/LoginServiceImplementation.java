@@ -14,11 +14,8 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class LoginServiceImplementation implements LoginService {
 
-   // @Autowired
     private final AuthenticationManager authenticationManager;
-   // @Autowired
     private final UserRepository userRepository;
-   // @Autowired
     private final JwtService jwtService;
     private final TokenService tokenService;
 
