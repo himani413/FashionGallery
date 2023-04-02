@@ -131,7 +131,7 @@ function Navbar(props){
                 )}
               
               <Menu>
-              <Badge badgeContent={totaQuantity} color="primary">
+              <Badge color="primary">
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
               </Badge>
               </Menu>
