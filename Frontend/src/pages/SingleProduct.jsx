@@ -12,17 +12,21 @@ import { Add, Remove } from '@material-ui/icons'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 
 const SingleProduct = () => {
   const [product, setProduct] = useState(null);
+  const location = useLocation();
+  const productId = new URLSearchParams(location.search).get("productId");
+
   
   const [quantity, setQuantity] = useState(1);
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://localhost:8080/api/v1/cart/getProductById?productId=1');
+      const response = await axios.get(`http://localhost:8080/api/v1/product/getProductById?productId=${productId}`);
       setProduct(response.data);
     };
     fetchData();

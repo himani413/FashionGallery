@@ -11,6 +11,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 
+
 const Container = styled.div`
   height: 95px;
   ${mobile({height:"50px"})}
@@ -91,7 +92,7 @@ const NavLink = styled(Link)`
   }
 `;
 
-function Navbar(props){
+const Navbar = (props) =>{
 
   const navigate = useNavigate();
 
@@ -101,6 +102,8 @@ function Navbar(props){
   };
 
   const token = localStorage.getItem('jwtToken');
+  const [searchValue, setSearchValue] = useState("");
+
 
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
@@ -118,6 +121,11 @@ function Navbar(props){
     fetchCartItems();
   }, []);
 
+  const handleSearch = () => {
+    const searchQuery = searchValue;
+    navigate(`/pages/searchedProducts/?searchQuery=${searchQuery}`);
+  }
+
   const totaQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
 
   return (
@@ -126,8 +134,8 @@ function Navbar(props){
             <Left>
               <Language>EN</Language>
               <SearchContainer>
-                <Input placeholder='Search' />
-                <Search style={{color:"gray", fontSize: 16}}/>
+              <Input placeholder='Search' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                <Search style={{color:"gray", fontSize: 16}} onClick={handleSearch}/>
               </SearchContainer>
             </Left>
             <Center>

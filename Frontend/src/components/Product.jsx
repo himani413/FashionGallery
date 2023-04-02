@@ -5,6 +5,10 @@ import {
   } from "@material-ui/icons";
   import styled from "styled-components";
   import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
+  import { useNavigate } from 'react-router-dom';
+  import {mobile} from "../responsive"
+  import axios from 'axios';
+  import React, { useEffect, useState } from 'react';
 
   const Info = styled.div`
     opacity: 0;
@@ -68,16 +72,33 @@ import {
   `;
   
   const Product = ({ item }) => {
+    const navigate = useNavigate();
+
+    const handleItem = () => {
+      navigate(`/pages/SingleProduct/?productId=${item.id}`);
+    }
+
+    const handleAddToCart = async () => {
+      const customerId = 1;
+      const data = { productId: item.id, quantity:1 };
+      try {
+        const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
+        console.log(response.data);
+        navigate('../pages/Cart');
+      } catch (error) {
+        console.log(error);
+      }
+    };
     return (
       <Container>
         <Circle />
-        <Image src={item.img} />
+        <Image src={item.picture} />
         <Info>
           <Icon>
-            <ShoppingCartOutlined />
+            <ShoppingCartOutlined onClick={handleAddToCart}/>
           </Icon>
           <Icon>
-          <Link to="../pages/SingleProduct" ><SearchOutlined /></Link>
+            <SearchOutlined onClick={handleItem} />
           </Icon>
           <Icon>
             <FavoriteBorderOutlined />
