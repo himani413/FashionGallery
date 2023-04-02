@@ -101,12 +101,13 @@ function Register() {
           <Agreement>
             By creating an account, I consent to the processing of my personal data in accordance with the <b>PRIVACY POLICY</b>.
           </Agreement>
+          <Buttons>
+          <Button1 type="submit">CREATE</Button1>
+          <Link to="verifyemail"><Button2>ACTIVATE ACCOUNT</Button2></Link>
+          </Buttons>
           
         </FORM>
-        <Buttons>
-        <Button1 type="submit">CREATE</Button1>
-        <Link to="VerifyEmail"><Button2>ACTIVATE ACCOUNT</Button2></Link>
-        </Buttons>
+        
       </Wrapper>
     </Container>
   );

@@ -91,17 +91,28 @@ const NavLink = styled(Link)`
   }
 `;
 
-function Navbar(props){
+function Navbar(){
 
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    console.log(localStorage.getItem('token'));
-    localStorage.removeItem('token');
-    console.log(localStorage.getItem('token'));
+    const handleLogout = async () => {
+    try{
+      const response= await axios.post('http://localhost:8080/api/v1/auth/logout',{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+      console.log(localStorage.getItem('token'));
+      localStorage.removeItem('token');
+      localStorage.removeItem('fname');
+      window.location.href = '../pages/login';
+      
+    }catch(error){
+      console.error(error);
+    }
     
   };
   const token = localStorage.getItem('token');
+  const fname = localStorage.getItem('fname');
   
   return (
     <Container>
@@ -120,7 +131,7 @@ function Navbar(props){
 
               {token ? (
               <>
-                  <Menu><NavLink className="name">Welcome, {props.name}</NavLink></Menu>
+                  <Menu><NavLink className="name">Welcome, {fname}</NavLink></Menu>
                   <Menu><NavLink to="../pages/Login"><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
               </>
               ) : (
@@ -131,9 +142,8 @@ function Navbar(props){
                 )}
               
               <Menu>
-              <Badge color="primary">
+
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
-              </Badge>
               </Menu>
             </Right>
         </Wrapper>
