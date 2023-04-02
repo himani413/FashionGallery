@@ -93,7 +93,7 @@ const NavLink = styled(Link)`
 `;
 
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <Container>
         <Left>

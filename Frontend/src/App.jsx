@@ -18,6 +18,7 @@ import SizeGuide from "./pages/SizeGuide";
 
 
 
+
 const App = () => {
   return (
     
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/pages/checkout" element={<Checkout />} />
         <Route path="/pages/orderconfirmation" element={<OrderConfirmation />} />
         <Route path="/pages/sizeguide" element={<SizeGuide />} />
+        
 
 
         
