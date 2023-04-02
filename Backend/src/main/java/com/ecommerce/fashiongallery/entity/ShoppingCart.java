@@ -16,7 +16,7 @@ public class ShoppingCart {
     private int quantity;
     private float amount;
     @OneToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "user_id",referencedColumnName = "user_id")
+    @JoinColumn(name = "customer_id",referencedColumnName = "customer_id")
     private User user;
 
 
