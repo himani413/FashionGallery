@@ -141,6 +141,7 @@ function Navbar(props){
                 )}
               
               <Menu>
+
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
               </Menu>
             </Right>
