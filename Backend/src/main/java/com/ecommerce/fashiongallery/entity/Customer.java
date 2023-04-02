@@ -1,16 +1,13 @@
 package com.ecommerce.fashiongallery.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Setter
-@Entity
+@AllArgsConstructor
+@Data
 @Table(name = "customer")
 @NoArgsConstructor
 public class Customer {
@@ -33,25 +30,6 @@ public class Customer {
 
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
 
 }

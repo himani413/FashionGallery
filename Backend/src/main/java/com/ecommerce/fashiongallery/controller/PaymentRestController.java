@@ -1,8 +1,10 @@
 package com.ecommerce.fashiongallery.controller;
 
 import com.ecommerce.fashiongallery.dto.DeliveryDetailsDTO;
+import com.ecommerce.fashiongallery.dto.ResponseDTO;
 import com.ecommerce.fashiongallery.service.DeliveryService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,15 +19,17 @@ public class PaymentRestController {
     @Autowired
     private DeliveryService deliveryService;
 
+
     public PaymentRestController(DeliveryService deliveryService) {
         this.deliveryService = deliveryService;
     }
 
     @PutMapping("/delivery")
-    public String addNewDelivery(@RequestBody DeliveryDetailsDTO deliveryDetailsDTO){
+    public ResponseEntity<ResponseDTO> addNewDelivery(@RequestBody DeliveryDetailsDTO deliveryDetailsDTO){
 
-        String msg = deliveryService.addDelivery(deliveryDetailsDTO); //message return to the frontend
-        return msg;
+        return ResponseEntity.ok().body(
+                deliveryService.addDelivery(deliveryDetailsDTO)
+        );
     }
 
 
