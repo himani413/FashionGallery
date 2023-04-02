@@ -49,18 +49,19 @@ export const Agreement = styled.span`
 
 `;
 export const Buttons = styled.div`
-  
+  width:100%;
+  display:block;
 `
 export const Button1 = styled.button`
-    
-    width: 30%;
+
+    width: 27%;
     border: none;
     font-size: 14px;
     padding: 15px 10px;
     color: white;
-    justify-content: right;
     background-color: teal;
     border-radius: 20px;
+    float: left;
     cursor: pointer;
     &:hover {
         color: white;
@@ -69,13 +70,11 @@ export const Button1 = styled.button`
       }
 `;
 export const Button2 = styled.button`
-    
-    width: 30%;
+    width: 27%;
     border: none;
     font-size: 14px;
     padding: 15px 10px;
     color: white;
-    justify-content: right;
     background-color: teal;
     border-radius: 20px;
     float: right;
