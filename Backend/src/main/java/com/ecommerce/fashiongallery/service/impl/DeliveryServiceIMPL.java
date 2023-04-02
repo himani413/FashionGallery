@@ -1,14 +1,15 @@
 package com.ecommerce.fashiongallery.service.impl;
 
 import com.ecommerce.fashiongallery.dto.DeliveryDetailsDTO;
+import com.ecommerce.fashiongallery.dto.ResponseDTO;
 import com.ecommerce.fashiongallery.entity.Delivery;
 import com.ecommerce.fashiongallery.repository.DeliveryRepository;
 import com.ecommerce.fashiongallery.service.DeliveryService;
+import com.ecommerce.fashiongallery.util.StringList;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Service
 public class DeliveryServiceIMPL implements DeliveryService {
@@ -16,7 +17,7 @@ public class DeliveryServiceIMPL implements DeliveryService {
     @Autowired
     private DeliveryRepository deliveryRepository;
     @Override
-    public String addDelivery(DeliveryDetailsDTO deliveryDetailsDTO) {
+    public ResponseDTO addDelivery(DeliveryDetailsDTO deliveryDetailsDTO) {
 
         Delivery delivery = new Delivery(
                 deliveryDetailsDTO.getFirstName(),
@@ -32,6 +33,10 @@ public class DeliveryServiceIMPL implements DeliveryService {
                 LocalDate.now().toString() //for get the current date and store in the delivery table
         );
         deliveryRepository.save(delivery);
-        return "Delivery details saved successfully. You need to pay cash on delivery";
+
+        return ResponseDTO.builder()
+                .code(StringList.RSP_SUCCESS)
+                .message("Delivery Details Added Successfully")
+                .build();
     }
 }

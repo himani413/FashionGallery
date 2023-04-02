@@ -40,6 +40,8 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("/api/v1/cart/addToCart/**")
                 .permitAll()
+                .requestMatchers("/api/v1/customer/**")
+                .permitAll()
                 //.hasRole(String.valueOf(Role.ADMIN))
                 .anyRequest()
                 .authenticated()

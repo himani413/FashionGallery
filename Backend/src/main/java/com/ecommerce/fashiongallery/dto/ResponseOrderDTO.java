@@ -1,50 +1,22 @@
 package com.ecommerce.fashiongallery.dto;
 
+import com.ecommerce.fashiongallery.entity.CustomerOrders;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+@Builder
 public class ResponseOrderDTO {
     private float amount;
     private int invoiceNumber;
     private String date;
     private String OrderDescription;
     private int orderId;
+    private List<CustomerOrders> customerOrders;
 
-    //Getters Setters
-    public float getAmount() {
-        return amount;
-    }
-
-    public void setAmount(float amount) {
-        this.amount = amount;
-    }
-
-    public int getInvoiceNumber() {
-        return invoiceNumber;
-    }
-
-    public void setInvoiceNumber(int invoiceNumber) {
-        this.invoiceNumber = invoiceNumber;
-    }
-
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getOrderDescription() {
-        return OrderDescription;
-    }
-
-    public void setOrderDescription(String orderDescription) {
-        OrderDescription = orderDescription;
-    }
-
-    public int getOrderId() {
-        return orderId;
-    }
-
-    public void setOrderId(int orderId) {
-        this.orderId = orderId;
-    }
 }

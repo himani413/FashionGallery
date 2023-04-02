@@ -2,6 +2,8 @@ package com.ecommerce.fashiongallery.dto;
 
 import lombok.*;
 
+import java.awt.*;
+
 @Data
 @Builder
 @AllArgsConstructor

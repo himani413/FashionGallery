@@ -1,8 +1,10 @@
 package com.ecommerce.fashiongallery.controller;
 
 import com.ecommerce.fashiongallery.dto.CustomerOrdersDTO;
+import com.ecommerce.fashiongallery.dto.ResponseOrderDTO;
 import com.ecommerce.fashiongallery.service.CustomerOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -22,8 +24,11 @@ public class CustomerOrderDetailsRestController {
     }
 
     @PostMapping("/customer-order-list") //get customer's orders list
-    public void findCustomerOrdersByID(@RequestBody Long customerID){
-        customerOrderService.findCustomerOrdersByID(customerID);
+    public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestBody Long customerID){
+
+        return ResponseEntity.ok().body(
+                customerOrderService.findCustomerOrdersByID(customerID)
+        );
     }
 
 

@@ -142,6 +142,7 @@ function Navbar(){
                 )}
               
               <Menu>
+
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
               </Menu>
             </Right>

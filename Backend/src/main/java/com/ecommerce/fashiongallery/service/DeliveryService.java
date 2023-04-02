@@ -1,7 +1,8 @@
 package com.ecommerce.fashiongallery.service;
 
 import com.ecommerce.fashiongallery.dto.DeliveryDetailsDTO;
+import com.ecommerce.fashiongallery.dto.ResponseDTO;
 
 public interface DeliveryService {
-    String addDelivery(DeliveryDetailsDTO deliveryDetailsDTO);
+    ResponseDTO addDelivery(DeliveryDetailsDTO deliveryDetailsDTO);
 }
