@@ -4,14 +4,15 @@ import com.ecommerce.fashiongallery.entity.User;
 import com.ecommerce.fashiongallery.entity.JWTtoken.Token;
 import com.ecommerce.fashiongallery.entity.JWTtoken.TokenType;
 import com.ecommerce.fashiongallery.repository.tokenRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class TokenServiceImpl implements TokenService {
 
-    @Autowired
-    tokenRepository tokenRepository;
+    private final tokenRepository tokenRepository;
 
     public void saveUserToken(User user, String jwtToken) {
         var token = Token.builder()

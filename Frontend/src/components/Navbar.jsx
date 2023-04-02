@@ -93,12 +93,22 @@ const NavLink = styled(Link)`
 
 function Navbar(props){
 
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    console.log(localStorage.getItem('token'));
-    localStorage.removeItem('token');
-    console.log(localStorage.getItem('token'));
+    const handleLogout = async () => {
+    try{
+      const response= await axios.post('http://localhost:8080/api/v1/auth/logout',{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+      console.log(localStorage.getItem('token'));
+      localStorage.removeItem('token');
+      console.log(localStorage.getItem('token'));
+      window.location.href = '../pages/login';
+      
+    }catch(error){
+      console.error(error);
+    }
     
   };
   const token = localStorage.getItem('token');
@@ -131,9 +141,7 @@ function Navbar(props){
                 )}
               
               <Menu>
-              <Badge badgeContent={totaQuantity} color="primary">
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
-              </Badge>
               </Menu>
             </Right>
         </Wrapper>

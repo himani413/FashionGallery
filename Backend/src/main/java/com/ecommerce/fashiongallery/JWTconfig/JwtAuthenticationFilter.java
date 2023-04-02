@@ -23,9 +23,7 @@ import java.io.IOException;
 //@RequiredArgsConstructor //create a constructor using final keyword
 public class JwtAuthenticationFilter extends OncePerRequestFilter { //every time when get a http request,filter need to be active.so we extend this class.
 
-    //@Autowired
     private final JwtService jwtService;
-   // @Autowired
     private final UserDetailsService userDetailsService;
     private final tokenRepository tokenRepository;
 

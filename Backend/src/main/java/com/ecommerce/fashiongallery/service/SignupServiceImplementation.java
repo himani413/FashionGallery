@@ -17,9 +17,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class SignupServiceImplementation implements SignupService{
 
-      //@Autowired
       private final UserRepository userRepository;
-      //@Autowired
       private final PasswordEncoder passwordEncoder;
       @Autowired
       private JwtService jwtService;
@@ -35,10 +33,6 @@ public class SignupServiceImplementation implements SignupService{
                     .Fname(signupDTO.getFname())
                     .Lname(signupDTO.getLname())
                     .email(signupDTO.getEmail())
-//                    .AddressLine1(signupDTO.getAddressLine1())
-//                    .AddressLine2(signupDTO.getAddressLine2())
-//                    .City(signupDTO.getCity())
-//                    .PostalCode(signupDTO.getPostalCode())
                     .Password(passwordEncoder.encode(signupDTO.getPassword()))
                     .role(Role.USER)
                     .build();

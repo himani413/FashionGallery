@@ -17,9 +17,7 @@ import java.util.UUID;
 @AllArgsConstructor
 public class EmailConfirmationServiceImpl implements EmailConfirmationService{
 
-    //@Autowired
     private final ConfirmationTokenRepository tokenRepository;
-    //@Autowired
     private final UserRepository userRepository;
 
     @Override

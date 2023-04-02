@@ -18,18 +18,13 @@ public class ConfirmationToken {
     @GeneratedValue(
             strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
     private String token;
-
     @Column(nullable = false)
     private LocalDateTime createdAt;
-
     @Column(nullable = false)
     private LocalDateTime expiresAt;
-
     private LocalDateTime confirmedAt;
-
     @OneToOne
     @JoinColumn(
             nullable = false,
