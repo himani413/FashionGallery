@@ -39,7 +39,8 @@ function Login(){
         }
         else{
           localStorage.setItem('token', response.data.token);
-          navigate('/', { state: { name:response.data.fname+response.data.lname }});
+          localStorage.setItem('fname',response.data.fname);
+          navigate('/');
         }
       }catch(error){
         console.error(error);

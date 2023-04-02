@@ -91,7 +91,7 @@ const NavLink = styled(Link)`
   }
 `;
 
-function Navbar(props){
+function Navbar(){
 
     const handleLogout = async () => {
     try{
@@ -103,7 +103,7 @@ function Navbar(props){
       );
       console.log(localStorage.getItem('token'));
       localStorage.removeItem('token');
-      console.log(localStorage.getItem('token'));
+      localStorage.removeItem('fname');
       window.location.href = '../pages/login';
       
     }catch(error){
@@ -112,6 +112,7 @@ function Navbar(props){
     
   };
   const token = localStorage.getItem('token');
+  const fname = localStorage.getItem('fname');
   
   return (
     <Container>
@@ -130,7 +131,7 @@ function Navbar(props){
 
               {token ? (
               <>
-                  <Menu><NavLink className="name">Welcome, {props.name}</NavLink></Menu>
+                  <Menu><NavLink className="name">Welcome, {fname}</NavLink></Menu>
                   <Menu><NavLink to="../pages/Login"><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
               </>
               ) : (
