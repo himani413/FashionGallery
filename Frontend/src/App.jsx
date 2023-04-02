@@ -5,7 +5,6 @@ import Cart from "./pages/Cart"
 import Home from "./pages/Home"
 import ProductList from "./pages/ProductList"
 
-import VerifyEmail from "./pages/VerifyEmail"
 import React from 'react';
 import {BrowserRouter as Router,Route,Routes } from "react-router-dom";
 
@@ -18,6 +17,7 @@ import SizeGuide from "./pages/SizeGuide";
 
 
 
+
 const App = () => {
   return (
     
@@ -25,14 +25,18 @@ const App = () => {
         <Routes>
     
         <Route exact path="/" element={<Home/>} />
-        <Route path="/pages/register" element={<Register/>} />
-        <Route path="/pages/register/verifyemail" element={<EmailVerification />} />
-        <Route path="/pages/login" element={<Login/>} />
+        <Route path="/pages/Register" element={<Register/>} />
+        <Route path="/pages/Register/verifyemail" element={<EmailVerification />} />
+        <Route path="/pages/Login" element={<Login/>} />
+        <Route path="/pages/Login/Register" element={<Register/>} />
         <Route path="/pages/cart" element={<Cart/>} />
         <Route path="/pages/productlist" element={<ProductList/>} />
         <Route path="/pages/singleproduct" element={<SingleProduct/>} />
         <Route path="/pages/checkout" element={<Checkout />} />
         <Route path="/pages/orderconfirmation" element={<OrderConfirmation />} />
+        <Route path="/pages/sizeguide" element={<SizeGuide />} />
+        
+
 
         
 

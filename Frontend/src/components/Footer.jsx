@@ -93,7 +93,7 @@ const NavLink = styled(Link)`
 `;
 
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <Container>
         <Left>
@@ -133,7 +133,7 @@ export const Footer = () => {
                 <Phone style={{marginRight:"10px"}}/>+94 112 413 333
             </ContactItem>
             <ContactItem>
-                <MailOutline style={{marginRight:"10px"}}/>contact@fashiongallery.dev
+                <MailOutline style={{marginRight:"10px"}}/>contact@fashiongallery.lk
             </ContactItem>
             <Payment src={paymentlogos}/>
         </Right>

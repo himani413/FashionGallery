@@ -1,8 +1,6 @@
 package com.ecommerce.fashiongallery.controller;
 
 import com.ecommerce.fashiongallery.dto.AddToCartDTO;
-import com.ecommerce.fashiongallery.dto.ResponseOrderDTO;
-import com.ecommerce.fashiongallery.entity.Customer;
 import com.ecommerce.fashiongallery.entity.Product;
 import com.ecommerce.fashiongallery.entity.ShoppingCart;
 import com.ecommerce.fashiongallery.entity.User;
@@ -14,9 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController

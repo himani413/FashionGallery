@@ -2,9 +2,7 @@ package com.ecommerce.fashiongallery.service;
 
 
 
-import com.ecommerce.fashiongallery.entity.Customer;
 import com.ecommerce.fashiongallery.entity.User;
-import com.ecommerce.fashiongallery.repository.CustomerRepository;
 import com.ecommerce.fashiongallery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
