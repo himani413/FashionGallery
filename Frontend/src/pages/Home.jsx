@@ -21,7 +21,7 @@ function Home(){
         );
         const randomItems = response.data.sort(() => Math.random() - 0.5).slice(0, 10);
         setItems(randomItems);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.log(error);
       }

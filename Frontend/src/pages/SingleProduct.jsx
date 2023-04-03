@@ -101,7 +101,7 @@ const SingleProduct = () => {
             </FilterContainer>
             <AddContainer>
             {product && product.availableQuantity === 0 && (
-                  <ErrorMessage>This product is currently out of stock</ErrorMessage>
+                  <h1>This product is currently out of stock</h1>
                 )}
                 {product && product.availableQuantity !== 0 && (
                   <>
@@ -111,7 +111,7 @@ const SingleProduct = () => {
                       <Add onClick={() => setQuantity(quantity + 1)} />
                     </AmountContainer>
                     <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
-                    {!isQuantityValid && <ErrorMessage>The selected quantity is greater than the available quantity</ErrorMessage>}
+                    {!isQuantityValid && <h2>The selected quantity is greater than the available quantity</h2>}
                   </>
                 )}
             </AddContainer>
