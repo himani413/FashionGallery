@@ -17,4 +17,6 @@ public interface ProductRepository extends JpaRepository<Product,Integer> {
 
     @Query(value = "SELECT p FROM Product p WHERE p.description LIKE %:value% OR p.name LIKE %:value%")
     public List<Product> getProductByWord(@Param("value") String value);
+
+    public List<Product> getProductByCategoryid(int categoryId);
 }

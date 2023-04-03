@@ -37,4 +37,10 @@ public class ProductRestController {
         List<Product> products = productService.getProductBySearch(searchValue);
         return ResponseEntity.ok(products);
     }
+
+    @GetMapping("/getProductByCategory")
+    public ResponseEntity<List<Product>> getProductByCategory(@RequestParam int categoryId ){
+        List<Product> products = productService.getProductByCategoryId(categoryId);
+        return ResponseEntity.ok(products);
+    }
 }

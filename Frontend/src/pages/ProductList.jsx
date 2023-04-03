@@ -6,13 +6,40 @@ import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
 import {Container,Title,FilterContainer,FilterText,
         Filter,Select,Option} from "../styles/ProductList-Styles"
+import { useLocation } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import { categories } from "../data";
 
 export const ProductList = () => {
+    const [ProductList, setProductList] = useState([]);
+    const location = useLocation();
+    const categoryId = new URLSearchParams(location.search).get("categoryId");
+    const [title,setTitle] = useState("");
+    useEffect(() => {
+        if (categoryId !== null) {
+
+            const category = categories.find(c => c.id === parseInt(categoryId, 10));
+            console.log(category)
+            if (category) {
+                setTitle(category.title);
+            }
+            console.log(categoryId)
+            console.log(`http://localhost:8080/api/v1/product/getProductByCategory?categoryId=${categoryId}`)
+          fetch(`http://localhost:8080/api/v1/product/getProductByCategory?categoryId=${categoryId}`)
+            .then((response) => response.json())
+            .then((data) => setProductList(data))
+            .catch((error) => console.error(error));
+        }
+      }, [categoryId]);
+
+
   return (
     <Container>
         <Navbar/>
         <Announcement/>
-        <Title>Dresses</Title>
+        <Title>{title}</Title>
+
+
         <FilterContainer>
             <Filter>
                 <FilterText>Filter Products:</FilterText>
@@ -35,7 +62,7 @@ export const ProductList = () => {
             </Filter>
             
         </FilterContainer>
-        <Products/>
+        <Products items={ProductList}/>
         <Newsletter/>
         <Footer/>
         <Copyright/>
