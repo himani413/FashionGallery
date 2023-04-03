@@ -14,7 +14,7 @@ export const sliderItems = [
     bg: "fcf1ed",
   },
   {
-    id: 3,
+    id: 5,
     img: "https://www.lulus.com/images/product/xlarge/4453210_256770.jpg?w=560&hdpi=1",
     title: "CRAZY JACKETS",
     desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",

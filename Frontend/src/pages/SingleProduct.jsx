@@ -106,7 +106,7 @@ const SingleProduct = () => {
                 {product && product.availableQuantity !== 0 && (
                   <>
                     <AmountContainer>
-                      <Remove onClick={() => setQuantity(quantity - 1)} />
+                      <Remove onClick={() => setQuantity(quantity === 1 ? 1 : quantity - 1)} />
                       <Amount>{quantity}</Amount>
                       <Add onClick={() => setQuantity(quantity + 1)} />
                     </AmountContainer>

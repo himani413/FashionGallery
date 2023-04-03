@@ -9,6 +9,8 @@ import {Container,Title,FilterContainer,FilterText,
 import { useLocation } from "react-router-dom";
 import React, { useEffect, useState } from 'react';
 import { categories } from "../data";
+import { sliderItems } from "../data";
+
 
 export const ProductList = () => {
     const [ProductList, setProductList] = useState([]);
@@ -19,9 +21,13 @@ export const ProductList = () => {
         if (categoryId !== null) {
 
             const category = categories.find(c => c.id === parseInt(categoryId, 10));
+            const slider = sliderItems.find(s=>s.id=== parseInt(categoryId, 10));
             console.log(category)
             if (category) {
                 setTitle(category.title);
+            }
+            else if(slider){
+                setTitle(slider.title);
             }
             console.log(categoryId)
             console.log(`http://localhost:8080/api/v1/product/getProductByCategory?categoryId=${categoryId}`)
