@@ -10,15 +10,15 @@ export const sliderItems = [
     id: 2,
     img: "https://images.unsplash.com/photo-1578632292335-df3abbb0d586?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YXV0dW1uJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&w=1000&q=80",
     title: "AUTUMN COLLECTION",
-    desc: "ADD THESE HOT DEALS TO YOUR AUTUMN COLLECTION !",
+    desc: "ADD THESE HOT DEALS TO YOUR AUTUMN COLLECTION!",
     bg: "fcf1ed",
   },
   {
     id: 3,
     img: "https://www.lulus.com/images/product/xlarge/4453210_256770.jpg?w=560&hdpi=1",
     title: "CRAZY JACKETS",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fbf0f4",
+    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS...",
+    bg: "fff7e6",
   },
 ];
 
@@ -33,7 +33,7 @@ export const categories = [
     },
     {
       id: 2,
-      img: "https://th.bing.com/th/id/R.fa71307d6503b28b93dfdccf057a00d9?rik=lGE402piT3Litg&riu=http%3a%2f%2fimages.unsplash.com%2fphoto-1578587018452-892bacefd3f2%3fcrop%3dentropy%26cs%3dtinysrgb%26fit%3dmax%26fm%3djpg%26ixid%3dMnwxMjA3fDB8MXxzZWFyY2h8MXx8bG9uZyUyMHNsZWV2ZSUyMHNoaXJ0fHwwfHx8fDE2MzEzODM4MDI%26ixlib%3drb-1.2.1%26q%3d80%26w%3d1080&ehk=FxZmivM4aIKdNbGBARCzTEYBKvrfxsv3UFPxzRtaIIE%3d&risl=&pid=ImgRaw&r=0",
+      img: "https://www.lulus.com/images/product/xlarge/9785321_2002576.jpg?w=560&hdpi=1",
       title: "LOUNGEWEAR MADNESS",
     },
     {
