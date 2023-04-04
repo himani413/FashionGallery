@@ -111,6 +111,7 @@ const SingleProduct = () => {
                       <Add onClick={() => setQuantity(quantity + 1)} />
                     </AmountContainer>
                     <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
+                    <Button>Buy Now</Button>
                     {!isQuantityValid && <h2>The selected quantity is greater than the available quantity</h2>}
                   </>
                 )}
