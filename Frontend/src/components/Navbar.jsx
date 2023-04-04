@@ -42,11 +42,15 @@ const Language = styled.span`
 `;
 
 const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
+  border: 1px solid lightgray;
+  height: 16px;
   display: flex;
   align-items: center;
   margin-left: 25px;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  outline: none;
 `;
 
 const Input = styled.input`
@@ -96,12 +100,27 @@ const Navbar = (props) =>{
 
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
-    navigate('/pages/login');
+  const handleLogout = async () => {
+    try{
+      const response= await axios.post('http://localhost:8080/api/v1/auth/logout',{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+      console.log(localStorage.getItem('token'));
+      localStorage.removeItem('token');
+      localStorage.removeItem('fname');
+      window.location.href = '../pages/login';
+      
+    }catch(error){
+      console.error(error);
+    }
+    
   };
 
-  const token = localStorage.getItem('jwtToken');
+  const token = localStorage.getItem('token');
+  const fname = localStorage.getItem('fname');
   const [searchValue, setSearchValue] = useState("");
 
 
@@ -145,7 +164,7 @@ const Navbar = (props) =>{
 
               {token ? (
               <>
-                  <Menu><NavLink className="name">Welcome, {props.name}</NavLink></Menu>
+                  <Menu><NavLink className="name">{fname}</NavLink></Menu>
                   <Menu><NavLink><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
               </>
               ) : (
