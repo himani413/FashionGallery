@@ -53,31 +53,57 @@ public class ShoppingCartRestController {
         logger.info("Request Payload"+ addToCartDTO.toString());
         User user = userService.getUser(customerId);
         Product product = productService.getProductById(addToCartDTO.getProductId());
-        //System.out.println(product);
-        float amount = product.getPrice() * addToCartDTO.getQuantity();
-        ShoppingCart cartItem = new ShoppingCart(addToCartDTO.getProductId(),addToCartDTO.getQuantity(),amount,user);
-        if(product.getAvailableQuantity()>= addToCartDTO.getQuantity()) {
-            shoppingCartService.saveShoppingCart(cartItem);
-            int newQuantity = product.getAvailableQuantity()- addToCartDTO.getQuantity();
-            product.setAvailableQuantity(newQuantity);
-            product = productService.saveProduct(product);
-            logger.info("Order processed successfully");
-            return "Successfully Added to Cart";
+        ShoppingCart existingCart = null;
+        existingCart = shoppingCartService.FindShoppingCartByCustomerAndProduct(customerId,product.getId());
+        if(existingCart != null){
+            int newQuantity = addToCartDTO.getQuantity()+existingCart.getQuantity();
+            float newAmount = newQuantity * product.getPrice();
+            existingCart.setAmount(newAmount);
+            existingCart.setQuantity(newQuantity);
+            existingCart = shoppingCartService.saveShoppingCart(existingCart);
+            if (existingCart == null) {
+                return "Cannot update the cart";
+            } else {
+                return "Cart updated successfully";
+            }
+
         }
-        else{
-            return "Not enough available Quantity";
+        else {
+            //System.out.println(product);
+            float amount = product.getPrice() * addToCartDTO.getQuantity();
+            ShoppingCart cartItem = new ShoppingCart(addToCartDTO.getProductId(), addToCartDTO.getQuantity(), amount, user);
+            if (product.getAvailableQuantity() >= addToCartDTO.getQuantity()) {
+                shoppingCartService.saveShoppingCart(cartItem);
+                int newQuantity = product.getAvailableQuantity() - addToCartDTO.getQuantity();
+                product.setAvailableQuantity(newQuantity);
+                product = productService.saveProduct(product);
+                logger.info("Order processed successfully");
+                return "Successfully Added to Cart";
+            } else {
+                return "Not enough available Quantity";
+            }
         }
     }
 
     @PostMapping("/updateShoppingCart")
     public String updateShoppingCartQuantity(@RequestParam int shoppingCartId, @RequestParam int quantity) {
         ShoppingCart shoppingCart = shoppingCartService.getShoppingCartDetail(shoppingCartId);
-        shoppingCart.setQuantity(quantity);
-        shoppingCart = shoppingCartService.saveShoppingCart(shoppingCart);
-        if (shoppingCart == null) {
-            return "Cannot update the cart";
-        } else {
-            return "Cart updated successfully";
+
+        if(quantity==0){
+            shoppingCartService.DeleteShoppingCart(shoppingCart);
+            return "";
+        }
+        else {
+            Product product = productService.getProductById(shoppingCart.getProductId());
+            float newAmount = quantity * product.getPrice();
+            shoppingCart.setQuantity(quantity);
+            shoppingCart.setAmount(newAmount);
+            shoppingCart = shoppingCartService.saveShoppingCart(shoppingCart);
+            if (shoppingCart == null) {
+                return "Cannot update the cart";
+            } else {
+                return "Cart updated successfully";
+            }
         }
 
     }
