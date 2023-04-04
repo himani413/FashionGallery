@@ -10,15 +10,15 @@ export const sliderItems = [
     id: 2,
     img: "https://images.unsplash.com/photo-1578632292335-df3abbb0d586?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8YXV0dW1uJTIwZmFzaGlvbnxlbnwwfHwwfHw%3D&w=1000&q=80",
     title: "AUTUMN COLLECTION",
-    desc: "ADD THESE HOT DEALS TO YOUR AUTUMN COLLECTION !",
+    desc: "ADD THESE HOT DEALS TO YOUR AUTUMN COLLECTION!",
     bg: "fcf1ed",
   },
   {
     id: 5,
     img: "https://www.lulus.com/images/product/xlarge/4453210_256770.jpg?w=560&hdpi=1",
     title: "CRAZY JACKETS",
-    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS.",
-    bg: "fbf0f4",
+    desc: "DON'T COMPROMISE ON STYLE! GET FLAT 30% OFF FOR NEW ARRIVALS...",
+    bg: "fff7e6",
   },
 ];
 
