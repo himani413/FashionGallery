@@ -100,12 +100,27 @@ const Navbar = (props) =>{
 
   const navigate = useNavigate();
 
-  const handleLogout = () => {
-    localStorage.removeItem('jwtToken');
-    navigate('/pages/login');
+  const handleLogout = async () => {
+    try{
+      const response= await axios.post('http://localhost:8080/api/v1/auth/logout',{
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      );
+      console.log(localStorage.getItem('token'));
+      localStorage.removeItem('token');
+      localStorage.removeItem('fname');
+      window.location.href = '../pages/login';
+      
+    }catch(error){
+      console.error(error);
+    }
+    
   };
 
-  const token = localStorage.getItem('jwtToken');
+  const token = localStorage.getItem('token');
+  const fname = localStorage.getItem('fname');
   const [searchValue, setSearchValue] = useState("");
 
 
@@ -149,7 +164,7 @@ const Navbar = (props) =>{
 
               {token ? (
               <>
-                  <Menu><NavLink className="name">Welcome, {props.name}</NavLink></Menu>
+                  <Menu><NavLink className="name">{fname}</NavLink></Menu>
                   <Menu><NavLink><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
               </>
               ) : (
