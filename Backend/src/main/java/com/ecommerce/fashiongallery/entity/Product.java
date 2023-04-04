@@ -17,6 +17,7 @@ public class Product {
     @Column(columnDefinition="TEXT")
     private String description;
     private String category;
+    private int categoryid;
 
     public Product() {
     }
@@ -54,6 +55,10 @@ public class Product {
         this.category = category;
     }
 
+    public void setCategoryid(int categoryid) {
+        this.categoryid = categoryid;
+    }
+
     //getters
 
 
@@ -87,6 +92,10 @@ public class Product {
 
     public String getCategory() {return category;}
 
+    public int getCategoryid() {
+        return categoryid;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
@@ -98,6 +107,7 @@ public class Product {
                 ", size='" + size + '\'' +
                 ", description='" + description + '\'' +
                 ", category='" + category + '\'' +
+                ", categoryid=" + categoryid +
                 '}';
     }
 }

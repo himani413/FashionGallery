@@ -38,34 +38,22 @@ public class ShoppingCartRestController {
     public String test(){
         return "Hello World";
     }
-    @GetMapping("/getAllProducts")
-    public ResponseEntity<List<Product>> getAllProducts(){
-        List<Product> productList = productService.getAllProduct();
-        return ResponseEntity.ok(productList);
 
-    }
 
-    //new
-    @GetMapping("/getProductById")
-    public  ResponseEntity<Product> getProduct(@RequestParam int productId){
-        Product product = productService.getProductById(productId);
-        return ResponseEntity.ok(product);
-    }
-
-    @GetMapping(value = "/{userId}")
-    public ResponseEntity<List<ShoppingCart>> getShoppingCartDetailsByUser(@PathVariable long userId){
-        List<ShoppingCart> cartList = shoppingCartService.getShoppingCartDetailsByUserId(userId);
+    @GetMapping(value = "/{customerId}")
+    public ResponseEntity<List<ShoppingCart>> getShoppingCartDetailsByUser(@PathVariable long customerId){
+        List<ShoppingCart> cartList = shoppingCartService.getShoppingCartDetailsByUserId(customerId);
         return ResponseEntity.ok(cartList);
     }
 
 
 
-    @PostMapping("/addToCart/{userId}")
-    public String placeOrder(@PathVariable long userId, @RequestBody AddToCartDTO addToCartDTO){
+    @PostMapping("/addToCart/{customerId}")
+    public String placeOrder(@PathVariable long customerId, @RequestBody AddToCartDTO addToCartDTO){
         logger.info("Request Payload"+ addToCartDTO.toString());
-        User user = userService.getUser(userId);
+        User user = userService.getUser(customerId);
         Product product = productService.getProductById(addToCartDTO.getProductId());
-        System.out.println(product);
+        //System.out.println(product);
         float amount = product.getPrice() * addToCartDTO.getQuantity();
         ShoppingCart cartItem = new ShoppingCart(addToCartDTO.getProductId(),addToCartDTO.getQuantity(),amount,user);
         if(product.getAvailableQuantity()>= addToCartDTO.getQuantity()) {
@@ -82,20 +70,20 @@ public class ShoppingCartRestController {
     }
 
     @PostMapping("/updateShoppingCart")
-    public String updateShoppingCartQuantity(@RequestParam int shoppingCartId, @RequestParam int quantity){
-            ShoppingCart shoppingCart = shoppingCartService.getShoppingCartDetail(shoppingCartId);
-            shoppingCart.setQuantity(quantity);
-            shoppingCart = shoppingCartService.saveShoppingCart(shoppingCart);
-            if(shoppingCart == null){
-                return "Cannot update the cart";
-            }
-            else{
-                return "Cart updated successfully";
-            }
-
-
+    public String updateShoppingCartQuantity(@RequestParam int shoppingCartId, @RequestParam int quantity) {
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartDetail(shoppingCartId);
+        shoppingCart.setQuantity(quantity);
+        shoppingCart = shoppingCartService.saveShoppingCart(shoppingCart);
+        if (shoppingCart == null) {
+            return "Cannot update the cart";
+        } else {
+            return "Cart updated successfully";
+        }
 
     }
+
+
+
 
 
 

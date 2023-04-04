@@ -17,6 +17,7 @@ import React, { useEffect, useState } from 'react';
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
+  const [isEmpty, setIsEmpty] = useState(true);
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
@@ -39,7 +40,7 @@ const Cart = () => {
         const newProductDetails = await Promise.all(
         productIds.map(async (productId) => {
         const response = await axios.get(
-        `http://localhost:8080/api/v1/cart/getProductById?productId=${productId}`
+        `http://localhost:8080/api/v1/product/getProductById?productId=${productId}`
       );
         const quantity = cartItems.filter(item => item.productId === productId)
         .reduce((total, item) => total + item.quantity, 0); // Calculate total quantity for the product
@@ -54,10 +55,13 @@ const Cart = () => {
       })
       );
       setProductDetails(newProductDetails);
-      } catch (error) {
-      console.log(error);
+      if (newProductDetails.length > 0) {
+        setIsEmpty(false);
       }
-      };
+    } catch (error) {
+      console.log(error);
+    }
+    };
       if (cartItems.length > 0) {
       getProductDetails();
       }
@@ -68,7 +72,40 @@ const Cart = () => {
 
   console.log(totalCartAmount);
 
+  if (isEmpty) {
+    return (
+      <Container>
+      <Navbar />
+      <Announcement />
+      <Wrapper>
+        <Title>Your Cart</Title>
+        <Top>
+          <Link to="/">
+            <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link>
+          <TopTexts>
+            <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
+            <TopText>Your Wishlist(0)</TopText>
+          </TopTexts>
+        </Top>
+        <Bottom>
+          <Info>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <img src="https://i.pinimg.com/564x/81/c4/fc/81c4fc9a4c06cf57abf23606689f7426.jpg" alt="cart is empty" />
+        <p>Your cart is empty</p>
+        </div>
+          
+          </Info>
+        </Bottom>
+      </Wrapper>
+      <Footer />
+      <Copyright />
+    </Container>
+      
 
+    );
+  }
+  
   return (
     <Container>
       <Navbar />

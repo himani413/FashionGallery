@@ -1,14 +1,15 @@
-import { useNavigate } from 'react-router-dom';
 import { Badge, Button } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 
 import styled from 'styled-components'
 import Navlogo from "../images/Navlogo.png";
+import { useNavigate } from 'react-router-dom';
 
 import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import {mobile} from "../responsive"
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+
 
 
 const Container = styled.div`
@@ -91,37 +92,50 @@ const NavLink = styled(Link)`
   }
 `;
 
-function Navbar(){
+const Navbar = (props) =>{
 
-    const handleLogout = async () => {
-    try{
-      const response= await axios.post('http://localhost:8080/api/v1/auth/logout',{
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      }
-      );
-      console.log(localStorage.getItem('token'));
-      localStorage.removeItem('token');
-      localStorage.removeItem('fname');
-      window.location.href = '../pages/login';
-      
-    }catch(error){
-      console.error(error);
-    }
-    
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+    navigate('/pages/login');
   };
-  const token = localStorage.getItem('token');
-  const fname = localStorage.getItem('fname');
-  
+
+  const token = localStorage.getItem('jwtToken');
+  const [searchValue, setSearchValue] = useState("");
+
+
+  const [cartItems, setCartItems] = useState([]);
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:8080/api/v1/cart/1`
+        );
+        setCartItems(response.data);
+        //console.log(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchCartItems();
+  }, []);
+
+  const handleSearch = () => {
+    const searchQuery = searchValue;
+    navigate(`/pages/searchedProducts/?searchQuery=${searchQuery}`);
+  }
+
+  const totaQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
     <Container>
         <Wrapper>
             <Left>
               <Language>EN</Language>
               <SearchContainer>
-                <Input placeholder='Search' />
-                <Search style={{color:"gray", fontSize: 16}}/>
+              <Input placeholder='Search' value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+                <Search style={{color:"gray", fontSize: 16}} onClick={handleSearch}/>
               </SearchContainer>
             </Left>
             <Center>
@@ -131,8 +145,8 @@ function Navbar(){
 
               {token ? (
               <>
-                  <Menu><NavLink className="name">Welcome, {fname}</NavLink></Menu>
-                  <Menu><NavLink to="../pages/Login"><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
+                  <Menu><NavLink className="name">Welcome, {props.name}</NavLink></Menu>
+                  <Menu><NavLink><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
               </>
               ) : (
               <>
@@ -141,9 +155,12 @@ function Navbar(){
               </>
                 )}
               
+              
+              
               <Menu>
-
+              <Badge badgeContent={totaQuantity} color="primary">
               <NavLink to="../pages/Cart" ><ShoppingCartOutlined /></NavLink>
+              </Badge>
               </Menu>
             </Right>
         </Wrapper>
