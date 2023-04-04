@@ -14,13 +14,6 @@ import EmailVerification from "./pages/EmailVerification.jsx";
 import SizeGuide from "./pages/SizeGuide";
 import SearchedProducts from "./pages/SearchedProducts";
 
-
-
-
-
-
-
-
 const App = () => {
   return (
     
@@ -40,10 +33,6 @@ const App = () => {
         <Route path="/pages/sizeguide" element={<SizeGuide />} />
         <Route path="/pages/SearchedProducts" element={<SearchedProducts />} />
         
-
-
-        
-
       </Routes>
       </Router>
     

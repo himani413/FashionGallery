@@ -42,11 +42,15 @@ const Language = styled.span`
 `;
 
 const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
+  border: 1px solid lightgray;
+  height: 16px;
   display: flex;
   align-items: center;
   margin-left: 25px;
-  padding: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  outline: none;
 `;
 
 const Input = styled.input`
