@@ -51,11 +51,5 @@ public class LoginController {
         }
     }
 
-    @PostMapping("/logout")
-    public ResponseEntity<Void> logout(HttpServletRequest request) {
-        logoutService.logout(request, null, null);
-        return ResponseEntity.ok().build();
-    }
-
 
 }
