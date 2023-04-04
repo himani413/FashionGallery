@@ -16,5 +16,6 @@ public class ResponseDTO {
     private Object content;
     private String fname;
     private String lname;
+    private Long id;
 
 }

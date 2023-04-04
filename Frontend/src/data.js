@@ -26,18 +26,19 @@ export const sliderItems = [
 
 
 export const categories = [
+  
     {
-      id: 1,
+      id: 3,
       img: "http://cdn.shopify.com/s/files/1/0569/0284/4581/products/Colin_Casual_Linen_Check_Shirt_In_Olive-ESCC0317V1NS22FN-image1.jpg?v=1653469247",
       title: "SHIRTS MANIA",
     },
     {
-      id: 2,
-      img: "https://th.bing.com/th/id/R.fa71307d6503b28b93dfdccf057a00d9?rik=lGE402piT3Litg&riu=http%3a%2f%2fimages.unsplash.com%2fphoto-1578587018452-892bacefd3f2%3fcrop%3dentropy%26cs%3dtinysrgb%26fit%3dmax%26fm%3djpg%26ixid%3dMnwxMjA3fDB8MXxzZWFyY2h8MXx8bG9uZyUyMHNsZWV2ZSUyMHNoaXJ0fHwwfHx8fDE2MzEzODM4MDI%26ixlib%3drb-1.2.1%26q%3d80%26w%3d1080&ehk=FxZmivM4aIKdNbGBARCzTEYBKvrfxsv3UFPxzRtaIIE%3d&risl=&pid=ImgRaw&r=0",
+      id: 4,
+      img: "https://www.lulus.com/images/product/xlarge/9785321_2002576.jpg?w=560&hdpi=1",
       title: "LOUNGEWEAR MADNESS",
     },
     {
-      id: 3,
+      id: 5,
       img: "https://www.lulus.com/images/product/xlarge/10013741_239074.jpg?w=560&hdpi=1",
       title: "CRAZY JACKETS",
     },

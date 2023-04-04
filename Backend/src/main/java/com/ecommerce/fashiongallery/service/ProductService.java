@@ -25,4 +25,8 @@ public class ProductService {
     public Product saveProduct(Product product){
         return productRepository.save(product);
     }
+    public List<Product> getProductBySearch(String value){return productRepository.getProductByWord(value);}
+    public List<Product> getProductByCategoryId(int categoryId){
+        return this.productRepository.getProductByCategoryid(categoryId);
+    }
 }

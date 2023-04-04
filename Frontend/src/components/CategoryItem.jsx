@@ -48,12 +48,13 @@ const Button = styled.button`
 
 
 const CategoryItem = ({ item }) => {
+  console.log(item.img);
   return (
     <Container>
       <Image src={item.img} />
       <Info>
         <Title>{item.title}</Title>
-        <Link to="../pages/ProductList" ><Button>SHOP NOW</Button></Link>
+        <Link to={`../pages/ProductList?categoryId=${item.id}`} ><Button>SHOP NOW</Button></Link>
       </Info>
     </Container>
   );

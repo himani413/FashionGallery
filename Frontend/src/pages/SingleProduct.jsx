@@ -12,18 +12,25 @@ import { Add, Remove } from '@material-ui/icons'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { ErrorMessage } from 'formik';
 
 
 const SingleProduct = () => {
   const [product, setProduct] = useState(null);
+  const location = useLocation();
+  const productId = new URLSearchParams(location.search).get("productId");
+
   
   const [quantity, setQuantity] = useState(1);
+  const [isQuantityValid, setIsQuantityValid] = useState(true);
 
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get('http://localhost:8080/api/v1/cart/getProductById?productId=1');
+      const response = await axios.get(`http://localhost:8080/api/v1/product/getProductById?productId=${productId}`);
       setProduct(response.data);
+      console.log(response.data);
     };
     fetchData();
   }, []);
@@ -33,12 +40,23 @@ const SingleProduct = () => {
     const data = { productId: product.id, quantity };
     try {
       const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
-      console.log(response.data);
+      //console.log(response.data);
       navigate('../pages/Cart');
     } catch (error) {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    if (product && quantity > product.availableQuantity) {
+      setIsQuantityValid(false);
+    } else if (product && product.availableQuantity === 0) {
+      setIsQuantityValid(false);
+    } else {
+      setIsQuantityValid(true);
+    }
+  }, [product, quantity]);
+
 
 
   if (!product) {
@@ -82,12 +100,20 @@ const SingleProduct = () => {
               </Filter>
             </FilterContainer>
             <AddContainer>
-            <AmountContainer>
-              <Remove onClick={() => setQuantity(quantity - 1)} />
-              <Amount>{quantity}</Amount>
-              <Add onClick={() => setQuantity(quantity + 1)} />
-            </AmountContainer>
-            <Button onClick={handleAddToCart}>Add To Cart</Button>
+            {product && product.availableQuantity === 0 && (
+                  <h1>This product is currently out of stock</h1>
+                )}
+                {product && product.availableQuantity !== 0 && (
+                  <>
+                    <AmountContainer>
+                      <Remove onClick={() => setQuantity(quantity - 1)} />
+                      <Amount>{quantity}</Amount>
+                      <Add onClick={() => setQuantity(quantity + 1)} />
+                    </AmountContainer>
+                    <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
+                    {!isQuantityValid && <h2>The selected quantity is greater than the available quantity</h2>}
+                  </>
+                )}
             </AddContainer>
           </InfoContainer>
       </Wrapper>

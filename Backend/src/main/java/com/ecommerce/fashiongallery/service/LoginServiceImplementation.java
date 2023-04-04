@@ -41,6 +41,7 @@ public class LoginServiceImplementation implements LoginService {
                 .message("Successfully logged In")
                 .fname(user.getFname())
                 .lname(user.getLname())
+                .id(user.getId())
                 .token(jwtToken)
                 .build();
 
