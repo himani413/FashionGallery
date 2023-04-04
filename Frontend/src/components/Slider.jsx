@@ -115,7 +115,7 @@ const Slider = () => {
             <InfoContainer>
               <Title>{item.title}</Title>
               <Desc>{item.desc}</Desc>
-              <Link to="../pages/SingleProduct?productId=3" ><Button>SHOP NOW</Button></Link>
+              <Link to={`../pages/ProductList?categoryId=${item.id}`} ><Button>SHOP NOW</Button></Link>
             </InfoContainer>
           </Slide>
         ))}

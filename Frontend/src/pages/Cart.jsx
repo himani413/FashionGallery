@@ -9,15 +9,19 @@ import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Copyright from '../components/Copyright'
 import { Add, Remove } from '@material-ui/icons'
-import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route,Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useHistory } from "react-router-dom";
+import Checkout from "../pages/Checkout";
+import { useNavigate } from 'react-router-dom';
 
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
   const [isEmpty, setIsEmpty] = useState(true);
+  
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
@@ -71,6 +75,8 @@ const Cart = () => {
   const totalCartAmount = cartItems.reduce((total, item) => total + item.amount, 0);
 
   console.log(totalCartAmount);
+
+
 
   if (isEmpty) {
     return (
@@ -178,9 +184,15 @@ const Cart = () => {
               </SummaryItemPrice>
             </SummaryItem>
             <Link
-              to="../pages/Checkout"
-              style={{ textDecoration: "none" }}
-            >
+              to={{
+              pathname: "../pages/Checkout",
+              state: {
+                cartItems: JSON.stringify(cartItems),
+                totalAmount: totalCartAmount,
+              },
+            }}
+            style={{ textDecoration: "none" }}
+>
               <Button>CHECKOUT NOW</Button>
             </Link>
           </Summary>

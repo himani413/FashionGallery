@@ -10,6 +10,10 @@ import { Checkbox } from '@material-ui/core'
 import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 
 const Checkout = () => {
+  const cartItems = JSON.parse(localStorage.getItem("cartItems"));
+  const totalCartAmount = localStorage.getItem("totalCartAmount");
+
+
     return (
       <Container>
           <Navbar/>
@@ -38,7 +42,7 @@ const Checkout = () => {
                 <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                 <SummaryItem>
                   <SummaryItemText>Subtotal</SummaryItemText>
-                  <SummaryItemPrice>Rs. 8289</SummaryItemPrice>
+                  <SummaryItemPrice>Rs. {totalCartAmount}</SummaryItemPrice>
                 </SummaryItem>
                 <SummaryItem>
                   <SummaryItemText>Estimated Shipping</SummaryItemText>
@@ -50,7 +54,7 @@ const Checkout = () => {
                 </SummaryItem>
                 <SummaryItem type="total">
                   <SummaryItemText >Total</SummaryItemText>
-                  <SummaryItemPrice>Rs. 8419</SummaryItemPrice>
+                  <SummaryItemPrice>Rs. {parseInt(totalCartAmount, 10)+350-220}</SummaryItemPrice>
                 </SummaryItem>
                 <Link to="../pages/OrderConfirmation" style={{ textDecoration: 'none' }}><Button>Place Order</Button></Link>
               </Summary>
