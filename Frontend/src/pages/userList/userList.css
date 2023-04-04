@@ -26,6 +26,7 @@
   }
   
   .userListDelete{
-    cursor: pointer;  
     color: red;
+    cursor: pointer;  
+    
   }
