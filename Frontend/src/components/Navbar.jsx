@@ -158,7 +158,7 @@ const Navbar = (props) =>{
               </SearchContainer>
             </Left>
             <Center>
-              <Image src={Navlogo} />
+            <Link to="/" ><Image src={Navlogo} /></Link>
             </Center>
             <Right>
 
