@@ -6,7 +6,7 @@ import Copyright from '../components/Copyright'
 import {Container,ImgContainer,Wrapper,Image, 
         InfoContainer, Title, Desc, Price, FilterContainer, 
         Filter, FilterTitle, FilterSize, FilterSizeOption, 
-        AddContainer, AmountContainer, Amount, Button} from '../styles/SingleProduct-Styles'
+        AddContainer, AmountContainer, Amount, Button, Message} from '../styles/SingleProduct-Styles'
 import productimg from '../images/black-jumpsuit.jpg'
 import { Add, Remove } from '@material-ui/icons'
 import axios from 'axios';
@@ -112,7 +112,8 @@ const SingleProduct = () => {
                       <Add onClick={() => setQuantity(quantity + 1)} />
                     </AmountContainer>
                     <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
-                    {!isQuantityValid && <h2>The selected quantity is greater than the available quantity</h2>}
+                    <Button>Buy Now</Button>
+                    {!isQuantityValid && <Message>The selected quantity is greater than the available quantity!</Message>}
                   </>
                 )}
             </AddContainer>
