@@ -20,15 +20,15 @@ public class CustomerOrderDetailsRestController {
     }
 
     @PutMapping("/customer-order")  //add order id's to relevant customer id. No need of a frontend for this.
-    public void addCustomerOrder(@RequestBody CustomerOrdersDTO customerOrdersDTO){
-        customerOrderService.addCustomerOrder(customerOrdersDTO);
+    public void addCustomerOrder(@RequestBody CustomerOrdersDTO customerOrdersDTO, @RequestParam("username") String username){
+        customerOrderService.addCustomerOrder(customerOrdersDTO,username);
     }
 
     @PostMapping("/customer-order-list") //get customer's orders list
     public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestBody UserOrdersDTO userOrdersDTO){
 
         return ResponseEntity.ok().body(
-                //need to typecast to Long because the request body is an Integer
+
                 customerOrderService.findCustomerOrdersByID(userOrdersDTO.getCustomerID())
         );
     }
