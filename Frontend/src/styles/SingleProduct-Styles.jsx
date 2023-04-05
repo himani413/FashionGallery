@@ -65,7 +65,7 @@ export const FilterSizeOption = styled.option`
 `;
 
 export const AddContainer = styled.div`
-    width: 50%;
+    width: 60%;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -91,13 +91,16 @@ export const Amount = styled.span`
 export const Button = styled.button`
     padding: 15px;
     border: 2px solid teal;
-    background-color: white;
+    color: white;
+    background-color: teal;
     cursor: pointer;
     font-weight: 500;
     border-radius: 20px;
+    width: 120px;
 
     &:hover {
         color: white;
-        background-color: teal;   
+        background-color: rgb(4, 81, 81);
+        border-color:rgb(4, 81, 81);
       }
 `;

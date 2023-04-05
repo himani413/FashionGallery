@@ -8,7 +8,7 @@ import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
 import Navbar from '../components/Navbar'
 import Copyright from '../components/Copyright'
-import { Add, Remove } from '@material-ui/icons'
+import { Add, HighlightOff, Remove } from '@material-ui/icons'
 import { BrowserRouter as Router, Route,Link, Navigate } from 'react-router-dom';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
@@ -205,6 +205,7 @@ const Cart = (customerId) => {
                     <ProductSize>
                       <b>Size:</b> {item.size}
                     </ProductSize>
+                    <HighlightOff />
                   </Details>
                 </ProductDetail>
                 <PriceDetail>

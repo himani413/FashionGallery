@@ -1,5 +1,6 @@
 import {
-    FavoriteBorderOutlined,
+    LocalMall,
+    LocalMallOutlined,
     SearchOutlined,
     ShoppingCartOutlined,
   } from "@material-ui/icons";
@@ -30,7 +31,7 @@ import {
     flex: 1;
     margin: 5px;
     min-width: 280px;
-    height: 350px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -51,7 +52,8 @@ import {
   `;
   
   const Image = styled.img`
-    height: 75%;
+    height: 90%;
+    width: auto;
     z-index: 2;
   `;
   
@@ -101,7 +103,7 @@ import {
             <SearchOutlined onClick={handleItem} />
           </Icon>
           <Icon>
-            <FavoriteBorderOutlined />
+            <LocalMallOutlined />
           </Icon>
         </Info>
       </Container>

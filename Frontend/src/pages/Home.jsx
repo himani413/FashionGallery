@@ -9,7 +9,6 @@ import Products from '../components/Products'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-
 function Home(){
 //can access the user's name from the location state and pass it to the navigation bar component
   const [Items, setItems] = useState([]);
