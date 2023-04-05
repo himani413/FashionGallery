@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
 import axios from 'axios';
+import jwt_decode from 'jwt-decode';
 import companyLogo from "../images/logo.png";
 import {Container,Wrapper,Title,FORM,Input,Button,NavLink,Image} from "../styles/Login-Styles.jsx";
 
@@ -9,6 +10,7 @@ function Login(){
   const [email, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [fieldError,setFieldError] = useState("")
+  const [user, setUser] = useState(null);
   const navigate = useNavigate();
   
   const handleSubmit = async (event) => {
@@ -39,6 +41,13 @@ function Login(){
         }
         else{
           localStorage.setItem('token', response.data.token);
+
+          const decodedToken = jwt_decode(response.data.token);
+          const userData = {
+            id: decodedToken.sub,
+          };
+          setUser(userData);
+          localStorage.setItem('email',user.id);
           localStorage.setItem('fname',response.data.fname);
           localStorage.setItem('id',response.data.id);
           console.log(response.data.fname);
