@@ -80,6 +80,10 @@ import {
       navigate(`/pages/SingleProduct/?productId=${item.id}`);
     }
 
+    const handleBuyNow = () => {
+      navigate(`/pages/checkout?productId=${item.id}`);
+    }
+
     const handleAddToCart = async () => {
       const customerId = 1;
       const data = { productId: item.id, quantity:1 };
@@ -103,7 +107,7 @@ import {
             <SearchOutlined onClick={handleItem} />
           </Icon>
           <Icon>
-            <LocalMallOutlined />
+            <LocalMallOutlined onClick={handleBuyNow}/>
           </Icon>
         </Info>
       </Container>

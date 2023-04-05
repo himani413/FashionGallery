@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 
+
 const Cart = (customerId) => {
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
@@ -26,6 +27,7 @@ const Cart = (customerId) => {
   const id = localStorage.getItem('id');
   const navigate = useNavigate();
   const [totalCartAmount, setTotalCartAmount] = useState(0);
+ 
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
@@ -89,6 +91,18 @@ const Cart = (customerId) => {
       console.log(error);
     }
   };
+
+
+  const deleteCartItem = async (shoppingCartId) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/api/v1/cart/deleteCartItem?shoppingCartId=${shoppingCartId}`
+        );
+      //return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
   const handleAddClick = async (productId,cartId) => {
     const updatedCartItems = [...cartItems];
     const cartItemIndex = updatedCartItems.findIndex(
@@ -133,9 +147,66 @@ const Cart = (customerId) => {
     console.log(totalCartAmount);
     console.log(cartItems);
     navigate('/pages/checkout');
-
   }
 
+
+  const handleDeleteClick = (item) => {
+    if(window.confirm("Are you sure! Do you want to delete this item.")){
+      deleteItem(item.cartId);
+      window.location.reload()
+    }
+  };
+
+
+  const deleteItem = async (shoppingCartId) => {
+   
+      try {
+            const updatedCartItems = [...cartItems];
+            await deleteCartItem(shoppingCartId);
+            updatedCartItems[shoppingCartId].amount = 0;
+            setCartItems(updatedCartItems);
+            
+
+          } catch (error) {
+            console.log(error);
+          }
+
+  };
+  if (!id) {
+    return (
+      <Container>
+      <Navbar />
+      <Announcement />
+      <Wrapper>
+        <Title>Your Cart</Title>
+        <Top>
+          <Link to="/">
+            <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link>
+          <TopTexts>
+            <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
+          </TopTexts>
+        </Top>
+        <Bottom>
+          <Info>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <img src="https://i.pinimg.com/564x/81/c4/fc/81c4fc9a4c06cf57abf23606689f7426.jpg" alt="cart is empty" />
+        <p>Your cart is empty! Regiter to buy products</p>
+        
+        </div>
+        <Link to = "/pages/Register" style={{ textDecoration: "none" }} ><Button>Register</Button></Link>
+          
+          </Info>
+        </Bottom>
+      </Wrapper>
+      <Footer />
+      <Copyright />
+    </Container>
+
+      
+
+    );
+  }
 
   if (isEmpty) {
     return (
@@ -150,7 +221,6 @@ const Cart = (customerId) => {
           </Link>
           <TopTexts>
             <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
-            <TopText>Your Wishlist(0)</TopText>
           </TopTexts>
         </Top>
         <Bottom>
@@ -166,6 +236,7 @@ const Cart = (customerId) => {
       <Footer />
       <Copyright />
     </Container>
+
       
 
     );
@@ -183,7 +254,7 @@ const Cart = (customerId) => {
           </Link>
           <TopTexts>
             <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
-            <TopText>Your Wishlist(0)</TopText>
+            
           </TopTexts>
           <Link to="../pages/Checkout">
             <TopButton type="filled">CHECKOUT NOW</TopButton>
@@ -205,7 +276,8 @@ const Cart = (customerId) => {
                     <ProductSize>
                       <b>Size:</b> {item.size}
                     </ProductSize>
-                    <HighlightOff />
+                    <HighlightOff onClick={() => handleDeleteClick(item)}  />
+                  
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
@@ -219,6 +291,7 @@ const Cart = (customerId) => {
                   </ProductPrice>
                 </PriceDetail>
               </Product>
+              
             ))}
           </Info>
           <Summary>
@@ -251,10 +324,18 @@ const Cart = (customerId) => {
           </Summary>
         </Bottom>
       </Wrapper>
+     
       <Footer />
       <Copyright />
     </Container>
+
   );
+
+
+ 
 }
+
+
+
 
 export default Cart
