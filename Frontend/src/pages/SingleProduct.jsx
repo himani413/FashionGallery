@@ -11,7 +11,7 @@ import productimg from '../images/black-jumpsuit.jpg'
 import { Add, Remove } from '@material-ui/icons'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 
 
@@ -47,6 +47,11 @@ const SingleProduct = () => {
     }
   };
 
+  const handleBuy = async () => {
+    localStorage.setItem('quantity',quantity);
+    localStorage.setItem('price',product.price);
+  };
+
   useEffect(() => {
     if (product && quantity > product.availableQuantity) {
       setIsQuantityValid(false);
@@ -56,8 +61,6 @@ const SingleProduct = () => {
       setIsQuantityValid(true);
     }
   }, [product, quantity]);
-
-
 
   if (!product) {
     return <Container>
@@ -111,7 +114,7 @@ const SingleProduct = () => {
                       <Add onClick={() => setQuantity(quantity + 1)} />
                     </AmountContainer>
                     <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
-                    <Button>Buy Now</Button>
+                    <Link to="/pages/singleproduct/checkout" ><Button onClick={handleBuy}>Buy Now</Button></Link>
                     {!isQuantityValid && <h2>The selected quantity is greater than the available quantity</h2>}
                   </>
                 )}
