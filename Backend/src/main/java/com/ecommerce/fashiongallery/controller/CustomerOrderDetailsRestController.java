@@ -2,6 +2,7 @@ package com.ecommerce.fashiongallery.controller;
 
 import com.ecommerce.fashiongallery.dto.CustomerOrdersDTO;
 import com.ecommerce.fashiongallery.dto.ResponseOrderDTO;
+import com.ecommerce.fashiongallery.dto.UserOrdersDTO;
 import com.ecommerce.fashiongallery.service.CustomerOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -24,10 +25,11 @@ public class CustomerOrderDetailsRestController {
     }
 
     @PostMapping("/customer-order-list") //get customer's orders list
-    public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestBody Long customerID){
+    public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestBody UserOrdersDTO userOrdersDTO){
 
         return ResponseEntity.ok().body(
-                customerOrderService.findCustomerOrdersByID(customerID)
+                //need to typecast to Long because the request body is an Integer
+                customerOrderService.findCustomerOrdersByID(userOrdersDTO.getCustomerID())
         );
     }
 
