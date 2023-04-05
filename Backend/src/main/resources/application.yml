@@ -8,8 +8,8 @@ server:
 
 spring:
   datasource:
-    password: Dinuka1999
-    url: jdbc:mysql://localhost:3306/fashiongallery?createDatabaseIfNotExist=true
+    password: Goldenpuppy@2022
+    url: jdbc:mysql://localhost:3306/fashiongallery-new?createDatabaseIfNotExist=true
     username: root
   jpa:
     hibernate:
