@@ -9,13 +9,38 @@ import Copyright from '../components/Copyright'
 import { Checkbox } from '@material-ui/core'
 import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+
+
 
 const Checkout = () => {
 
   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-  const totalCartAmount = localStorage.getItem("totalAmount");
-  console.log(totalCartAmount); // logs the total cart amount
+  //console.log(totalCartAmount); // logs the total cart amount
+  const location = useLocation();
+  const singleProductId = new URLSearchParams(location.search).get("productId");
+  console.log(singleProductId);
+  const [totalCartAmount, setTotalCartAmount] = useState(localStorage.getItem('totalAmount'));
 
+
+ useEffect(() => {
+   if (singleProductId) {
+     const fetchData = async () => {
+       const response =  await axios.get(`http://localhost:8080/api/v1/product/getProductById?productId=${singleProductId}`);
+       console.log(response.data.price);
+       setTotalCartAmount(response.data.price);
+     };
+     fetchData();
+
+    
+     
+   }
+ }, [singleProductId]);
+
+
+ 
 
     return (
       <Container>

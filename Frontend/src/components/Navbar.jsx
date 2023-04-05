@@ -105,15 +105,21 @@ const Navbar = (props) =>{
     try{
       const response= await axios.post('http://localhost:8080/api/v1/auth/logout',{
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
       }
       );
-      console.log(localStorage.getItem('token'));
-      localStorage.removeItem('token');
-      localStorage.removeItem('fname');
-      localStorage.removeItem('id');
-      window.location.href = '../pages/login';
+      if(response.status===200){
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('fname');
+        localStorage.removeItem('id');
+        window.location.href = '../pages/login';
+      }
+      else{
+        console.log(response.data);
+      }
       
     }catch(error){
       console.error(error);
@@ -123,7 +129,6 @@ const Navbar = (props) =>{
 
   const token = localStorage.getItem('token');
   const fname = localStorage.getItem('fname');
-  const id = localStorage.getItem('id');
   const [searchValue, setSearchValue] = useState("");
 
 
@@ -132,7 +137,7 @@ const Navbar = (props) =>{
     const fetchCartItems = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/cart/${id}`
+          `http://localhost:8080/api/v1/cart/1`
         );
         setCartItems(response.data);
         //console.log(response.data);
@@ -145,7 +150,7 @@ const Navbar = (props) =>{
 
   const handleSearch = () => {
     const searchQuery = searchValue;
-    navigate(`/pages/searchedProducts?searchQuery=${searchQuery}`);
+    navigate(`/pages/searchedProducts/?searchQuery=${searchQuery}`);
   }
 
   const totaQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);

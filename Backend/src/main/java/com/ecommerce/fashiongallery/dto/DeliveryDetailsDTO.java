@@ -17,7 +17,6 @@ public class DeliveryDetailsDTO {
     private String province;
     private Integer zipcode;
     private String amount;  //amount should pass to this via cart page as a session attribute
-    private Long customerID; //Customer ID should pass to this via cart page as a session attribute
 
 
 
