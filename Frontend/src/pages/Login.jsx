@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import companyLogo from "../images/logo.png";
 import {Container,Wrapper,Title,FORM,Input,Button,NavLink,Image} from "../styles/Login-Styles.jsx";
+import '../styles/Errors.css';
 
 function Login(){
 
