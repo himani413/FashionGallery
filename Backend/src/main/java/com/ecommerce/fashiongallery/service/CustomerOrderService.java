@@ -5,8 +5,8 @@ import com.ecommerce.fashiongallery.dto.ResponseOrderDTO;
 
 public interface CustomerOrderService {
 
-    void addCustomerOrder(CustomerOrdersDTO customerOrdersDTO);
-    ResponseOrderDTO findCustomerOrdersByID(Long customerID);
+    void addCustomerOrder(CustomerOrdersDTO customerOrdersDTO, String username);
+    ResponseOrderDTO findCustomerOrdersByID(String username);
 
 
 
