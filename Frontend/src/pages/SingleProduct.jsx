@@ -36,7 +36,7 @@ const SingleProduct = () => {
   }, []);
   const navigate = useNavigate();
   const handleAddToCart = async () => {
-    
+
     const customerId = localStorage.getItem("id");
     const data = { productId: product.id, quantity };
     try {
@@ -112,7 +112,7 @@ const SingleProduct = () => {
                       <Add onClick={() => setQuantity(quantity + 1)} />
                     </AmountContainer>
                     <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
-                    {!isQuantityValid && <h3>The selected quantity is greater than the available quantity</h3>}
+                    {!isQuantityValid && <h2>The selected quantity is greater than the available quantity</h2>}
                   </>
                 )}
             </AddContainer>
