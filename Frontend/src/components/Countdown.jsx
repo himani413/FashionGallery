@@ -1,11 +1,13 @@
 import React from "react";
+import EventIcon from '@material-ui/icons/Event';
+import "../styles/Countdown.css";
 
 const Countdown = () => {
     return (
         <section className="timer-container">
             <section className="timer">
                 <div>
-                    <span className="mdi mdi-calendar-clock timer-icon"></span>
+                    <EventIcon style={{ fontSize: 60 }}/>
                     <h2>Countdown Timer</h2>
                     <p>Countdown to a really special date.</p>
                 </div>

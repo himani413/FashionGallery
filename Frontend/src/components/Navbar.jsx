@@ -1,4 +1,4 @@
-import { Badge, Button } from '@material-ui/core';
+import { Badge } from '@material-ui/core';
 import { Search, ShoppingCartOutlined } from '@material-ui/icons';
 
 import styled from 'styled-components'
@@ -9,6 +9,7 @@ import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import {mobile} from "../responsive"
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+
 
 
 
@@ -172,7 +173,7 @@ const Navbar = (props) =>{
               {token ? (
               <>
                   <Menu><NavLink className="name">{fname}</NavLink></Menu>
-                  <Menu><NavLink><Button onClick={handleLogout}>LOGOUT</Button></NavLink></Menu>
+                  <Menu><NavLink onClick={handleLogout}>LOGOUT</NavLink></Menu>
               </>
               ) : (
               <>
