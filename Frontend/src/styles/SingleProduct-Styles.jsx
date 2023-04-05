@@ -95,6 +95,7 @@ export const Button = styled.button`
     background-color: teal;
     cursor: pointer;
     font-weight: 500;
+    font-size: 16px;
     border-radius: 20px;
     min-width: 120px;
     margin: 30px 30px 20px 0px;
