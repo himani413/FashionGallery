@@ -46,8 +46,6 @@ public class SecurityConfiguration {
                 .permitAll()
                 .requestMatchers("/api/v1/customer/**")
                 .permitAll()
-                .requestMatchers("/api/v1/customer/customer-order-list")
-                .permitAll()
                 //.hasRole(String.valueOf(Role.ADMIN))
                 .anyRequest()
                 .authenticated()

@@ -27,6 +27,19 @@ public class ShoppingCartService {
 
     }
     public ShoppingCart saveShoppingCart(ShoppingCart shoppingCart){return shoppingCartRepository.save(shoppingCart);}
+    public String DeleteShoppingCart(ShoppingCart shoppingCart){
+        try {
+            shoppingCartRepository.delete(shoppingCart);
+            return "Successfully deleted the shopping cart";
+        }
+        catch (Exception e){
+            return "Cannot delete the caart";
+        }
+    }
     //new
     public List<ShoppingCart> getShoppingCartDetailsByUserId(long userId){return shoppingCartRepository.findAllByUserId(userId);}
+
+    public ShoppingCart FindShoppingCartByCustomerAndProduct(long customerId,int productId){
+        return shoppingCartRepository.findByUserIdAndProductId(customerId,productId);
+    }
 }

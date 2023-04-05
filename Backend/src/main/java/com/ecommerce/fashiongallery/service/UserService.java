@@ -7,6 +7,8 @@ import com.ecommerce.fashiongallery.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class UserService {
     @Autowired
@@ -27,4 +29,9 @@ public class UserService {
     public  User getUser(Long id){
         return userRepository.getUserById(id);
     }
+
+    public Optional<User> getUser(String username){
+        return userRepository.findByEmail(username);
+    }
+
 }

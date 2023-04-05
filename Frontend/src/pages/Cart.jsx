@@ -17,6 +17,7 @@ import Checkout from "../pages/Checkout";
 import { useNavigate } from 'react-router-dom';
 
 
+
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
@@ -29,7 +30,7 @@ const Cart = () => {
           `http://localhost:8080/api/v1/cart/1`
         );
         setCartItems(response.data);
-        console.log(response.data);
+        //console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -40,24 +41,23 @@ const Cart = () => {
   useEffect(() => {
       const getProductDetails = async () => {
       try {
-        const productIds = [...new Set(cartItems.map(item => item.productId))]; // Get unique product IDs from cart items
         const newProductDetails = await Promise.all(
-        productIds.map(async (productId) => {
-        const response = await axios.get(
-        `http://localhost:8080/api/v1/product/getProductById?productId=${productId}`
-      );
-        const quantity = cartItems.filter(item => item.productId === productId)
-        .reduce((total, item) => total + item.quantity, 0); // Calculate total quantity for the product
-      return {
-            productId,
-            quantity,
-            picture: response.data.picture,
-            price: response.data.price,
-            name: response.data.name,
-            size: response.data.size
-      };
-      })
-      );
+          cartItems.map(async (cartItem) => {
+            const response = await axios.get(
+              `http://localhost:8080/api/v1/product/getProductById?productId=${cartItem.productId}`
+            );
+            console.log(cartItem);
+            return {
+              productId: cartItem.productId,
+              quantity: cartItem.quantity,
+              picture: response.data.picture,
+              price: response.data.price,
+              name: response.data.name,
+              size: response.data.size,
+              cartId: cartItem.id
+            };
+          })
+        );
       setProductDetails(newProductDetails);
       if (newProductDetails.length > 0) {
         setIsEmpty(false);
@@ -74,8 +74,38 @@ const Cart = () => {
 
   const totalCartAmount = cartItems.reduce((total, item) => total + item.amount, 0);
 
-  console.log(totalCartAmount);
-
+  //console.log(totalCartAmount);
+  const updateShoppingCartQuantity = async (shoppingCartId, quantity) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/api/v1/cart/updateShoppingCart?shoppingCartId=${shoppingCartId}&quantity=${quantity}`
+        );
+      //return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const handleAddClick = async (productId,cartId) => {
+    const updatedCartItems = [...cartItems];
+    const cartItemIndex = updatedCartItems.findIndex(
+      (item) => item.productId === productId
+    );
+    updatedCartItems[cartItemIndex].quantity++;
+    await updateShoppingCartQuantity(cartId, updatedCartItems[cartItemIndex].quantity);
+    setCartItems(updatedCartItems);
+  };
+  
+  const handleRemoveClick = async (productId,cartId) => {
+    const updatedCartItems = [...cartItems];
+    const cartItemIndex = updatedCartItems.findIndex(
+      (item) => item.productId === productId
+    );
+    if (updatedCartItems[cartItemIndex].quantity > 1) {
+      updatedCartItems[cartItemIndex].quantity--;
+      await updateShoppingCartQuantity(cartId, updatedCartItems[cartItemIndex].quantity);
+      setCartItems(updatedCartItems);
+    }
+  };
 
 
   if (isEmpty) {
@@ -150,9 +180,9 @@ const Cart = () => {
                 </ProductDetail>
                 <PriceDetail>
                   <ProductAmountContainer>
-                    <Add />
+                    <Add onClick={() => handleAddClick(item.productId,item.cartId)} />
                     <ProductAmount>{item.quantity}</ProductAmount>
-                    <Remove />
+                    <Remove onClick={() => handleRemoveClick(item.productId,item.cartId)} />
                   </ProductAmountContainer>
                   <ProductPrice>
                     Rs. {item.price * item.quantity}

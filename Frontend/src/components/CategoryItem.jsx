@@ -48,7 +48,7 @@ const Button = styled.button`
 
 
 const CategoryItem = ({ item }) => {
-  console.log(item.img);
+  //console.log(item.img);
   return (
     <Container>
       <Image src={item.img} />

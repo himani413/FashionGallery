@@ -21,7 +21,7 @@ public class Delivery {
 
     @Column(name = "mobile_number", nullable = false)
     private String mobileNumber;
-    @Column(name = "address_line_1", nullable = false, length = 512)
+    @Column(name = "address_line_1", length = 512)
     private String addressLine1;
 
     @Column(name = "address_line_2", length = 512)
@@ -36,13 +36,13 @@ public class Delivery {
     @Column(name = "zipcode", nullable = false)
     private Integer zipcode;
 
-    @Column(name = "order_amount", nullable = false)
+    @Column(name = "order_amount")
     private String orderAmount; //passing through a session to store
 
     @Column(name = "customer_id", nullable = false)
     private Long customerID; //passing through a session to store(ID of the current customer)
 
-    @Column(name = "order_date", nullable = false)
+    @Column(name = "order_date")
     private String orderDate; //current date
 
     public Delivery(String firstName,

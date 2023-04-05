@@ -4,5 +4,6 @@ import com.ecommerce.fashiongallery.dto.DeliveryDetailsDTO;
 import com.ecommerce.fashiongallery.dto.ResponseDTO;
 
 public interface DeliveryService {
-    ResponseDTO addDelivery(DeliveryDetailsDTO deliveryDetailsDTO);
+    ResponseDTO addDelivery(DeliveryDetailsDTO deliveryDetailsDTO,String username);
+
 }

@@ -41,6 +41,7 @@ function Login(){
           localStorage.setItem('token', response.data.token);
           localStorage.setItem('fname',response.data.fname);
           localStorage.setItem('id',response.data.id);
+          console.log(response.data.fname);
           navigate('/');
         }
       }catch(error){
