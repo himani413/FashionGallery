@@ -65,8 +65,8 @@ export const FilterSizeOption = styled.option`
 `;
 
 export const AddContainer = styled.div`
-    width: 60%;
-    display: flex;
+    width: 80%;
+    display: block;
     align-items: center;
     justify-content: space-between;
 `;
@@ -96,11 +96,17 @@ export const Button = styled.button`
     cursor: pointer;
     font-weight: 500;
     border-radius: 20px;
-    width: 120px;
-
+    min-width: 120px;
+    margin: 30px 30px 20px 0px;
     &:hover {
         color: white;
         background-color: rgb(4, 81, 81);
         border-color:rgb(4, 81, 81);
       }
+`;
+
+export const Message = styled.p`
+    color: red;
+    font-size: 16px;
+    margin: 20px 10px;
 `;
