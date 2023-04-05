@@ -105,14 +105,21 @@ const Navbar = (props) =>{
     try{
       const response= await axios.post('http://localhost:8080/api/v1/auth/logout',{
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ' + localStorage.getItem('token')
         }
       }
       );
-      console.log(localStorage.getItem('token'));
-      localStorage.removeItem('token');
-      localStorage.removeItem('fname');
-      window.location.href = '../pages/login';
+      if(response.status===200){
+        localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('fname');
+        localStorage.removeItem('id');
+        window.location.href = '../pages/login';
+      }
+      else{
+        console.log(response.data);
+      }
       
     }catch(error){
       console.error(error);
