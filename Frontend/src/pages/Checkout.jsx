@@ -12,6 +12,7 @@ import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+
 function Checkout (){
   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
   const totalCartAmount = localStorage.getItem("totalCartAmount");
