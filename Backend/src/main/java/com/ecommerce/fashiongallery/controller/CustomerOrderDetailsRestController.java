@@ -25,11 +25,11 @@ public class CustomerOrderDetailsRestController {
     }
 
     @PostMapping("/customer-order-list") //get customer's orders list
-    public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestBody UserOrdersDTO userOrdersDTO){
+    public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestParam String username){
 
         return ResponseEntity.ok().body(
 
-                customerOrderService.findCustomerOrdersByID(userOrdersDTO.getCustomerID())
+                customerOrderService.findCustomerOrdersByID(username)
         );
     }
 

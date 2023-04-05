@@ -33,10 +33,11 @@ public class CustomerOrderServiceIMPL implements CustomerOrderService {
     }
 
     @Override
-    public ResponseOrderDTO findCustomerOrdersByID(Long customerID) {
+    public ResponseOrderDTO findCustomerOrdersByID(String username) {
 
+        var user=userService.getUser(username);
         return ResponseOrderDTO.builder()
-                .customerOrders(customerOrderRepository.findCustomerOrdersByID(customerID))
+                .customerOrders(customerOrderRepository.findCustomerOrdersByID(user.get().getId()))
                 .build();
 
     }
