@@ -6,6 +6,7 @@ import Slider from '../components/Slider'
 import Newsletter from '../components/Newsletter'
 import Categories from '../components/Categories'
 import Products from '../components/Products'
+import Countdown from '../components/Countdown'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
@@ -35,6 +36,7 @@ function Home(){
         <Slider />
         <Categories/>
         <Products items={Items}/>
+        <Countdown />
         <Newsletter/>
         <Footer/>
         <Copyright/>
