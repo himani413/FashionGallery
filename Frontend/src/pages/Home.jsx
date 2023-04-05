@@ -9,7 +9,6 @@ import Products from '../components/Products'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
-
 function Home(){
 
   const [Items, setItems] = useState([]);
