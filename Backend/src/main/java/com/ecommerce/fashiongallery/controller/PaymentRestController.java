@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/customer")
+@CrossOrigin(origins = "http://localhost:3000")
 public class PaymentRestController {
 
     @GetMapping("/test")
@@ -24,11 +25,12 @@ public class PaymentRestController {
         this.deliveryService = deliveryService;
     }
 
-    @PutMapping("/delivery")
-    public ResponseEntity<ResponseDTO> addNewDelivery(@RequestBody DeliveryDetailsDTO deliveryDetailsDTO){
+    @PostMapping("/delivery")
+    public ResponseEntity<ResponseDTO> addNewDelivery(@RequestBody DeliveryDetailsDTO deliveryDetailsDTO,
+                                                      @RequestParam("username") String username){
 
         return ResponseEntity.ok().body(
-                deliveryService.addDelivery(deliveryDetailsDTO)
+                deliveryService.addDelivery(deliveryDetailsDTO,"dinukaekanayaka18@gmail.com")
         );
     }
 
