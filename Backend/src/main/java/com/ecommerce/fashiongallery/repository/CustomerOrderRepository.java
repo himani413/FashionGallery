@@ -15,6 +15,6 @@ public interface CustomerOrderRepository extends JpaRepository<CustomerOrders, L
     @Transactional
     @Modifying
     @Query(value = "SELECT * FROM customer_orders c JOIN delivery d ON c.order_id = d.order_id WHERE c.customer_id = ?1", nativeQuery = true)
-    List<CustomerOrders> findCustomerOrdersByID(Long customerID);
+    List<CustomerOrders> findCustomerOrdersByID(long customerID);
 
 }

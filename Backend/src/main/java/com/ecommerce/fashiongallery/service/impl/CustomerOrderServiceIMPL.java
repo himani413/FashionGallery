@@ -28,7 +28,7 @@ public class CustomerOrderServiceIMPL implements CustomerOrderService {
     }
 
     @Override
-    public ResponseOrderDTO findCustomerOrdersByID(Long customerID) {
+    public ResponseOrderDTO findCustomerOrdersByID(long customerID) {
 
         return ResponseOrderDTO.builder()
                 .customerOrders(customerOrderRepository.findCustomerOrdersByID(customerID))

@@ -8,10 +8,13 @@ import Navbar from '../components/Navbar'
 import Copyright from '../components/Copyright'
 import { Checkbox } from '@material-ui/core'
 import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
 
 const Checkout = () => {
+
   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-  const totalCartAmount = localStorage.getItem("totalCartAmount");
+  const totalCartAmount = localStorage.getItem("totalAmount");
+  console.log(totalCartAmount); // logs the total cart amount
 
 
     return (

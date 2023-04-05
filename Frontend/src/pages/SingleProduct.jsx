@@ -30,13 +30,14 @@ const SingleProduct = () => {
     const fetchData = async () => {
       const response = await axios.get(`http://localhost:8080/api/v1/product/getProductById?productId=${productId}`);
       setProduct(response.data);
-      console.log(response.data);
+      //console.log(response.data);
     };
     fetchData();
   }, []);
   const navigate = useNavigate();
   const handleAddToCart = async () => {
-    const customerId = 1;
+    
+    const customerId = localStorage.getItem("id");
     const data = { productId: product.id, quantity };
     try {
       const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
@@ -111,7 +112,7 @@ const SingleProduct = () => {
                       <Add onClick={() => setQuantity(quantity + 1)} />
                     </AmountContainer>
                     <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
-                    {!isQuantityValid && <h2>The selected quantity is greater than the available quantity</h2>}
+                    {!isQuantityValid && <h3>The selected quantity is greater than the available quantity</h3>}
                   </>
                 )}
             </AddContainer>

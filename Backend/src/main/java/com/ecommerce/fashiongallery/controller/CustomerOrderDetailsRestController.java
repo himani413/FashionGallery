@@ -24,10 +24,11 @@ public class CustomerOrderDetailsRestController {
     }
 
     @PostMapping("/customer-order-list") //get customer's orders list
-    public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestBody Long customerID){
-
+    public ResponseEntity<ResponseOrderDTO> findCustomerOrdersByID(@RequestParam long customerID){
+        System.out.println(customerID);
         return ResponseEntity.ok().body(
                 customerOrderService.findCustomerOrdersByID(customerID)
+
         );
     }
 

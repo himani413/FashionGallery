@@ -18,16 +18,19 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Cart = () => {
+
+const Cart = (customerId) => {
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
   const [isEmpty, setIsEmpty] = useState(true);
-  
+  const id = localStorage.getItem('id');
+  const navigate = useNavigate();
+  const [totalCartAmount, setTotalCartAmount] = useState(0);
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/cart/1`
+          `http://localhost:8080/api/v1/cart/${id}`
         );
         setCartItems(response.data);
         //console.log(response.data);
@@ -46,7 +49,7 @@ const Cart = () => {
             const response = await axios.get(
               `http://localhost:8080/api/v1/product/getProductById?productId=${cartItem.productId}`
             );
-            console.log(cartItem);
+           //console.log(cartItem);
             return {
               productId: cartItem.productId,
               quantity: cartItem.quantity,
@@ -72,7 +75,8 @@ const Cart = () => {
     }, [cartItems]);
 
 
-  const totalCartAmount = cartItems.reduce((total, item) => total + item.amount, 0);
+    //const tempTotalCartAmount = cartItems.reduce((total, item) => total + item.amount, 0);
+    
 
   //console.log(totalCartAmount);
   const updateShoppingCartQuantity = async (shoppingCartId, quantity) => {
@@ -92,6 +96,7 @@ const Cart = () => {
     );
     updatedCartItems[cartItemIndex].quantity++;
     await updateShoppingCartQuantity(cartId, updatedCartItems[cartItemIndex].quantity);
+    updatedCartItems[cartItemIndex].amount = updatedCartItems[cartItemIndex].quantity * productDetails[cartItemIndex].price;
     setCartItems(updatedCartItems);
   };
   
@@ -103,9 +108,33 @@ const Cart = () => {
     if (updatedCartItems[cartItemIndex].quantity > 1) {
       updatedCartItems[cartItemIndex].quantity--;
       await updateShoppingCartQuantity(cartId, updatedCartItems[cartItemIndex].quantity);
+      updatedCartItems[cartItemIndex].amount = updatedCartItems[cartItemIndex].quantity * productDetails[cartItemIndex].price;
       setCartItems(updatedCartItems);
     }
   };
+
+  useEffect(() => {
+    const newCartItems = cartItems.map((cartItem, index) => {
+      const productDetail = productDetails[index];
+      return {
+        ...cartItem,
+        amount: cartItem.quantity * productDetail.price
+      };
+    });
+    const newTotalCartAmount = newCartItems.reduce((total, item) => total + item.amount, 0);
+    setCartItems(newCartItems);
+    setTotalCartAmount(newTotalCartAmount);
+  }, [productDetails]);
+
+  const handleCheckout =()=>{
+
+    localStorage.setItem("totalAmount", totalCartAmount);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    console.log(totalCartAmount);
+    console.log(cartItems);
+    navigate('/pages/checkout');
+
+  }
 
 
   if (isEmpty) {
@@ -213,17 +242,10 @@ const Cart = () => {
                 Rs.{totalCartAmount+350-220}
               </SummaryItemPrice>
             </SummaryItem>
-            <Link
-              to={{
-              pathname: "../pages/Checkout",
-              state: {
-                cartItems: JSON.stringify(cartItems),
-                totalAmount: totalCartAmount,
-              },
-            }}
+            <Link to="../pages/Checkout"
             style={{ textDecoration: "none" }}
->
-              <Button>CHECKOUT NOW</Button>
+            >
+              <Button  onClick={handleCheckout} >CHECKOUT NOW</Button>
             </Link>
           </Summary>
         </Bottom>
