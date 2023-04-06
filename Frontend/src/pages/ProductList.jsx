@@ -11,7 +11,6 @@ import React, { useEffect, useState } from 'react';
 import { categories } from "../data";
 import { sliderItems } from "../data";
 
-
 export const ProductList = () => {
     const [ProductList, setProductList] = useState([]);
     const location = useLocation();
@@ -44,8 +43,6 @@ export const ProductList = () => {
         <Navbar/>
         <Announcement/>
         <Title>{title}</Title>
-
-
         <FilterContainer>
             <Filter>
                 <FilterText>Filter Products:</FilterText>
