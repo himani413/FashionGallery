@@ -32,22 +32,22 @@ export const Title = styled.h1`
 
 
 export const Button = styled.button`
-    width: 40%;
-    border: none;
-    font-size: 14px;
-    padding: 10px 20px;
-    font-weight: 500;
+
+    padding: 15px;
+    border: 2px solid teal;
     color: white;
     background-color: teal;
-    border-radius: 20px;
     cursor: pointer;
-    margin: 20px 10px;
-    display: block;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 20px;
+    min-width: 120px;
+    margin: 30px 30px 20px 13px;
     &:hover {
         color: white;
         background-color: rgb(4, 81, 81);
-        
-      }
+        border-color:rgb(4, 81, 81);
+    }
 `;
 
 export const Info = styled.div`
