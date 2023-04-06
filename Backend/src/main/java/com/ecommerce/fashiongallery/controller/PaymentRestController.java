@@ -30,7 +30,7 @@ public class PaymentRestController {
                                                       @RequestParam("username") String username){
 
         return ResponseEntity.ok().body(
-                deliveryService.addDelivery(deliveryDetailsDTO,"dinukaekanayaka18@gmail.com")
+                deliveryService.addDelivery(deliveryDetailsDTO,username)
         );
     }
 

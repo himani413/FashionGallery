@@ -10,7 +10,7 @@ import lombok.*;
 public class Delivery {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
+    @Column(name = "order_id", nullable = false)
     private Long id;
 
     @Column(name = "first_name", nullable = false)
@@ -37,10 +37,10 @@ public class Delivery {
     private Integer zipcode;
 
     @Column(name = "order_amount")
-    private String orderAmount; //passing through a session to store
+    private String orderAmount; //passing from frontend to store
 
     @Column(name = "customer_id", nullable = false)
-    private Long customerID; //passing through a session to store(ID of the current customer)
+    private Long customerID; //passing from frontend to store(ID of the current customer)
 
     @Column(name = "order_date")
     private String orderDate; //current date

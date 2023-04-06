@@ -1,5 +1,6 @@
 package com.ecommerce.fashiongallery.repository;
 
+import com.ecommerce.fashiongallery.dto.CustomerOrdersJoinResultsDTO;
 import com.ecommerce.fashiongallery.entity.CustomerOrders;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,26 +15,13 @@ public interface CustomerOrderRepository extends JpaRepository<CustomerOrders, L
 
     @Transactional
     @Modifying
-    @Query(value = "SELECT\n" +
-            "    d.id AS order_id,\n" +
-            "    d.customer_id,\n" +
-            "    d.first_name,\n" +
-            "    d.last_name,\n" +
-            "    d.mobile_number,\n" +
-            "    d.address_line_1,\n" +
-            "    d.address_line_2,\n" +
-            "    d.city,\n" +
-            "    d.province,\n" +
-            "    d.zipcode,\n" +
-            "    d.order_amount,\n" +
-            "    d.order_date \n" +
-            "FROM\n" +
-            "    customer_orders c \n" +
-            "INNER JOIN\n" +
-            "    delivery d \n" +
-            "        ON c.order_id = d.id \n" +
+    @Query(value = "SELECT new com.ecommerce.fashiongallery.dto.CustomerOrdersJoinResultsDTO(d.id,d.customerID, d.firstName, d.lastName, d.mobileNumber, d.addressLine1, d.addressLine2, d.city, d.province, d.zipcode, d.orderAmount, d.orderDate) FROM\n" +
+            "    CustomerOrders c \n" +
+            " INNER JOIN\n" +
+            "    Delivery d \n" +
+            "        ON c.orderID = d.id \n" +
             "WHERE\n" +
-            "    c.customer_id = ?1", nativeQuery = true)
-    List<CustomerOrders> findCustomerOrdersByID(Long customerID);
+            "    c.customerID =?1")
+    List<CustomerOrdersJoinResultsDTO> findCustomerOrdersByID(Long customerID);
 
 }
