@@ -1,0 +1,31 @@
+.table-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 1rem;
+    margin-bottom: 100px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th,td {
+    border: 1px solid #ffffff;
+    text-align: left;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  th {
+    background-color: rgb(17, 126, 126);
+    
+  }
+  
+  td {
+    background-color: rgb(184, 231, 219);
+  }
+  
+
+  

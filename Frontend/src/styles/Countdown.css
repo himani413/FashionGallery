@@ -30,7 +30,7 @@ body {
 
 .timer div:first-child {
     text-align: center;
-    margin: 50px;
+    margin: 60px;
 }
 
 h2 {
@@ -48,7 +48,7 @@ h2 {
     display: grid;
     grid-template-columns: repeat(7,1fr);
     margin-top: 3em;
-    padding: 3em;
+    padding: 4em;
     text-align: center;
 }
 
