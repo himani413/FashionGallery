@@ -14,7 +14,7 @@ import React, { useEffect, useState } from 'react';
 
 
 const Container = styled.div`
-  height: 95px;
+  height: 100px;
   ${mobile({height:"50px"})}
 `;
 
