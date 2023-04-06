@@ -14,6 +14,7 @@ function Register() {
   const [confPass, setConfPassword] = useState('');
   const [fieldError,setFieldError] = useState("")
   const [response, setResponse] = useState("")
+  const [errorResponse, setErrorResponse] = useState("")
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +63,7 @@ function Register() {
         }
         
       } catch (error) {
-          setResponse("Registration Failed!")
+          setErrorResponse("Registration Failed!");
       }
     }
   };
@@ -73,7 +74,7 @@ function Register() {
       <Wrapper>
         <Image src={companyLogo} />
         <Title>CREATE AN ACCOUNT</Title>
-
+        {errorResponse && <div className="errorResponse">{errorResponse}</div>}
         {response && <div className="response">{response}</div>}
         {fieldError && <div className="error">{fieldError}</div>}
         <FORM onSubmit={handleSubmit}>

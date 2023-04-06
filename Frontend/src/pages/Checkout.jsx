@@ -1,5 +1,3 @@
-import CartImage from '../images/white-maxi.jpg'
-import CartImage2 from '../images/white-jumpsuit.jpeg'
 import {Container,Wrapper,Title,Bottom,Info,FORM,Input,Agreement,Summary,SummaryTitle,
         SummaryItem,SummaryItemText,SummaryItemPrice,Button,Hr} from '../styles/Checkout-Styles.jsx'
 import Announcement from '../components/Announcement'
@@ -56,6 +54,7 @@ const Checkout = () => {
   const [zipcode, setCode] = useState('');
   const [fieldError,setFieldError] = useState("");
   const [response, setResponse] = useState("");
+  const [errorResponse, setErrorResponse] = useState("")
   const navigate = useNavigate();
 
   const handleClick = async (e) => {
@@ -97,7 +96,7 @@ const Checkout = () => {
         navigate('orderconfirmation');
 
       } catch (e) {
-          setResponse("Failed!");
+          setErrorResponse("Failed!");
       }
     }
   };
@@ -117,6 +116,7 @@ const Checkout = () => {
             
             <Bottom>
               <Info>
+              {errorResponse && <div className="errorResponse">{errorResponse}</div>}
               {response && <div className="response">{response}</div>}
               {fieldError && <div className="error">{fieldError}</div>}
               <FORM>
