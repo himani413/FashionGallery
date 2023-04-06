@@ -85,10 +85,12 @@ import {
     }
 
     const handleAddToCart = async () => {
-      const customerId = 1;
+      const customerId = localStorage.getItem('id');
       const data = { productId: item.id, quantity:1 };
+      console.log(data);
       try {
         const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
+        console.log(response);
         navigate('../pages/Cart');
       } catch (error) {
         console.log(error);
