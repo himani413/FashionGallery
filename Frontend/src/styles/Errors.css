@@ -1,5 +1,12 @@
-.error,.response{
+.error{
     color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .response{
+    color: rgb(30, 136, 30);
     font-size: 14px;
     margin-top: 10px;
     margin-bottom: 10px;

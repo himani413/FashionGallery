@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import companyLogo from "../images/logo.png";
 import {Container,Wrapper,Title,FORM,Input,Button,Image,Label} from "../styles/EmailVerification-Styles";
-
+import '../styles/Errors.css';
 
 function EmailVerification() {
   const [token, setToken] = useState('');
@@ -43,7 +43,7 @@ function EmailVerification() {
                     Enter the Verification Code Sent To Your Email:<Input type="text" value={token} onChange={event => setToken(event.target.value)}/>
                 </Label>
                 <Button type="submit">ACTIVATE</Button>
-                {message && <p>{message}</p>}
+                {message && <p className="error">{message}</p>}
 
             </FORM>
         </Wrapper>
