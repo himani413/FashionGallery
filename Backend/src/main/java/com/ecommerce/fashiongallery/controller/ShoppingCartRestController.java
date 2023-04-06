@@ -137,6 +137,24 @@ public class ShoppingCartRestController {
     }
 
 
+    @PostMapping(value = "/deleteCart")
+    public String deleteShoppingCart(@RequestParam long customerId){
+        List<ShoppingCart> cartList = shoppingCartService.getShoppingCartDetailsByUserId(customerId);
+        try {
+            for (ShoppingCart cart : cartList) {
+                shoppingCartService.DeleteShoppingCart(cart);
+            }
+            return "Successfully Remove the cart";
+        }
+        catch (Exception e){
+            return "Error in removing";
+        }
+
+
+    }
+
+
+
 
 
 

@@ -44,6 +44,7 @@ public class DeliveryServiceIMPL implements DeliveryService {
         return ResponseDTO.builder()
                 .code(StringList.RSP_SUCCESS)
                 .message("Delivery Details Added Successfully")
+                .id(delivery.getId())
                 .build();
     }
 }

@@ -100,6 +100,7 @@ const NavLink = styled(Link)`
 const Navbar = (props) =>{
 
   const navigate = useNavigate();
+  
 
   const handleLogout = async () => {
     try{
@@ -129,6 +130,7 @@ const Navbar = (props) =>{
 
   const token = localStorage.getItem('token');
   const fname = localStorage.getItem('fname');
+  const id = localStorage.getItem('id');
   const [searchValue, setSearchValue] = useState("");
 
 
@@ -138,7 +140,7 @@ const Navbar = (props) =>{
         const fetchCartItems = async () => {
           try {
             const response = await axios.get(
-              `http://localhost:8080/api/v1/cart/1`
+              `http://localhost:8080/api/v1/cart/${id}`
             );
             setCartItems(response.data);
           } catch (error) {

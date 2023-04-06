@@ -43,4 +43,18 @@ public class ProductRestController {
         List<Product> products = productService.getProductByCategoryId(categoryId);
         return ResponseEntity.ok(products);
     }
+
+    @PostMapping("/updateQuantity")
+    public String updateProductQuantity(@RequestParam int productId,@RequestParam int buyingQuantity){
+        try {
+            Product product = productService.getProductById(productId);
+            int newQuantity = product.getAvailableQuantity() - buyingQuantity;
+            product.setAvailableQuantity(newQuantity);
+            product = productService.saveProduct(product);
+            return "SuccessFully update the quantity";
+        }
+        catch (Exception e){
+            return "Cannot update the quantity";
+        }
+    }
 }

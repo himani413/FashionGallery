@@ -40,6 +40,8 @@ public class SecurityConfiguration {
                 //whitelisting-give authorization to some endpoints without jwtauthorization
                 .requestMatchers("/api/v1/auth/**","/api/v1/cart/**","/api/v1/product/**","/api/v1/customer/**")
                 .permitAll()
+                .requestMatchers("/api/v1/order/**")
+                .permitAll()
                 //.hasRole(String.valueOf(Role.ADMIN))
                 .anyRequest()
                 .authenticated()
@@ -56,6 +58,7 @@ public class SecurityConfiguration {
                 .logoutUrl("/api/v1/auth/logout")
                 .addLogoutHandler(logoutHandler)
                 .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext());
+
 
         return http.build();
     }
