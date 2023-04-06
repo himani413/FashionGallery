@@ -1,13 +1,12 @@
-import { recomposeColor } from "@material-ui/core";
 import Navbar from "../components/Navbar"
 import Announcement from "../components/Announcement"
 import Products from "../components/Products"
 import Newsletter from "../components/Newsletter"
 import Footer from "../components/Footer"
 import Copyright from "../components/Copyright"
-import {Container,Title,FilterContainer,FilterText,
+import {Container,FilterContainer,FilterText,
         Filter,Select,Option} from "../styles/ProductList-Styles"
-import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from "react-router-dom";
 

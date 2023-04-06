@@ -1,8 +1,6 @@
-import CartImage from '../images/white-maxi.jpg'
-import CartImage2 from '../images/white-jumpsuit.jpeg'
 import {Container,Wrapper,Title,Top,TopButton,TopTexts,TopText,Bottom,Info,Product,
         PriceDetail,Image,Details,ProductName,ProductId,ProductSize,ProductDetail,
-        ProductAmountContainer,ProductPrice,ProductAmount,Hr,Summary,SummaryTitle,
+        ProductAmountContainer,ProductPrice,ProductAmount,Summary,SummaryTitle,
         SummaryItem,SummaryItemText,SummaryItemPrice,Button} from '../styles/Cart-Styles.jsx'
 import Announcement from '../components/Announcement'
 import Footer from '../components/Footer'
