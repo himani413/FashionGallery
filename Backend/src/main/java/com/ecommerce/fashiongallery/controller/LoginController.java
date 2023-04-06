@@ -20,7 +20,6 @@ public class LoginController {
 
     private final UserRepository userRepository;
     private final LoginService loginService;
-    private final LogoutService logoutService;
     private final PasswordEncoder passwordEncoder;
 
     @PostMapping("/login")
