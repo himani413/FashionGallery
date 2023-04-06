@@ -9,9 +9,11 @@ body {
 }
 
 .timer-container {
+    background-image: url('../images/countdownBack.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #fff;
-    width: 100vw;
-    height: 100vh;
 }
 
 .timer {
@@ -28,6 +30,7 @@ body {
 
 .timer div:first-child {
     text-align: center;
+    margin: 50px;
 }
 
 h2 {
@@ -47,5 +50,17 @@ h2 {
     margin-top: 3em;
     padding: 3em;
     text-align: center;
+}
+
+section p:first-child, .timer div:last-child span {
+    font-size: 3em;
+}
+
+@media screen and (max-width: 480px) {
+    .timer div:last-child {
+        margin-left: 2em;
+        margin-right: 2em;
+        padding: 3em 1em;
+    }
 }
 
