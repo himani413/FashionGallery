@@ -1,8 +1,6 @@
 package com.ecommerce.fashiongallery.controller;
 
-import com.ecommerce.fashiongallery.dto.CustomerOrdersDTO;
 import com.ecommerce.fashiongallery.dto.ResponseOrderDTO;
-import com.ecommerce.fashiongallery.dto.UserOrdersDTO;
 import com.ecommerce.fashiongallery.service.CustomerOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +16,6 @@ public class CustomerOrderDetailsRestController {
 
     public CustomerOrderDetailsRestController(CustomerOrderService customerOrderService) {
         this.customerOrderService = customerOrderService;
-    }
-
-    @PutMapping("/customer-order")  //add order id's to relevant customer id
-    public void addCustomerOrder(@RequestBody CustomerOrdersDTO customerOrdersDTO, @RequestParam("username") String username){
-        customerOrderService.addCustomerOrder(customerOrdersDTO,username);
     }
 
     @PostMapping("/customer-order-list") //get customer's orders list
