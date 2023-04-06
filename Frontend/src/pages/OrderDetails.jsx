@@ -7,13 +7,31 @@ import Copyright from '../components/Copyright';
 import Announcement from '../components/Announcement';
 import Newsletter from '../components/Newsletter';
 import axios from 'axios';
+import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 
 const Container = styled.div``;
 const Title = styled.h1`
     margin: 30px;
     text-align: center;
 `
+export const Button = styled.button`
 
+    padding: 15px;
+    border: 2px solid teal;
+    color: white;
+    background-color: teal;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    border-radius: 20px;
+    min-width: 120px;
+    margin: 20px 30px 20px 30px;
+    &:hover {
+        color: white;
+        background-color: rgb(4, 81, 81);
+        border-color:rgb(4, 81, 81);
+    }
+`;
 const OrderDetails = () => {
 
     const [orders, setOrders] = React.useState([]);
@@ -71,6 +89,7 @@ const OrderDetails = () => {
             
             </tbody>
         </table>
+        <Link to="/" style={{ textDecoration: 'none' }}><Button>Back To Home</Button></Link>
     </div>
     <Newsletter/>
     <Footer/>
