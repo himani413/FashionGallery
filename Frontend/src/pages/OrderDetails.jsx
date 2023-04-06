@@ -89,7 +89,7 @@ const OrderDetails = () => {
             
             </tbody>
         </table>
-        <Link to="/" style={{ textDecoration: 'none' }}><Button>Back To Home</Button></Link>
+        <Link to="/" style={{ textDecoration: 'none' }}><Button style={{margin: '30px auto', display:'block'}}>Back To Home</Button></Link>
     </div>
     <Newsletter/>
     <Footer/>
