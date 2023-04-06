@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import EventIcon from '@material-ui/icons/Event';
 import "../styles/Countdown.css";
 
@@ -11,7 +11,7 @@ const Countdown = () => {
     let interval = useRef();
 
     const startTimer = () => {
-        const countdownDate = new Date('April 07,2023 00:00:00').getTime();
+        const countdownDate = new Date('April 13,2023 00:00:00').getTime();
 
         interval = setInterval(() => {
             const now = new Date().getTime();
@@ -24,11 +24,24 @@ const Countdown = () => {
 
             if (distance < 0){
                 // stop timer
+                clearInterval(interval.current);
             } else {
                 // update timer
+                setTimerDays(days);
+                setTimerHours(hours);
+                setTimerMinutes(minutes);
+                setTimerSeconds(seconds);
             }
         }, 1000);
     };
+
+    //component did mount method
+    useEffect(() => {
+        startTimer();
+        return () => {
+            clearInterval(interval.current);
+        }
+    });
 
     return (
         <section className="timer-container">
@@ -40,22 +53,22 @@ const Countdown = () => {
                 </div>
                 <div>
                     <section>
-                        <p>87</p>
+                        <p>{timerDays}</p>
                         <p><small>Days</small></p>
                     </section>
                     <span>:</span>
                     <section>
-                        <p>87</p>
+                        <p>{timerHours}</p>
                         <p><small>Hours</small></p>
                     </section>
                     <span>:</span>
                     <section>
-                        <p>87</p>
+                        <p>{timerMinutes}</p>
                         <p><small>Minutes</small></p>
                     </section>
                     <span>:</span>
                     <section>
-                        <p>87</p>
+                        <p>{timerSeconds}</p>
                         <p><small>Seconds</small></p>
                     </section>
                 </div>
