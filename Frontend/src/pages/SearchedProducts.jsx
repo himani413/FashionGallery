@@ -20,7 +20,7 @@ export const SearchedProducts = () => {
 
     useEffect(() => {
         if (searchQuery !== "") {
-            //console.log(searchQuery)
+
           fetch(`http://localhost:8080/api/v1/product/search?searchValue=${searchQuery}`)
             .then((response) => response.json())
             .then((data) => setSearchItems(data))

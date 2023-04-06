@@ -141,7 +141,6 @@ const Navbar = (props) =>{
               `http://localhost:8080/api/v1/cart/1`
             );
             setCartItems(response.data);
-            //console.log(response.data);
           } catch (error) {
             console.log(error);
           }

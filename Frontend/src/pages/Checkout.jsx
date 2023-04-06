@@ -18,7 +18,6 @@ import { useLocation } from "react-router-dom";
 
 const Checkout = () => {
   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-  //console.log(totalCartAmount); // logs the total cart amount
   const location = useLocation();
   const singleProductId = new URLSearchParams(location.search).get("productId");
   const singleProductQuantity = new URLSearchParams(location.search).get("quantity");

@@ -41,7 +41,6 @@ const SingleProduct = () => {
     const data = { productId: product.id, quantity };
     try {
       const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
-      //console.log(response.data);
       navigate('../pages/Cart');
     } catch (error) {
       console.log(error);

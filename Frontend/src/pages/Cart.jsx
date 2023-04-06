@@ -35,7 +35,6 @@ const Cart = (customerId) => {
           `http://localhost:8080/api/v1/cart/${id}`
         );
         setCartItems(response.data);
-        //console.log(response.data);
       } catch (error) {
         console.log(error);
       }

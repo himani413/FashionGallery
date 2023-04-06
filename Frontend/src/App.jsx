@@ -32,7 +32,6 @@ const App = () => {
         <Route path="/pages/checkout/orderconfirmation" element={<OrderConfirmation />} />
         <Route path="/pages/sizeguide" element={<SizeGuide />} />
         <Route path="/pages/searchedProducts" element={<SearchedProducts/>}/>
-        
       </Routes>
       </Router>
     
