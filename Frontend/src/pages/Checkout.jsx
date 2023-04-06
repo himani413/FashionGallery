@@ -18,10 +18,10 @@ const Checkout = () => {
   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
   const location = useLocation();
   const singleProductId = new URLSearchParams(location.search).get("productId");
-  const singleProductQuantity = new URLSearchParams(location.search).get("quantity");
+  const [singleProductQuantity,setSingleProductQuantity] =useState(new URLSearchParams(location.search).get("quantity"));
   console.log(singleProductId);
   const [amount, setAmount] = useState(localStorage.getItem('totalAmount'));
-
+  const customerId = localStorage.getItem('id');
   useEffect(() => {
     if (singleProductId) {
       const fetchData = async () => {
@@ -32,6 +32,7 @@ const Checkout = () => {
         }
         else{
           setAmount(response.data.price);
+          setSingleProductQuantity(1);
         }
       };
       fetchData();
@@ -88,6 +89,30 @@ const Checkout = () => {
           }
         }
         );
+        const orderId = response.data.id; 
+        console.log(orderId);
+        if(singleProductId){
+          const response = await axios.post(`http://localhost:8080/api/v1/order/addOrderItems?orderId=${orderId}&productId=${singleProductId}&quantity=${singleProductQuantity}`);
+          console.log(response);
+          const response2 = await axios.post(`http://localhost:8080/api/v1/product/updateQuantity?productId=${singleProductId}&buyingQuantity=${singleProductQuantity}`);
+          console.log(response2);
+        }
+         
+        else{
+           
+          for (let i = 0; i < cartItems.length; i++) {
+            const cartItem = cartItems[i];
+            const productId = cartItem.productId;
+            const productQuantity = cartItem.quantity;
+            const response = await axios.post(`http://localhost:8080/api/v1/order/addOrderItems?orderId=${orderId}&productId=${productId}&quantity=${productQuantity}`);
+            console.log(response);
+          }
+          const response2 = await axios.post(`http://localhost:8080/api/v1/cart/deleteCart?customerId=${customerId}`);
+          console.log(response2);
+        
+          
+        }
+
         localStorage.removeItem('price');
         localStorage.removeItem('quantity');
         localStorage.removeItem("totalCartAmount");
