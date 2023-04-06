@@ -12,6 +12,7 @@ import Checkout from "./pages/Checkout";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import EmailVerification from "./pages/EmailVerification.jsx";
 import SizeGuide from "./pages/SizeGuide";
+import SearchedProducts from "./pages/SearchedProducts";
 
 const App = () => {
   return (
@@ -27,10 +28,10 @@ const App = () => {
         <Route path="/pages/cart" element={<Cart/>} />
         <Route path="/pages/productlist" element={<ProductList/>} />
         <Route path="/pages/singleproduct" element={<SingleProduct/>} />
-        <Route path="/pages/singleproduct/checkout" element={<Checkout />} />
-        <Route path="/pages/singleproduct/checkout/orderconfirmation" element={<OrderConfirmation />} />
+        <Route path="/pages/checkout" element={<Checkout />} />
+        <Route path="/pages/checkout/orderconfirmation" element={<OrderConfirmation />} />
         <Route path="/pages/sizeguide" element={<SizeGuide />} />
-        
+        <Route path="/pages/searchedProducts" element={<SearchedProducts/>}/>
       </Routes>
       </Router>
     

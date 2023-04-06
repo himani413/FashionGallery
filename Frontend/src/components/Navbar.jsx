@@ -134,18 +134,20 @@ const Navbar = (props) =>{
 
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/api/v1/cart/1`
-        );
-        setCartItems(response.data);
-        //console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchCartItems();
+    if(token){
+        const fetchCartItems = async () => {
+          try {
+            const response = await axios.get(
+              `http://localhost:8080/api/v1/cart/1`
+            );
+            setCartItems(response.data);
+          } catch (error) {
+            console.log(error);
+          }
+        
+        };
+        fetchCartItems();
+    }
   }, []);
 
   const handleSearch = () => {
