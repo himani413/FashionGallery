@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import backgroundImageSizeGuide from "../images/bi-EmailVerification.jpg";
+import backgroundImageSizeGuide from "../images/bi-sizeguide.png";
 
 export const Container = styled.div`
     width: 100w;
