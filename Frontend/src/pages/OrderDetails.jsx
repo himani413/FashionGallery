@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import "../styles/OrderDetails.css";
 import Navbar from '../components/Navbar';
@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import Copyright from '../components/Copyright';
 import Announcement from '../components/Announcement';
 import Newsletter from '../components/Newsletter';
+import axios from 'axios';
 
 const Container = styled.div``;
 const Title = styled.h1`
@@ -14,6 +15,19 @@ const Title = styled.h1`
 `
 
 const OrderDetails = () => {
+
+    const [orders, setOrders] = React.useState([]);
+
+    useEffect(()=>{
+        axios.post('http://localhost:8080/api/v1/customer/customer-order-list?username=dinukaekanayaka18@gmail.com')
+        .then(response=>{
+            setOrders(response.data.customerOrders);
+        })
+        .catch(error=>{
+            console.log(error);
+        })
+    },[]);
+
   return (
     <Container>
     <Navbar/>
@@ -38,20 +52,23 @@ const OrderDetails = () => {
                 </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>124</td>
-                <td>2</td>
-                <td>Jenny</td>
-                <td>Perera</td>
-                <td>0774307771</td>
-                <td>71/2B, 2nd lane</td>
-                <td>Meda Welikada road</td>
-                <td>Rajagiriya</td>
-                <td>Western</td>
-                <td>10100</td>
-                <td>Rs. 4500.00</td>
-                <td>12-03-2023</td>  
-            </tr>
+            {orders.map((order) => (
+              <tr key={order.orderID}>
+                <td>{order.orderID}</td>
+                <td>{order.customerID}</td>
+                <td>{order.firstName}</td>
+                <td>{order.lastName}</td>
+                <td>{order.mobileNumber}</td>
+                <td>{order.addressLine1}</td>
+                <td>{order.addressLine2}</td>
+                <td>{order.city}</td>
+                <td>{order.province}</td>
+                <td>{order.zipcode}</td>
+                <td>{order.orderAmount}</td>
+                <td>{order.orderDate}</td>  
+            </tr>  
+                ))}
+            
             </tbody>
         </table>
     </div>

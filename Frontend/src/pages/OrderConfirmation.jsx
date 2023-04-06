@@ -13,7 +13,7 @@ const OrderConfirmation = () => {
                 Our Courier Partners will contact you prior to the delivery.
             </Info> 
             <Link to="/" style={{ textDecoration: 'none' }}><Button>Back To Home</Button></Link>
-            <Link to="../pages/OrderDetails" style={{ textDecoration: 'none' }}><Button>View My Orders</Button></Link>
+            <Link to="../pages/OrderDetails" style={{ textDecoration: 'none' }}><Button>My Orders</Button></Link>
             
         </Wrapper>
     </Container>

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/customer")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CustomerOrderDetailsRestController {
 
     @Autowired
@@ -19,7 +20,7 @@ public class CustomerOrderDetailsRestController {
         this.customerOrderService = customerOrderService;
     }
 
-    @PutMapping("/customer-order")  //add order id's to relevant customer id. No need of a frontend for this.
+    @PutMapping("/customer-order")  //add order id's to relevant customer id
     public void addCustomerOrder(@RequestBody CustomerOrdersDTO customerOrdersDTO, @RequestParam("username") String username){
         customerOrderService.addCustomerOrder(customerOrdersDTO,username);
     }
