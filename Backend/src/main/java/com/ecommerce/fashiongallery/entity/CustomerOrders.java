@@ -9,20 +9,22 @@ import lombok.*;
 @Entity
 @Table(name = "customer_orders")
 public class CustomerOrders {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    private Long id;
 
-    @Column(name = "customer_id")
-    private Long customerID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "process_id", nullable = false)
+    private Long processID;
     @Column(name = "order_id", nullable = false)
     private Long orderID;
 
+    @Column(name = "customer_id", nullable = false)
+    private Long customerID;
 
     public CustomerOrders(Long customerID, Long orderID) {
         this.customerID = customerID;
         this.orderID = orderID;
     }
+
+
 
 }

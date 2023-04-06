@@ -17,6 +17,6 @@ public class ResponseOrderDTO {
     private String date;
     private String OrderDescription;
     private int orderId;
-    private List<CustomerOrders> customerOrders;
+    private List<CustomerOrdersJoinResultsDTO> customerOrders;
 
 }
