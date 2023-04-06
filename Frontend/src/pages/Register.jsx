@@ -55,10 +55,10 @@ function Register() {
           }
         }
         );
-        if (response.status === 200) {
+        if (response.data.code === "00") {
             setResponse(response.data.message);
         }
-        else if(response.status===400){
+        else if(response.data.code==="06"){
           setResponse(response.data.message);
         }
         
