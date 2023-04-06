@@ -36,7 +36,7 @@ function Home(){
         <Slider />
         <Categories/>
         <Products items={Items}/>
-        <Countdown/>
+        <Countdown />
         <Newsletter/>
         <Footer/>
         <Copyright/>
