@@ -18,19 +18,23 @@ import { useNavigate } from 'react-router-dom';
 
 
 
-const Cart = () => {
+
+
+const Cart = (customerId) => {
   const [cartItems, setCartItems] = useState([]);
   const [productDetails, setProductDetails] = useState([]);
   const [isEmpty, setIsEmpty] = useState(true);
-  
+  const id = localStorage.getItem('id');
+  const navigate = useNavigate();
+  const [totalCartAmount, setTotalCartAmount] = useState(0);
+ 
   useEffect(() => {
     const fetchCartItems = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:8080/api/v1/cart/1`
+          `http://localhost:8080/api/v1/cart/${id}`
         );
         setCartItems(response.data);
-        //console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -46,7 +50,7 @@ const Cart = () => {
             const response = await axios.get(
               `http://localhost:8080/api/v1/product/getProductById?productId=${cartItem.productId}`
             );
-            console.log(cartItem);
+           //console.log(cartItem);
             return {
               productId: cartItem.productId,
               quantity: cartItem.quantity,
@@ -72,13 +76,26 @@ const Cart = () => {
     }, [cartItems]);
 
 
-  const totalCartAmount = cartItems.reduce((total, item) => total + item.amount, 0);
+    //const tempTotalCartAmount = cartItems.reduce((total, item) => total + item.amount, 0);
+    
 
   //console.log(totalCartAmount);
   const updateShoppingCartQuantity = async (shoppingCartId, quantity) => {
     try {
       const response = await axios.post(
         `http://localhost:8080/api/v1/cart/updateShoppingCart?shoppingCartId=${shoppingCartId}&quantity=${quantity}`
+        );
+      //return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
+  const deleteCartItem = async (shoppingCartId) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8080/api/v1/cart/deleteCartItem?shoppingCartId=${shoppingCartId}`
         );
       //return response.data;
     } catch (error) {
@@ -92,6 +109,7 @@ const Cart = () => {
     );
     updatedCartItems[cartItemIndex].quantity++;
     await updateShoppingCartQuantity(cartId, updatedCartItems[cartItemIndex].quantity);
+    updatedCartItems[cartItemIndex].amount = updatedCartItems[cartItemIndex].quantity * productDetails[cartItemIndex].price;
     setCartItems(updatedCartItems);
   };
   
@@ -103,10 +121,91 @@ const Cart = () => {
     if (updatedCartItems[cartItemIndex].quantity > 1) {
       updatedCartItems[cartItemIndex].quantity--;
       await updateShoppingCartQuantity(cartId, updatedCartItems[cartItemIndex].quantity);
+      updatedCartItems[cartItemIndex].amount = updatedCartItems[cartItemIndex].quantity * productDetails[cartItemIndex].price;
       setCartItems(updatedCartItems);
     }
   };
 
+  useEffect(() => {
+    const newCartItems = cartItems.map((cartItem, index) => {
+      const productDetail = productDetails[index];
+      return {
+        ...cartItem,
+        amount: cartItem.quantity * productDetail.price
+      };
+    });
+    const newTotalCartAmount = newCartItems.reduce((total, item) => total + item.amount, 0);
+    setCartItems(newCartItems);
+    setTotalCartAmount(newTotalCartAmount);
+  }, [productDetails]);
+
+  const handleCheckout =()=>{
+
+    localStorage.setItem("totalAmount", totalCartAmount);
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    console.log(totalCartAmount);
+    console.log(cartItems);
+    navigate('/pages/checkout');
+  }
+
+
+  const handleDeleteClick = (item) => {
+    if(window.confirm("Are you sure! Do you want to delete this item.")){
+      deleteItem(item.cartId);
+      window.location.reload()
+    }
+  };
+
+
+  const deleteItem = async (shoppingCartId) => {
+   
+      try {
+            const updatedCartItems = [...cartItems];
+            await deleteCartItem(shoppingCartId);
+            updatedCartItems[shoppingCartId].amount = 0;
+            setCartItems(updatedCartItems);
+            
+
+          } catch (error) {
+            console.log(error);
+          }
+
+  };
+  if (!id) {
+    return (
+      <Container>
+      <Navbar />
+      <Announcement />
+      <Wrapper>
+        <Title>Your Cart</Title>
+        <Top>
+          <Link to="/">
+            <TopButton>CONTINUE SHOPPING</TopButton>
+          </Link>
+          <TopTexts>
+            <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
+          </TopTexts>
+        </Top>
+        <Bottom>
+          <Info>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+        <img src="https://i.pinimg.com/564x/81/c4/fc/81c4fc9a4c06cf57abf23606689f7426.jpg" alt="cart is empty" />
+        <p>Your cart is empty! Regiter to buy products</p>
+        
+        </div>
+        <Link to = "/pages/Register" style={{ textDecoration: "none" }} ><Button>Register</Button></Link>
+          
+          </Info>
+        </Bottom>
+      </Wrapper>
+      <Footer />
+      <Copyright />
+    </Container>
+
+      
+
+    );
+  }
 
   if (isEmpty) {
     return (
@@ -121,7 +220,6 @@ const Cart = () => {
           </Link>
           <TopTexts>
             <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
-            <TopText>Your Wishlist(0)</TopText>
           </TopTexts>
         </Top>
         <Bottom>
@@ -137,6 +235,7 @@ const Cart = () => {
       <Footer />
       <Copyright />
     </Container>
+
       
 
     );
@@ -154,7 +253,7 @@ const Cart = () => {
           </Link>
           <TopTexts>
             <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
-            <TopText>Your Wishlist(0)</TopText>
+            
           </TopTexts>
           <Link to="../pages/Checkout">
             <TopButton type="filled">CHECKOUT NOW</TopButton>
@@ -176,7 +275,8 @@ const Cart = () => {
                     <ProductSize>
                       <b>Size:</b> {item.size}
                     </ProductSize>
-                    <HighlightOff />
+                    <HighlightOff onClick={() => handleDeleteClick(item)}  />
+                  
                   </Details>
                 </ProductDetail>
                 <PriceDetail>
@@ -190,6 +290,7 @@ const Cart = () => {
                   </ProductPrice>
                 </PriceDetail>
               </Product>
+              
             ))}
           </Info>
           <Summary>
@@ -214,25 +315,26 @@ const Cart = () => {
                 Rs.{totalCartAmount+350-220}
               </SummaryItemPrice>
             </SummaryItem>
-            <Link
-              to={{
-              pathname: "../pages/Checkout",
-              state: {
-                cartItems: JSON.stringify(cartItems),
-                totalAmount: totalCartAmount,
-              },
-            }}
+            <Link to="../pages/Checkout"
             style={{ textDecoration: "none" }}
->
-              <Button>CHECKOUT NOW</Button>
+            >
+              <Button  onClick={handleCheckout} >CHECKOUT NOW</Button>
             </Link>
           </Summary>
         </Bottom>
       </Wrapper>
+     
       <Footer />
       <Copyright />
     </Container>
+
   );
+
+
+ 
 }
+
+
+
 
 export default Cart

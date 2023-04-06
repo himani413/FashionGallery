@@ -36,11 +36,11 @@ const SingleProduct = () => {
   }, []);
   const navigate = useNavigate();
   const handleAddToCart = async () => {
-    const customerId = 1;
+
+    const customerId = localStorage.getItem("id");
     const data = { productId: product.id, quantity };
     try {
       const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
-      //console.log(response.data);
       navigate('../pages/Cart');
     } catch (error) {
       console.log(error);
@@ -48,8 +48,7 @@ const SingleProduct = () => {
   };
 
   const handleBuy = async () => {
-    localStorage.setItem('quantity',quantity);
-    localStorage.setItem('price',product.price);
+      navigate(`/pages/checkout?productId=${productId}&quantity=${quantity}`);
   };
 
   useEffect(() => {
@@ -115,7 +114,7 @@ const SingleProduct = () => {
                     </AmountContainer>
                     <Button disabled={!isQuantityValid} onClick={handleAddToCart}>Add To Cart</Button>
 
-                    <Link to="/pages/singleproduct/checkout" ><Button onClick={handleBuy}>Buy Now</Button></Link>               
+                    <Button disabled={!isQuantityValid} onClick={handleBuy}>Buy Now</Button>             
                     {!isQuantityValid && <Message>The selected quantity is greater than the available quantity!</Message>}
 
                   </>

@@ -96,6 +96,16 @@ public class ShoppingCartRestController {
         else {
             Product product = productService.getProductById(shoppingCart.getProductId());
             float newAmount = quantity * product.getPrice();
+            if(shoppingCart.getQuantity()>quantity){
+                int difference = shoppingCart.getQuantity() - quantity;
+                product.setAvailableQuantity(product.getAvailableQuantity()+difference);
+                product = productService.saveProduct(product);
+            }
+            else{
+                int difference = quantity - shoppingCart.getQuantity()  ;
+                product.setAvailableQuantity(product.getAvailableQuantity()-difference);
+                product = productService.saveProduct(product);
+            }
             shoppingCart.setQuantity(quantity);
             shoppingCart.setAmount(newAmount);
             shoppingCart = shoppingCartService.saveShoppingCart(shoppingCart);
@@ -105,6 +115,24 @@ public class ShoppingCartRestController {
                 return "Cart updated successfully";
             }
         }
+
+    }
+
+    @PostMapping("/deleteCartItem")
+    public String deleteShoppingCartItem(@RequestParam int shoppingCartId) {
+        ShoppingCart shoppingCart = shoppingCartService.getShoppingCartDetail(shoppingCartId);
+        int quantity = shoppingCart.getQuantity();
+        Product product = productService.getProductById(shoppingCart.getProductId());
+        int newQuantity = quantity + product.getAvailableQuantity();
+        product.setAvailableQuantity(newQuantity);
+       product = productService.saveProduct(product);
+        shoppingCartService.DeleteShoppingCart(shoppingCart);
+        if (shoppingCart == null) {
+            return "Cannot update the cart";
+        } else {
+            return "Cart updated successfully";
+        }
+
 
     }
 

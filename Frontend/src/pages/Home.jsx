@@ -5,9 +5,12 @@ import Navbar from '../components/Navbar'
 import Slider from '../components/Slider'
 import Newsletter from '../components/Newsletter'
 import Categories from '../components/Categories'
+import NewArrivals from '../components/NewArrivals'
 import Products from '../components/Products'
+import Countdown from '../components/Countdown'
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+
 
 function Home(){
 
@@ -34,7 +37,9 @@ function Home(){
         <Navbar />
         <Slider />
         <Categories/>
+        <NewArrivals/>
         <Products items={Items}/>
+        <Countdown />
         <Newsletter/>
         <Footer/>
         <Copyright/>

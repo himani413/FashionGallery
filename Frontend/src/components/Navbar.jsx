@@ -44,13 +44,13 @@ const Language = styled.span`
 
 const SearchContainer = styled.div`
   border: 1px solid lightgray;
-  height: 16px;
+  height: 30px;
   display: flex;
   align-items: center;
   margin-left: 25px;
   padding: 10px;
   border-radius: 10px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
   outline: none;
 `;
 
@@ -134,18 +134,20 @@ const Navbar = (props) =>{
 
   const [cartItems, setCartItems] = useState([]);
   useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:8080/api/v1/cart/1`
-        );
-        setCartItems(response.data);
-        //console.log(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchCartItems();
+    if(token){
+        const fetchCartItems = async () => {
+          try {
+            const response = await axios.get(
+              `http://localhost:8080/api/v1/cart/1`
+            );
+            setCartItems(response.data);
+          } catch (error) {
+            console.log(error);
+          }
+        
+        };
+        fetchCartItems();
+    }
   }, []);
 
   const handleSearch = () => {

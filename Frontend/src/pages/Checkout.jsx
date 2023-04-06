@@ -11,13 +11,39 @@ import { BrowserRouter as Router, Route,Link } from 'react-router-dom';
 import React, { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { useLocation } from "react-router-dom";
+import '../styles/Errors.css';
 
-function Checkout (){
+
+
+const Checkout = () => {
   const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-  const totalCartAmount = localStorage.getItem("totalCartAmount");
-  const price=localStorage.getItem('price');
-  const quantity=localStorage.getItem('quantity');
-  const amount=price * quantity;
+  const location = useLocation();
+  const singleProductId = new URLSearchParams(location.search).get("productId");
+  const singleProductQuantity = new URLSearchParams(location.search).get("quantity");
+  console.log(singleProductId);
+  const [amount, setAmount] = useState(localStorage.getItem('totalAmount'));
+
+  useEffect(() => {
+    if (singleProductId) {
+      const fetchData = async () => {
+        const response =  await axios.get(`http://localhost:8080/api/v1/product/getProductById?productId=${singleProductId}`);
+        console.log(response.data.price);
+        if(singleProductQuantity){
+          setAmount(response.data.price * singleProductQuantity)
+        }
+        else{
+          setAmount(response.data.price);
+        }
+      };
+      fetchData();
+ 
+     
+      
+    }
+  }, [singleProductId]);
+
+ 
 
   const [firstName, setFirstname] = useState('');
   const [lastName, setLastname] = useState('');
@@ -76,6 +102,11 @@ function Checkout (){
     }
   };
 
+
+
+
+
+ 
 
     return (
       <Container>
@@ -143,7 +174,7 @@ function Checkout (){
                 <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                 <SummaryItem>
                   <SummaryItemText>Subtotal</SummaryItemText>
-                  <SummaryItemPrice>Rs. {totalCartAmount}</SummaryItemPrice>
+                  <SummaryItemPrice>Rs. {amount}</SummaryItemPrice>
                 </SummaryItem>
                 <SummaryItem>
                   <SummaryItemText>Estimated Shipping</SummaryItemText>

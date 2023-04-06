@@ -80,12 +80,15 @@ import {
       navigate(`/pages/SingleProduct/?productId=${item.id}`);
     }
 
+    const handleBuyNow = () => {
+      navigate(`/pages/checkout?productId=${item.id}`);
+    }
+
     const handleAddToCart = async () => {
       const customerId = 1;
       const data = { productId: item.id, quantity:1 };
       try {
         const response = await axios.post(`http://localhost:8080/api/v1/cart/addToCart/${customerId}`, data);
-        //console.log(response.data);
         navigate('../pages/Cart');
       } catch (error) {
         console.log(error);
@@ -103,7 +106,7 @@ import {
             <SearchOutlined onClick={handleItem} />
           </Icon>
           <Icon>
-            <LocalMallOutlined />
+            <LocalMallOutlined onClick={handleBuyNow}/>
           </Icon>
         </Info>
       </Container>
