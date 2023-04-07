@@ -1,6 +1,5 @@
 package com.ecommerce.fashiongallery.dto;
 
-import com.ecommerce.fashiongallery.entity.CustomerOrders;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

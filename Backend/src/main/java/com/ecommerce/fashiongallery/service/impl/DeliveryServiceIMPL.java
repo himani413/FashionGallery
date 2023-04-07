@@ -4,6 +4,7 @@ import com.ecommerce.fashiongallery.dto.DeliveryDetailsDTO;
 import com.ecommerce.fashiongallery.dto.ResponseDTO;
 import com.ecommerce.fashiongallery.entity.Delivery;
 import com.ecommerce.fashiongallery.repository.DeliveryRepository;
+import com.ecommerce.fashiongallery.service.CustomerOrderService;
 import com.ecommerce.fashiongallery.service.DeliveryService;
 import com.ecommerce.fashiongallery.service.UserService;
 import com.ecommerce.fashiongallery.util.StringList;
@@ -20,6 +21,8 @@ public class DeliveryServiceIMPL implements DeliveryService {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private CustomerOrderService customerOrderService;
 
     @Override
     public ResponseDTO addDelivery(DeliveryDetailsDTO deliveryDetailsDTO,String username) {

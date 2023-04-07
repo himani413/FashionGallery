@@ -7,7 +7,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class DeliveryDetailsDTO {
-
     private String firstName;
     private String lastName;
     private String mobileNumber;
