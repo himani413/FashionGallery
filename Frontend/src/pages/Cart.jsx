@@ -181,17 +181,18 @@ const Cart = (customerId) => {
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
-            <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
+            <TopText>Shopping cart(0)</TopText>
           </TopTexts>
         </Top>
         <Bottom>
           <Info>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <img src="https://i.pinimg.com/564x/81/c4/fc/81c4fc9a4c06cf57abf23606689f7426.jpg" alt="cart is empty" />
-        <p>Your cart is empty! Regiter to buy products</p>
+        <h3>Your cart is empty! Regiter or Login to buy products</h3>
         
         </div>
         <Link to = "/pages/Register" style={{ textDecoration: "none" }} ><Button>Register</Button></Link>
+        <Link to = "/pages/Login" style={{ textDecoration: "none" }} ><Button>Login</Button></Link>
           
           </Info>
         </Bottom>
@@ -217,14 +218,14 @@ const Cart = (customerId) => {
             <TopButton>CONTINUE SHOPPING</TopButton>
           </Link>
           <TopTexts>
-            <TopText>Shopping cart({cartItems.reduce((total, item) => total + item.quantity, 0)})</TopText>
+            <TopText>Shopping cart(0)</TopText>
           </TopTexts>
         </Top>
         <Bottom>
           <Info>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
         <img src="https://i.pinimg.com/564x/81/c4/fc/81c4fc9a4c06cf57abf23606689f7426.jpg" alt="cart is empty" />
-        <p>Your cart is empty</p>
+        <h3>Your cart is empty</h3>
         </div>
           
           </Info>
