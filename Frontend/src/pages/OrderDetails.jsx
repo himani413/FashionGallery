@@ -35,9 +35,10 @@ export const Button = styled.button`
 const OrderDetails = () => {
 
     const [orders, setOrders] = React.useState([]);
-
+    
     useEffect(()=>{
-        axios.post('http://localhost:8080/api/v1/customer/customer-order-list?username=dinukaekanayaka18@gmail.com')
+        const email=localStorage.getItem('email');
+        axios.post('http://localhost:8080/api/v1/customer/customer-order-list?username='+email)
         .then(response=>{
             setOrders(response.data.customerOrders);
         })
