@@ -143,6 +143,7 @@ export const SummaryItemPrice = styled.span``;
 
 export const Button = styled.button`
   width: 60%;
+  max-width:150px;
   padding: 10px;
   background-color: black;
   color: white;
